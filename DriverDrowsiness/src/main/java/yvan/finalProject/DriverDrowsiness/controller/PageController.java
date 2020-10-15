@@ -22,43 +22,41 @@ public class PageController {
 		
 	}
 	
-	@RequestMapping(value = {"/about"})
-	public ModelAndView about() {
-		
-		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","About Us");
-		mv.addObject("userClickAbout",true);
-		return mv;
-		
-	}
-	
-	@RequestMapping(value = {"/service"})
-	public ModelAndView service() {
-		
-		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","Service");
-		mv.addObject("userClickService",true);
-		return mv;
-		
-	}
-	
-	@RequestMapping(value = {"/contact"})
-	public ModelAndView contact() {
-		
-		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","Contact Us");
-		mv.addObject("userClickContact",true);
-		return mv;
-		
-	}
-	
-	@RequestMapping(value = {"/health"})
-	public ModelAndView health() {
-		
-		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("title","Health");
-		mv.addObject("userClickHealth",true);
-		return mv;
-		
-	}
+	/*
+	 * @RequestMapping(value = {"/about"}) public ModelAndView about() {
+	 * 
+	 * ModelAndView mv = new ModelAndView("page"); mv.addObject("title","About Us");
+	 * mv.addObject("userClickAbout",true); return mv;
+	 * 
+	 * }
+	 * 
+	 * @RequestMapping(value = {"/service"}) public ModelAndView service() {
+	 * 
+	 * ModelAndView mv = new ModelAndView("page"); mv.addObject("title","Service");
+	 * mv.addObject("userClickService",true); return mv;
+	 * 
+	 * }
+	 * 
+	 * @RequestMapping(value = {"/contact"}) public ModelAndView contact() {
+	 * 
+	 * ModelAndView mv = new ModelAndView("page");
+	 * mv.addObject("title","Contact Us"); mv.addObject("userClickContact",true);
+	 * return mv;
+	 * 
+	 * }
+	 * 
+	 * @RequestMapping(value = {"/health"}) public ModelAndView health() {
+	 * 
+	 * ModelAndView mv = new ModelAndView("page"); mv.addObject("title","Health");
+	 * mv.addObject("userClickHealth",true); return mv;
+	 * 
+	 * }
+	 * 
+	 * @RequestMapping(value = {"/truck"}) public ModelAndView truck() {
+	 * 
+	 * ModelAndView mv = new ModelAndView("page"); mv.addObject("title","Truck");
+	 * mv.addObject("userClickTruck",true); return mv;
+	 * 
+	 * }
+	 */
 }

@@ -15,11 +15,11 @@
 		<spring.version>5.2.8.RELEASE</spring.version>
 	</properties>
 	<dependencies>
-	<dependency>
-	<groupId>yvan.finalProject</groupId>
-	<artifactId>DriverDrowsinessBackend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	</dependency>
+		<dependency>
+			<groupId>yvan.finalProject</groupId>
+			<artifactId>DriverDrowsinessBackend</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -40,6 +40,33 @@
 			<version>${javaee.version}</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.5.Final</version>
+		</dependency>
+
+
+
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.11.2</version>
+		</dependency>
+
+
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.11.2</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>junit</groupId>
