@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import yvan.finalProject.DriverDrowsinessBackend.dao.ClientDao;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Address;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
 
 
@@ -72,6 +73,30 @@ public class ClientDaoImpl implements ClientDao {
 				ex.printStackTrace();
 			}
 			return null;
+	}
+
+	@Override
+	public Client getByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addAddress(Address address) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<Address> listShippingAddresses(int clientId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Address> listShippingAddresses(Client client) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

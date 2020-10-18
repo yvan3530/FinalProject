@@ -1,51 +1,69 @@
-<header class="main_header"> 
-    							<nav class="navbar"> 
-    								<div class="container-lg"> 
-    									<ul class="navRoot"> 
-    										<li class="navSection logo"> 
-    											<a href="index.jsp" class="navbar-brand"></a> 
-    										</li> 
-    										<li class="navSection primary"> 
-    											<a class="rootLink hasDropdown" data-dropdown="products"> Tools </a> 
-    											<a class="rootLink hasDropdown" data-dropdown="services"> Services </a> 
-    											<a class="rootLink hasDropdown" data-dropdown="references"> References </a> 
-    											<a class="rootLink hasDropdown" data-dropdown="company"> Company </a> 
-    										</li> 
-    										<li class="navSection secondary"> 
-    											<a class="rootLink outline" href="auth/sign-in.jsp">Sign in</a> </li> 
-    											<li class="navSection mobile"> <a class="rootLink item-mobileMenu">
-    											<h2>Menu</h2>
-    											</a> 
-    												<div class="popup"> 
-    													<div class="popupContainer"> 
-    														<a class="popupCloseButton">Close</a> 
-    														<div class="mobileProducts"> 
-    															<a class="collapsible" href="#">TOOLS</a> 
-    															<div class="collapse show in"> 
-    																	<div class="mobileProductsList"> 
-    																	<ul> 
-    																		<li> <a class="linkContainer" href="#"> <img src="" alt="market-place"> Logistics Explorer </a> </li> 
-    																		<li> <a class="linkContainer" href="#"> <img src="" alt="load-calculator"> Load Calculator </a> </li> 
-    																		<li> <a class="linkContainer" href="#"> <img src="" alt="container-tracking"> Container Tracking </a> </li> </ul> 
-    																		<ul> <li> <a class="linkContainer" href="#"> <img src="" alt="cargo-wizard"> Cargo Wizard </a> </li> 
-    																			<li> <a class="linkContainer" href="#"> <img src="" alt="distance-time"> Distances & Time </a> </li>
-    																			 <li> <a class="linkContainer" href="#"> <img src="" alt="route-planner"> Route Planner </a> </li> 
-    																			 <li> <a class="linkContainer" href="#"> <img src="" alt="ship-schedules"> Ship Schedules </a> </li> 
-    																			</ul> 
-    																		</div> 
-    																		
-    																	</div> 
-    																	
-    																			
-    														</div>
-
-    													</div>
-    														</div> 
-    											</li> 
-    									</ul> 
-    								</div>  
-    																								
-    																						
-    							</nav> 
-    																									
-    						</header>
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="${contextRoot }/home">Kesi Investiment Ltd</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" id="about">
+            <a class="nav-link" href="${contextRoot }/about">About</a>
+          </li>
+          <li class="nav-item" id="service">
+            <a class="nav-link" href="${contextRoot }/service">Services</a>
+          </li>
+          <li class="nav-item" id="contact">
+            <a class="nav-link" href="${contextRoot }/contact">Contact</a>
+          </li>
+          <li class="nav-item" id="health">
+            <a class="nav-link" href="${contextRoot }/health">Health</a>
+          </li>
+            <li class="nav-item" id="ManageBooking">
+            <a class="nav-link" href="${contextRoot }/manage/bookings">Booking</a>
+          </li>
+          
+           <li class="nav-item" id="AddTruck">
+            <a class="nav-link" href="${contextRoot }/manage/addtrucks">truck</a>
+          </li>
+          <li>
+          <a class="cta" href="#"> <button>sign in</button></a>
+          </li>
+         <!--  <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Portfolio
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+              <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
+              <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
+            </div>
+          </li> -->
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Blog
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+              <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
+              <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
+              <a class="dropdown-item" href="blog-post.html">Blog Post</a>
+            </div>
+          </li> -->
+         <!--  <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Other Pages
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
+              <a class="dropdown-item" href="full-width.html">Full Width Page</a>
+              <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
+              <a class="dropdown-item" href="faq.html">FAQ</a>
+              <a class="dropdown-item" href="404.html">404</a>
+              <a class="dropdown-item" href="pricing.html">Pricing Table</a>
+            </div>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
