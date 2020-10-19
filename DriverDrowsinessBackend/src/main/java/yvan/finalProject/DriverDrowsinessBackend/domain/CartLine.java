@@ -28,5 +28,41 @@ public class CartLine {
 	private double truckCount;
 	@Column(name= "is_available")
 	private boolean available = true;
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+	}
+	public Truck getTruck() {
+		return truck;
+	}
+	public void setTruck(Truck truck) {
+		this.truck = truck;
+	}
+	public int getCartId() {
+		return cartId;
+	}
+	public void setCartId(int cartId) {
+		this.cartId = cartId;
+	}
+	public double getTruckCount() {
+		return truckCount;
+	}
+	public void setTruckCount(double truckCount) {
+		this.truckCount = truckCount;
+	}
+	public boolean isAvailable() {
+		return available;
+	}
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+	@Override
+	public String toString() {
+		return "CartLine [Id=" + Id + ", truckCount=" + truckCount + ", available=" + available + "]";
+	}
+	
+	
 
 }

@@ -1,10 +1,13 @@
 package yvan.finalProject.DriverDrowsinessBackend.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,8 @@ public class Client {
 	private String address;
 	private String telePhone;
 	private String email;
+	@OneToOne(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Cart cart;
 	
 	public Client() {
 		
@@ -64,6 +69,18 @@ public class Client {
 		this.telePhone = telePhone;
 	}
 
+	public Cart getCart() {
+		return cart;
+	}
+
+
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+
+
 	public String getEmail() {
 		return email;
 	}
@@ -71,6 +88,8 @@ public class Client {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	
 
 	@Override
 	public String toString() {

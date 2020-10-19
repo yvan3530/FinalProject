@@ -16,7 +16,7 @@ public interface CartLineDAO {
 	
 	// other business method related to the cart lines
 		public List<CartLine> listAvailable(int cartId);
-		public CartLine getByCartAndProduct(int cartId, int truckId);
+		public CartLine getByCartAndTruck(int cartId, int truckId);
 	
 
 	boolean updateCart(Cart cart);	

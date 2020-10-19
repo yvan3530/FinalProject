@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import yvan.finalProject.DriverDrowsiness.util.FileUploadUtility;
+import yvan.finalProject.DriverDrowsiness.validator.TruckValidator;
 import yvan.finalProject.DriverDrowsinessBackend.dao.BookingDao;
 import yvan.finalProject.DriverDrowsinessBackend.dao.TruckDao;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Booking;
@@ -110,6 +111,9 @@ public class ManagementController {
 	
 	@RequestMapping(value="/addtrucks", method = RequestMethod.POST)
 	public String handleTruck(@Valid @ModelAttribute("truck") Truck nTruck,BindingResult results, Model model, HttpServletRequest request) {
+		
+		
+		new TruckValidator().validate(nTruck, results);
 		
 		
 		if(results.hasErrors()) {

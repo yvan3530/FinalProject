@@ -72,7 +72,7 @@ public class CartLineImpl implements CartLineDAO {
 	}
 
 	@Override
-	public CartLine getByCartAndProduct(int cartId, int truckId) {
+	public CartLine getByCartAndTruck(int cartId, int truckId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

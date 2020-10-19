@@ -17,7 +17,7 @@ public class Cart {
 	@Column(name="id")
 	private int Id;
 	@Column(name="cart_line")
-	private String cartLine;
+	private int cartLine;
 	
 	
 	@OneToOne
@@ -33,10 +33,10 @@ public class Cart {
 	public void setId(int id) {
 		Id = id;
 	}
-	public String getCartLine() {
+	public int getCartLine() {
 		return cartLine;
 	}
-	public void setCartLine(String cartLine) {
+	public void setCartLine(int cartLine) {
 		this.cartLine = cartLine;
 	}
 

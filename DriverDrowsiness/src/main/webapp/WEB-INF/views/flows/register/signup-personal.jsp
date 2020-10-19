@@ -38,49 +38,28 @@
 
 	<div class="wrapper">
 
-		<!-- Navigation bar-->
-		<%@include file="./shared/navbar.jsp"%>
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
 
+				<div class="navbar-header">
+
+					<a class="navbar-brand" href="${ flowExecutionUrl}&_eventId_home">Home</a>
+				</div>
+			</div>
+
+		</nav>
 
 		<div class="content">
-			<!-- Page Content -->
-			<c:if test="${ userClickHome == true}">
-				<%@include file="home.jsp"%>
-			</c:if>
-
-			<c:if test="${ userClickAbout == true}">
-				<%@include file="about.jsp"%>
-			</c:if>
-
-			<c:if test="${ userClickService == true}">
-				<%@include file="service.jsp"%>
-			</c:if>
-
-			<c:if test="${ userClickContact == true}">
-				<%@include file="contact.jsp"%>
-			</c:if>
-
-			<c:if test="${ userClickHealth == true}">
-				<%@include file="health.jsp"%>
-			</c:if>
-			<!-- /.container -->
-
-			<c:if test="${ userClickManageBooking == true}">
-				<%@include file="ManageBooking.jsp"%>
-			</c:if>
-
-			<c:if test="${ userClickAddTruck == true}">
-				<%@include file="AddTruck.jsp"%>
-			</c:if>
+			<div class="container">
+				<h3>this will be trigger by flow</h3>
 
 
-
-			<!-- /.container -->
-
+				<!-- /.container -->
+			</div>
 		</div>
 
 		<!-- Footer -->
-		<%@include file="./shared/footer.jsp"%>
+		<%@include file="../../shared/footer.jsp"%>
 
 
 		<!-- Bootstrap core JavaScript -->
@@ -88,7 +67,7 @@
 		<script src="${js }/bootstrap.bundle.min.js"></script>
 		<script src="${js }/bootbox.min.js"></script>
 		<script src="${js }/myapp.js"></script>
-		
+
 
 	</div>
 </body>

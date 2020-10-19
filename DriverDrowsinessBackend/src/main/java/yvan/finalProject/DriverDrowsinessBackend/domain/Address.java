@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -20,8 +19,12 @@ public class Address {
 	private String country;
 	private String city;
 	private String postCode;
-	@ManyToOne
-	private Client client; 
+	@Column(name = "is_shipping")
+	private boolean shipping;
+	@Column(name="client_id")
+	private int clientId; 
+	@Column(name = "address_line_one")
+	private String addressLineOne;
 	
 	public Address() {
 		
@@ -52,19 +55,31 @@ public class Address {
 		this.postCode = postCode;
 	}
 
-	public Client getClient() {
-		return client;
+	
+
+	public int getClientId() {
+		return clientId;
 	}
 
-	public void setClient(Client client) {
-		this.client = client;
+	public void setClientId(int clientId) {
+		this.clientId = clientId;
+	}
+	
+
+	public String getAddressLineOne() {
+		return addressLineOne;
+	}
+
+	public void setAddressLineOne(String addressLineOne) {
+		this.addressLineOne = addressLineOne;
 	}
 
 	@Override
 	public String toString() {
-		return "Address [Id=" + Id + ", country=" + country + ", city=" + city + ", postCode=" + postCode + ", client="
-				+ client + "]";
+		return "Address [Id=" + Id + ", country=" + country + ", city=" + city + ", postCode=" + postCode + "]";
 	}
+
+	
 
 	
 

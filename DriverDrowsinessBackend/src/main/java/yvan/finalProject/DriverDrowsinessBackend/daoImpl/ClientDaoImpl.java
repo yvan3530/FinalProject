@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import yvan.finalProject.DriverDrowsinessBackend.dao.ClientDao;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Address;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Cart;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
 
 
@@ -77,26 +78,82 @@ public class ClientDaoImpl implements ClientDao {
 
 	@Override
 	public Client getByEmail(String email) {
-		// TODO Auto-generated method stub
-		return null;
+		String selectQuery = "FROM Client WHERE email = :email";		
+		try {
+			
+			return sessionFactory.getCurrentSession()
+					.createQuery(selectQuery,Client.class)
+					.setParameter("email", email)
+					.getSingleResult();
+
+			
+		}
+		catch(Exception ex) {
+			
+			return null;
+		}
 	}
 
 	@Override
 	public boolean addAddress(Address address) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			sessionFactory.getCurrentSession().persist(address);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 	@Override
 	public List<Address> listShippingAddresses(int clientId) {
-		// TODO Auto-generated method stub
-		return null;
+		String selectQuery = "FROM Address WHERE clientId = :clientId AND shipping = :shipping";
+		
+		try {
+			
+			return sessionFactory.getCurrentSession()
+						.createQuery(selectQuery, Address.class)
+							.setParameter("clientId", clientId)
+							.setParameter("shipping", true)
+							.getResultList();
+			
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
 	public List<Address> listShippingAddresses(Client client) {
-		// TODO Auto-generated method stub
-		return null;
+		String selectQuery = "FROM Address WHERE client = :client AND shipping = :shipping";
+		
+		try {
+			
+			return sessionFactory.getCurrentSession()
+						.createQuery(selectQuery, Address.class)
+							.setParameter("client", client)
+							.setParameter("shipping", true)
+							.getResultList();
+			
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public boolean updateCart(Cart cart) {
+		try {
+			sessionFactory.getCurrentSession().update(cart);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 }
