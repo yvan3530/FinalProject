@@ -13,15 +13,13 @@ import yvan.finalProject.DriverDrowsinessBackend.domain.Freight;
 
 @Repository("freightDAO")
 @Transactional
-public class FreightDaoImpl implements FreightDao {
+public class FreightDaoImpl implements FreightDao{
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	
 	@Override
 	public boolean addFreight(Freight freight) {
-
 		try {
 			sessionFactory.getCurrentSession().persist(freight);
 			return true;
@@ -34,7 +32,6 @@ public class FreightDaoImpl implements FreightDao {
 
 	@Override
 	public boolean updateFreight(Freight freight) {
-
 		try {
 			sessionFactory.getCurrentSession().update(freight);
 			return true;
@@ -47,7 +44,6 @@ public class FreightDaoImpl implements FreightDao {
 
 	@Override
 	public boolean deleteFreight(Freight freight) {
-
 		try {
 			sessionFactory.getCurrentSession().delete(freight);
 			return true;
@@ -65,41 +61,38 @@ public class FreightDaoImpl implements FreightDao {
 				.createQuery("FROM Freight", Freight.class)
 				.getResultList();
 	}
-	
 
 	@Override
 	public Freight get(int freightId) {
-
 		try {
-		return sessionFactory.getCurrentSession()
-				.get(Freight.class, Integer.valueOf(freightId));
-		}
-		catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		return null;
+			return sessionFactory.getCurrentSession()
+					.get(Freight.class, Integer.valueOf(freightId));
+			}
+			catch(Exception ex) {
+				ex.printStackTrace();
+			}
+			return null;
 	}
 
 	@Override
 	public List<Freight> listActiveFreights() {
-		
 		String selectActiveFreights= "FROM Freight WHERE active = :active";
 		return sessionFactory
 				.getCurrentSession()
 					.createQuery(selectActiveFreights, Freight.class)
 						.setParameter("active", true)
 							.getResultList();
-				
+		
 	}
 
 	@Override
-	public List<Freight> listActiveByClient(int clientId) {
-		String selectActiveProductsByClient = "FROM Freight WHERE active = :active AND clientId = :clientId";
+	public List<Freight> listActiveByClient(int UserId) {
+		String selectActiveProductsByClient = "FROM Freight WHERE active = :active AND UserId = :UserId";
 		return sessionFactory
 				.getCurrentSession()
 					.createQuery(selectActiveProductsByClient, Freight.class)
 						.setParameter("active", true)
-							.setParameter("clientId" ,clientId)
+							.setParameter("UserId" ,UserId)
 								.getResultList();
 	}
 

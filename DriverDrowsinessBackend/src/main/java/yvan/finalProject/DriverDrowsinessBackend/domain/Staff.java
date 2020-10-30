@@ -1,94 +1,68 @@
 package yvan.finalProject.DriverDrowsinessBackend.domain;
 
+import java.io.Serializable;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+
+
+
 @Entity
-@Table(name="staff")
-public class Staff {
+@DiscriminatorValue("Staff")
+
+public class Staff extends User implements Serializable{
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private int staffId;
-	@Column(name="staff_name")
-	private String name;
-	private String PhoneNumber;
-	private String address;
-	private String email;
-	@Column(name="national_id")
-	private String nationalId;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Column(name="passport_number")
+	@ColumnDefault("'N/A'")
+	private String passPortNumber;
+	@Column(name="drivinglicense_number")
+	private String  drivingLicense;
 	
 	public Staff() {
 		
 	}
 
-	public int getStaffId() {
-		return staffId;
+	public String getPassPortNumber() {
+		return passPortNumber;
 	}
 
-	public void setStaffId(int staffId) {
-		this.staffId = staffId;
+	public void setPassPortNumber(String passPortNumber) {
+		this.passPortNumber = passPortNumber;
 	}
 
-	public String getName() {
-		return name;
+	public String getDrivingLicense() {
+		return drivingLicense;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	
-
-
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPhoneNumber() {
-		return PhoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		PhoneNumber = phoneNumber;
-	}
-
-	public String getNationalId() {
-		return nationalId;
-	}
-
-	public void setNationalId(String nationalId) {
-		this.nationalId = nationalId;
+	public void setDrivingLicense(String drivingLicense) {
+		this.drivingLicense = drivingLicense;
 	}
 
 	@Override
 	public String toString() {
-		return "Staff [staffId=" + staffId + ", name=" + name + ", PhoneNumber=" + PhoneNumber + ", address=" + address
-				+ ", email=" + email + ", nationalId=" + nationalId + "]";
+		return "Driver [passPortNumber=" + passPortNumber + ", drivingLicense=" + drivingLicense + "]";
 	}
 
 	
 
-
+	
 	
 
-	
 }

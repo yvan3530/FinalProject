@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import yvan.finalProject.DriverDrowsinessBackend.dao.ClientDao;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Address;
-import yvan.finalProject.DriverDrowsinessBackend.domain.Cart;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Freight;
 
 
 @Repository("clientDAO")
@@ -20,18 +20,16 @@ public class ClientDaoImpl implements ClientDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	
 	@Override
 	public boolean addClient(Client client) {
-
 		try {
 			sessionFactory.getCurrentSession().persist(client);
 			return true;
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 
 	@Override
@@ -42,8 +40,8 @@ public class ClientDaoImpl implements ClientDao {
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 
 	@Override
@@ -54,8 +52,8 @@ public class ClientDaoImpl implements ClientDao {
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();
+			return false;
 		}
-		return false;
 	}
 
 	@Override
@@ -67,8 +65,9 @@ public class ClientDaoImpl implements ClientDao {
 	}
 
 	@Override
-	public Client get(int clientId) {
-		try {return sessionFactory.getCurrentSession().get(Client.class, Integer.valueOf(clientId));
+	public Client get(int UserId) {
+		try {
+			return sessionFactory.getCurrentSession().get(Client.class, Integer.valueOf(UserId));
 		}
 			catch(Exception ex) {
 				ex.printStackTrace();
@@ -89,9 +88,9 @@ public class ClientDaoImpl implements ClientDao {
 			
 		}
 		catch(Exception ex) {
-			
+			ex.printStackTrace();
 			return null;
-		}
+			}
 	}
 
 	@Override
@@ -107,14 +106,34 @@ public class ClientDaoImpl implements ClientDao {
 	}
 
 	@Override
-	public List<Address> listShippingAddresses(int clientId) {
-		String selectQuery = "FROM Address WHERE clientId = :clientId AND shipping = :shipping";
+	public Address getBillingAddress(int UserId) {
+		String selectQuery = "FROM Address WHERE UserId = :UserId AND billing = :billing";
+		
+		try {
+			return sessionFactory.getCurrentSession()
+						.createQuery(selectQuery, Address.class)
+							.setParameter("UserId", UserId)
+							.setParameter("billing", true)
+							.getSingleResult();
+			
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}
+
+	@Override
+	public List<Address> listShippingAddresses(int UserId) {
+		
+		String selectQuery = "FROM Address WHERE UserId = :UserId AND shipping = :shipping";
 		
 		try {
 			
 			return sessionFactory.getCurrentSession()
 						.createQuery(selectQuery, Address.class)
-							.setParameter("clientId", clientId)
+							.setParameter("UserId", UserId)
 							.setParameter("shipping", true)
 							.getResultList();
 			
@@ -127,14 +146,14 @@ public class ClientDaoImpl implements ClientDao {
 
 	@Override
 	public List<Address> listShippingAddresses(Client client) {
-		String selectQuery = "FROM Address WHERE client = :client AND shipping = :shipping";
+		String selectQuery = "FROM Address WHERE client = :client AND billing = :billing";
 		
 		try {
 			
 			return sessionFactory.getCurrentSession()
 						.createQuery(selectQuery, Address.class)
 							.setParameter("client", client)
-							.setParameter("shipping", true)
+							.setParameter("billing", true)
 							.getResultList();
 			
 		}
@@ -144,16 +163,19 @@ public class ClientDaoImpl implements ClientDao {
 		}
 	}
 
+
 	@Override
-	public boolean updateCart(Cart cart) {
+	public boolean addFreight(Freight freight) {
+		
 		try {
-			sessionFactory.getCurrentSession().update(cart);
+			sessionFactory.getCurrentSession().persist(freight);
 			return true;
 		}
 		catch(Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}
+		
 	}
 
 }

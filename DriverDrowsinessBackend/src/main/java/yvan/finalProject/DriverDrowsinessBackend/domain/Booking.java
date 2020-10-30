@@ -1,5 +1,6 @@
 package yvan.finalProject.DriverDrowsinessBackend.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -7,23 +8,31 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-import javax.persistence.Id;
-
 
 @Entity
 @Table(name="booking")
-public class Booking {
+public class Booking implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private int Id;
-	@NotBlank(message= "please enter the origin of shipment !")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+	
+    @NotBlank(message= "please enter the origin of shipment !")
 	@Column(name="origin")
 	private String origin;
 	@NotNull(message="please enter the date ofloading the shipment !")
@@ -34,8 +43,12 @@ public class Booking {
 	@Column(name="typeOf_shipment")
 	private String typeOfShipment;
 	private String code;
+	@Column(name="truck")
+	private int TruckId;
 	@Column(name="client")
-	private int clientId;
+	private int clientId; 
+	
+	
 	
 	public Booking() {
 		
@@ -44,14 +57,12 @@ public class Booking {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
-
-
 
 	public String getOrigin() {
 		return origin;
@@ -77,14 +88,6 @@ public class Booking {
 		this.typeOfShipment = typeOfShipment;
 	}
 
-	public int getClientId() {
-		return clientId;
-	}
-
-	public void setClientId(int clientId) {
-		this.clientId = clientId;
-	}
-
 	public String getCode() {
 		return code;
 	}
@@ -93,15 +96,34 @@ public class Booking {
 		this.code = code;
 	}
 
-	@Override
-	public String toString() {
-		return "Booking [Id=" + Id + ", origin=" + origin + ", loadDate=" + loadDate + ", typeOfShipment="
-				+ typeOfShipment + ", code=" + code + ", clientId=" + clientId + "]";
+	public int getTruckId() {
+		return TruckId;
 	}
 
+	public void setTruckId(int truckId) {
+		TruckId = truckId;
+	}
+
+	public int getClientId() {
+		return clientId;
+	}
+
+	public void setClientId(int clientId) {
+		this.clientId = clientId;
+	}
+
+	@Override
+	public String toString() {
+		return "Booking [id=" + id + ", origin=" + origin + ", loadDate=" + loadDate + ", typeOfShipment="
+				+ typeOfShipment + ", code=" + code + ", TruckId=" + TruckId + ", clientId=" + clientId + "]";
+	}
+
+	
+	
 
 
 	
 	
 	
+
 }

@@ -16,7 +16,7 @@ public class BookingDaoImpl implements BookingDao {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public boolean booking(Booking booking) {
+	public boolean addBooking(Booking booking) {
 		try {
 			sessionFactory.getCurrentSession().persist(booking);
 			return true;

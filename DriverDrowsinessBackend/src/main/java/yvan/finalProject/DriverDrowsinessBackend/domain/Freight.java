@@ -1,16 +1,26 @@
 package yvan.finalProject.DriverDrowsinessBackend.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="freight")
-public class Freight {
+public class Freight implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
@@ -29,10 +39,8 @@ public class Freight {
 	private String category;
 	@Column(name="is_active")
 	private boolean active = true;
-	@Column(name="truck_id")
+	@Column(name="truck")
 	private int truckId;
-	@Column(name="client_id")
-	private int clientId;
 	
 	public Freight() {
 		
@@ -94,6 +102,14 @@ public class Freight {
 		this.category = category;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 	public int getTruckId() {
 		return truckId;
 	}
@@ -102,21 +118,18 @@ public class Freight {
 		this.truckId = truckId;
 	}
 
-	public int getClientId() {
-		return clientId;
-	}
-
-	public void setClientId(int clientId) {
-		this.clientId = clientId;
-	}
-
 	@Override
 	public String toString() {
 		return "Freight [freightId=" + freightId + ", packageDescription=" + packageDescription + ", packageWeight="
 				+ packageWeight + ", packageLenght=" + packageLenght + ", packagewidth=" + packagewidth
-				+ ", typeOfPackage=" + typeOfPackage + ", category=" + category + ", truckId=" + truckId + ", clientId="
-				+ clientId + "]";
+				+ ", typeOfPackage=" + typeOfPackage + ", category=" + category + ", active=" + active + ", truckId="
+				+ truckId + "]";
 	}
 
-		
+	
+
+	
+
+	
+
 }

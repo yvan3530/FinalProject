@@ -1,75 +1,144 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
-<spring:url var="css" value="/resources/css" />
-<spring:url var="js" value="/resources/js" />
-<spring:url var="images" value="/resources/images" />
-
-<c:set var="contextRoot" value="${pageContext.request.contextPath}" />
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Kesi Investiment Company - ${title }</title>
-
-<script>
-	window.menu = '${title}';
-</script>
-<!-- Bootstrap core CSS -->
-<link href="${css }/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="${css }/myapp.css" rel="stylesheet">
-
-</head>
-
-<body>
-
-	<div class="wrapper">
-
-		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<div class="container">
-
-				<div class="navbar-header">
-
-					<a class="navbar-brand" href="${ flowExecutionUrl}&_eventId_home">Home</a>
-				</div>
-			</div>
-
-		</nav>
-
-		<div class="content">
-			<div class="container">
-				<h3>this will be trigger by flow</h3>
+<%@include file="../shared/flows-header.jsp"%>
+<div class="container">
+	
+<div class="row">
+ 
+ <div class="col-md-6 col-md-offset-3">
+  
+  <div class="panel panel-primary">
+  
+   <div class="panel-heading">
+    <h4>Sign Up - Personal</h4>
+   </div>
+   
+   <div class="panel-body">
+        
+    <sf:form
+     method="POST"
+     class="form-horizontal"
+     id="registerForm"
+     modelAttribute="client"
+    >
+      
+       
+    <div class="form-group">
+     <label class="control-label col-md-4"> first Name</label>
+     <div class="col-md-8">
+      <sf:input type="text" path="firstName" class="form-control"
+       placeholder="first Name " />
+		
+		<sf:errors path="firstName" cssClass="help-block" element="em"/>        
+     
+     </div>
+    </div>
+    
+    <div class="form-group">
+     <label class="control-label col-md-4"> last Name</label>
+     <div class="col-md-8">
+      <sf:input type="text" path="lastName" class="form-control"
+       placeholder="last Name" />
+		
+		<sf:errors path="lastName" cssClass="help-block" element="em"/>        
+     
+     </div>
+    </div>
 
 
-				<!-- /.container -->
-			</div>
-		</div>
+       <div class="form-group">
+        <label class="control-label col-md-4">address</label>
+        <div class="col-md-8">
+         <sf:input type="text" path="address" class="form-control"
+          placeholder="address" />
+          
+			<sf:errors path="address" cssClass="help-block" element="em"/> 
+          
+        </div>
+       </div>
+      
+       <div class="form-group">
+        <label class="control-label col-md-4">Email</label>
+        <div class="col-md-8">
+         <sf:input type="text" path="email" class="form-control"
+          placeholder="abc@zyx.com" />
+        
+			<sf:errors path="email" cssClass="help-block" element="em"/>          
+        
+        </div>
+       </div>
 
-		<!-- Footer -->
-		<%@include file="../../shared/footer.jsp"%>
+       <div class="form-group">
+        <label class="control-label col-md-4">Contact Number</label>
+        <div class="col-md-8">
+         <sf:input type="text" path="telePhone" class="form-control"
+          placeholder="XXXXXXXXXX" maxlength="10" />
+        
+        	<sf:errors path="telePhone" cssClass="help-block" element="em"/> 
+        
+        
+        </div>
+       </div>
+       
+   
+          <div class="form-group">
+        <label class="control-label col-md-4">role</label>
+        <div class="col-md-8">
+         <sf:input type="text" path="role" class="form-control"
+          placeholder="enter the role" />
+        
+			<sf:errors path="role" cssClass="help-block" element="em"/>          
+        
+        </div>
+       </div>
+       
+          <div class="form-group">
+        <label class="control-label col-md-4">password</label>
+        <div class="col-md-8">
+         <sf:input type="password" path="password" class="form-control"
+          placeholder="enter the password" />
+        
+			<sf:errors path="password" cssClass="help-block" element="em"/>          
+        
+        </div>
+       </div>
+       
+           <div class="form-group">
+        <label class="control-label col-md-4">Confirm Password</label>
+        <div class="col-md-8">
+         <sf:input type="password" path="confirmPassword" class="form-control"
+          placeholder="enter the Re-enter password" />
+        
+			<sf:errors path="confirmPassword" cssClass="help-block" element="em"/>          
+        
+        </div>
+       </div>
+            
+       
+       
+            
 
+       <div class="form-group">
+        <div class="col-md-offset-4 col-md-8">
+			<button type="submit" class="btn btn-primary"
+				name="_eventId_billing"
+			>
+				
+				Next - Billing <span class="glyphicon glyphicon-chevron-left"></span>
+			
+			</button>
+ 
+        </div>
+       </div>
 
-		<!-- Bootstrap core JavaScript -->
-		<script src="${js }/jquery.min.js"></script>
-		<script src="${js }/bootstrap.bundle.min.js"></script>
-		<script src="${js }/bootbox.min.js"></script>
-		<script src="${js }/myapp.js"></script>
+      </sf:form>     
+     </div>
+    </div>
+   </div>
+  </div>
 
+	
+</div>
 
-	</div>
-</body>
-
-</html>
+<%@include file="../shared/flows-footer.jsp"%>
+<!-- Footer -->

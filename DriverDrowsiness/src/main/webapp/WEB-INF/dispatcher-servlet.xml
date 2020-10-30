@@ -17,8 +17,7 @@
 
 	<context:component-scan
 		base-package="yvan.finalProject.DriverDrowsiness" />
-	<context:component-scan
-		base-package="yvan.finalProject.DriverDrowsinessBackend" />
+	
 
 
 	<bean id="viewResolver"
@@ -43,14 +42,17 @@
    </wf:flow-registry>
    
    <wf:flow-builder-services id="flowBuilderServices"
-   view-factory-creator="viewFactoryCreator"/>
+   view-factory-creator="viewFactoryCreator"
+   validator="validator"
+   />
+   
 	
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
 		<property name="flowExecutor" ref="flowExecutor" />
 	</bean>	
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
 		<property name="flowRegistry" ref="flowRegistry" />
-		<!-- <property name="order" value="-1" /> -->
+	    <property name="order" value="-1" /> 
 	</bean>
 	
 	
@@ -58,6 +60,11 @@
 		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
          <property name="viewResolvers" ref="viewResolver"/>
          </bean>
+         
+    <bean id="validator"
+    	class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	
+    	
 	
 	
 </beans>

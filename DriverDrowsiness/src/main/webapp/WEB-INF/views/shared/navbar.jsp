@@ -32,7 +32,7 @@
           <ul class="nav navbar-nav navbar-right">
           
             <li class="nav-item" id="register">
-            <a class="nav-link" href="${contextRoot }/register">Sign in</a>
+            <a class="nav-link" href="${contextRoot }/register">Sign up</a>
           </li>
           
             <li class="nav-item" id="login">

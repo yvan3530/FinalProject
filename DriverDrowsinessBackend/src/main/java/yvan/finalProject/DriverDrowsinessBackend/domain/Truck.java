@@ -1,12 +1,17 @@
 package yvan.finalProject.DriverDrowsinessBackend.domain;
 
+import java.io.Serializable;
+import java.util.List;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -14,11 +19,14 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import org.springframework.web.multipart.MultipartFile;
 
-
-
 @Entity
 @Table(name="truck")
-public class Truck {
+public class Truck implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +40,10 @@ public class Truck {
 	private String brand;
 	@Column(name="is_active")
 	private boolean active = true;
-	@Column(name="driver_id")
-	private int driverId;
+	@Column(name="staff")
+	private int StaffId;
 
+	
 	@Transient
 	private MultipartFile file;
 	
@@ -94,8 +103,7 @@ public class Truck {
 		this.brand = brand;
 	}
 
-	
-	
+
 	public boolean isActive() {
 		return active;
 	}
@@ -106,22 +114,28 @@ public class Truck {
 	}
 
 
-	public int getDriverId() {
-		return driverId;
+	public int getStaffId() {
+		return StaffId;
 	}
 
 
-	public void setDriverId(int driverId) {
-		this.driverId = driverId;
+	public void setStaffId(int staffId) {
+		StaffId = staffId;
 	}
 
 
 	@Override
 	public String toString() {
 		return "Truck [TruckId=" + TruckId + ", kind=" + kind + ", plate=" + plate + ", brand=" + brand + ", active="
-				+ active + ", driverId=" + driverId + "]";
+				+ active + ", StaffId=" + StaffId + ", file=" + file + "]";
 	}
+
+
+
+
 
 	
 	
+	
+
 }

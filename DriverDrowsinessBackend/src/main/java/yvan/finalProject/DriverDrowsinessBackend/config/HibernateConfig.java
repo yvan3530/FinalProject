@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class HibernateConfig {
 	
-	private final static String DATABASE_URL= "jdbc:mysql://localhost:3306/driverdrowsiness";
+	private final static String DATABASE_URL= "jdbc:mysql://localhost:3306/finalproject";
 	private final static String DATABASE_DRIVER = "com.mysql.cj.jdbc.Driver";
 	private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
 	private final static String DATABASE_USERNAME = "root" ;
@@ -65,7 +65,7 @@ public class HibernateConfig {
 		properties.put("hibernate.show_sql", "true");
 		properties.put("hibernate.format_sql", "true");
 
-	//	properties.put("hibernate.hbm2ddl.auto", "update");
+//		properties.put("hibernate.hbm2ddl.auto", "update");
 		
 		return properties;
 	}

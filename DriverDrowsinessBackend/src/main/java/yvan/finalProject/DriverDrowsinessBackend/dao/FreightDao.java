@@ -13,6 +13,7 @@ public interface FreightDao {
 	Freight get(int freightId);
 	
 	List<Freight> listActiveFreights();
-	List<Freight> listActiveByClient(int clientId);
+	List<Freight> listActiveByClient(int UserId);
 	List<Freight> getLatestActiveFreights(int count);
+
 }

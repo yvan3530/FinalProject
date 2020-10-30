@@ -13,7 +13,8 @@ public interface TruckDao {
 	Truck get(int TruckId);
 	
 	List<Truck> listActiveTrucks();
-	List<Truck> listActiveByDriver(int driverId);
+	List<Truck> listActiveByDriver(int UserId);
 	List<Truck> getLatestActiveTrucks(int count);
+
 
 }

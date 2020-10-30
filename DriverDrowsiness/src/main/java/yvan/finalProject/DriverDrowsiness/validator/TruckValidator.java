@@ -32,7 +32,7 @@ public class TruckValidator implements Validator {
 
 						))
 		{
-			errors.rejectValue("file", null, "please use only image file for upload ");
+		errors.rejectValue("file", null, "please use only image file for upload ");
 			return;
 		}
 	}
