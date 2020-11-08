@@ -37,7 +37,7 @@ public class TestDriver {
 		client.setAddress("kicukiro");
 		client.setEmail("kibibiegi1@gmail.com");
 		client.setEnabled(true);
-		client.setFirstName("kibibi");
+		client.setFirstName("kiki");
 		client.setLastName("egide");
 		client.setPassword("ert5452");
 		client.setRole("USER");
@@ -46,15 +46,15 @@ public class TestDriver {
 		
 		assertEquals("something went wrong ", true,clientDAO.addClient(client));
 		
-		address = new Address();
-		address.setBilling(true);
-		address.setCity("kigaki");
-		address.setCountry("rwanda");
-		address.setPostCode("541");
-		address.setShipping(false);
-		address.setClientId(client.getUserId());
-		
-		assertEquals("something went wrong ", true,clientDAO.addAddress(address));
+//		address = new Address();
+//		address.setBilling(true);
+//		address.setCity("kigaki");
+//		address.setCountry("rwanda");
+//		address.setPostCode("541");
+//		address.setShipping(false);
+//		address.setClientId(client.getUserId());
+//		
+//		assertEquals("something went wrong ", true,clientDAO.addAddress(address));
 		
 //		driver = driverDAO.get(3);
 //		driver.setPassword("kiki21212");

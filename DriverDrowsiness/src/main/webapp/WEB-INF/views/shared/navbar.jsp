@@ -1,46 +1,73 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="${contextRoot }/home">Kesi Investiment Ltd</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item" id="about">
-            <a class="nav-link" href="${contextRoot }/about">About</a>
-          </li>
-          <li class="nav-item" id="service">
-            <a class="nav-link" href="${contextRoot }/service">Services</a>
-          </li>
-          <li class="nav-item" id="contact">
-            <a class="nav-link" href="${contextRoot }/contact">Contact</a>
-          </li>
-          <li class="nav-item" id="health">
-            <a class="nav-link" href="${contextRoot }/health">Health</a>
-          </li>
-            <li class="nav-item" id="ManageBooking">
-            <a class="nav-link" href="${contextRoot }/manage/bookings">Booking</a>
-          </li>
-          
-           <li class="nav-item" id="AddTruck">
-            <a class="nav-link" href="${contextRoot }/manage/addtrucks">truck</a>
-          </li>
-          <li>
-          <a class="cta" href="#"> <button>sign in</button></a>
-          </li>
-          
-          <ul class="nav navbar-nav navbar-right">
-          
-            <li class="nav-item" id="register">
-            <a class="nav-link" href="${contextRoot }/register">Sign up</a>
-          </li>
-          
-            <li class="nav-item" id="login">
-            <a class="nav-link" href="${contextRoot }/login">Login</a>
-          </li>
-          
-          </ul>
-         <!--  <li class="nav-item dropdown">
+<%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+
+
+<nav
+	class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+	<div class="container">
+		<a class="navbar-brand" href="${contextRoot }/home">Kesi
+			Investiment Ltd</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			data-toggle="collapse" data-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item" id="about"><a class="nav-link"
+					href="${contextRoot }/about">About</a></li>
+				<li class="nav-item" id="service"><a class="nav-link"
+					href="${contextRoot }/service">Services</a></li>
+				<li class="nav-item" id="contact"><a class="nav-link"
+					href="${contextRoot }/contact">Contact</a></li>
+				<li class="nav-item" id="health"><a class="nav-link"
+					href="${contextRoot }/health">Health</a></li>
+					<security:authorize access="hasAuthority('ADMIN')">
+				<li class="nav-item" id="ManageBooking"><a class="nav-link"
+					href="${contextRoot }/manage/bookings">Booking</a></li>
+					</security:authorize>
+					<security:authorize access="hasAuthority('ADMIN')">
+				<li class="nav-item" id="AddTruck"><a class="nav-link"
+					href="${contextRoot }/manage/addtrucks">truck</a></li>
+					</security:authorize>
+			</ul>
+			
+                <ul class="nav navbar-nav navbar-right">                
+                    <security:authorize access="isAnonymous()">
+	                    <li id="register">
+	                        <a href="${contextRoot}/register">Sign Up</a>
+	                    </li>                
+	                    
+	                    <li id="login">
+	                        <a href="${contextRoot}/login">Login</a>
+	                    </li> 
+                    </security:authorize>
+                    
+                    <security:authorize access="isAuthenticated()">
+                    <li class="dropdown" id="userCart">
+                    
+                    	<a href="javascript:void(0)"
+                    		class="btn btn-default dropdown-toggle"
+                    		id="dropdownMenu1" 
+                    		data-toggle="dropdown">
+                    			
+                    			${userModel.fullName}
+                    			<span class="caret"></span>
+                    		
+                    	</a>
+                    	
+                    	<ul class="dropdown-menu">
+
+                    		<li>
+                    			<a href="${contextRoot}/perform-logout">Logout</a>
+                    		</li>
+                    	
+                    	</ul>
+
+                    </li>
+					</security:authorize>
+                </ul>
+				<!--  <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Portfolio
             </a>
@@ -52,7 +79,7 @@
               <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
             </div>
           </li> -->
-          <!-- <li class="nav-item dropdown">
+				<!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Blog
             </a>
@@ -62,7 +89,7 @@
               <a class="dropdown-item" href="blog-post.html">Blog Post</a>
             </div>
           </li> -->
-         <!--  <li class="nav-item dropdown">
+				<!--  <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Other Pages
             </a>
@@ -74,8 +101,13 @@
               <a class="dropdown-item" href="pricing.html">Pricing Table</a>
             </div>
           </li> -->
-        </ul>
-      </div>
-    </div>
-  </nav>
- 
+			
+		</div>
+	</div>
+</nav>
+
+<script >
+
+window.userRole = '$userModel.role';
+
+</script>

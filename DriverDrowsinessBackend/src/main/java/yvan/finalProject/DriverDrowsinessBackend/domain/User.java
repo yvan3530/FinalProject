@@ -11,15 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-@Entity
-@Table(name="user")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE) 
-@DiscriminatorColumn(name="DTYPE",discriminatorType=DiscriminatorType.STRING)
+@MappedSuperclass
 public abstract class User implements Serializable{
 	
 	

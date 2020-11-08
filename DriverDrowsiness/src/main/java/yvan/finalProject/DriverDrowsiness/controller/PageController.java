@@ -1,7 +1,16 @@
 package yvan.finalProject.DriverDrowsiness.controller;
 
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -83,6 +92,26 @@ public class PageController {
 		mv.addObject("errorDescription", "You are not authorized to view this page!");
 		return mv;
 
+	}
+	
+	@GetMapping("/redirect")
+	public String getRedirect(HttpServletResponse resp, HttpServletRequest request) throws IOException {
+	 
+	 System.out.println("Auth: " + SecurityContextHolder.getContext().getAuthentication());
+
+	 Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	 System.out.println("Principal: " + auth.getPrincipal());
+	 System.out.println("Authorities: " + auth.getAuthorities()); //get it from here OR
+	 System.out.println(request.isUserInRole("ADMIN")); // get it from Here as WELL (ONLY IF YOU HAVE A REQUEST)
+
+	 if (auth.getAuthorities().stream().anyMatch(ga -> ga.getAuthority().equals("ADMIN"))) {
+		 System.out.println("ADMIN"); 
+	  return "redirect:/home" ;
+	 }
+	 else 
+		 System.out.println("user");
+	 return "redirect:/about" ;
+	 
 	}
 
 }

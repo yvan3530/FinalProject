@@ -49,8 +49,8 @@ public class ManagementController {
 
 		Booking nBooking = new Booking();
 
-		nBooking.setClientId(12);
-		nBooking.setTruckId(3);
+//		nBooking.setClientId(12);
+//		nBooking.setTruckId(3);
 		mv.addObject("booking", nBooking);
 
 		if (operation != null) {
@@ -91,7 +91,7 @@ public class ManagementController {
 
 		Truck nTruck = new Truck();
 
-		nTruck.setStaffId(12);
+		
 		nTruck.setActive(true);
 		
 		mv.addObject("truck", nTruck);
@@ -128,5 +128,8 @@ public class ManagementController {
 
 		return "redirect:/manage/addtrucks?operation=truck";
 	}
+	
+	
+	
 
 }

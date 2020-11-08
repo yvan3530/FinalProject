@@ -24,7 +24,7 @@
 		<intercept-url pattern="/Booking/**" access="hasAuthority('USER')" />
 	
 		<intercept-url pattern="/**" access="permitAll" />
-		<form-login login-page="/login" />
+		<form-login login-page="/login" always-use-default-target="true" default-target-url="/redirect"  />
 		<access-denied-handler  error-page="/access-denied"/>
 		<logout />
 	</http>
@@ -33,9 +33,9 @@
 		<authentication-provider>
 		<password-encoder ref="passwordEncoder" />
 		<jdbc-user-service data-source-ref="dataSource"
-		users-by-username-query="select email, password, enabled from user where 
+		users-by-username-query="select email, password, enabled from client where 
 				email = ?"
-		authorities-by-username-query="select email, role from user where 
+		authorities-by-username-query="select email, role from client where 
 				email = ?"
 		
 		/>

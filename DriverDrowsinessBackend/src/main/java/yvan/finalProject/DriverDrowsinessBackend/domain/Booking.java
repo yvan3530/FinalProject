@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,10 +44,10 @@ public class Booking implements Serializable{
 	@Column(name="typeOf_shipment")
 	private String typeOfShipment;
 	private String code;
-	@Column(name="truck")
-	private int TruckId;
-	@Column(name="client")
-	private int clientId; 
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Freight freight;
+	
+	 
 	
 	
 	
@@ -96,27 +97,7 @@ public class Booking implements Serializable{
 		this.code = code;
 	}
 
-	public int getTruckId() {
-		return TruckId;
-	}
 
-	public void setTruckId(int truckId) {
-		TruckId = truckId;
-	}
-
-	public int getClientId() {
-		return clientId;
-	}
-
-	public void setClientId(int clientId) {
-		this.clientId = clientId;
-	}
-
-	@Override
-	public String toString() {
-		return "Booking [id=" + id + ", origin=" + origin + ", loadDate=" + loadDate + ", typeOfShipment="
-				+ typeOfShipment + ", code=" + code + ", TruckId=" + TruckId + ", clientId=" + clientId + "]";
-	}
 
 	
 	

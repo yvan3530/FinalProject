@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import yvan.finalProject.DriverDrowsinessBackend.dao.StaffDao;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Route;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Staff;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Truck;
 
@@ -180,6 +181,42 @@ public class StaffDaoImpl implements StaffDao {
 				ex.printStackTrace();
 			}
 			return null;
+	}
+
+	@Override
+	public boolean addRoute(Route route) {
+		try {
+			sessionFactory.getCurrentSession().persist(route);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean updateRoute(Route route) {
+		try {
+			sessionFactory.getCurrentSession().update(route);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public boolean deleteRoute(Route route) {
+		try {
+			sessionFactory.getCurrentSession().delete(route);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 	}

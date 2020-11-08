@@ -40,8 +40,10 @@ public class Truck implements Serializable{
 	private String brand;
 	@Column(name="is_active")
 	private boolean active = true;
-	@Column(name="staff")
-	private int StaffId;
+	
+	@OneToMany(mappedBy = "truck",fetch = FetchType.EAGER)
+	private  List<Route> routes;
+	
 
 	
 	@Transient
@@ -114,21 +116,7 @@ public class Truck implements Serializable{
 	}
 
 
-	public int getStaffId() {
-		return StaffId;
-	}
-
-
-	public void setStaffId(int staffId) {
-		StaffId = staffId;
-	}
-
-
-	@Override
-	public String toString() {
-		return "Truck [TruckId=" + TruckId + ", kind=" + kind + ", plate=" + plate + ", brand=" + brand + ", active="
-				+ active + ", StaffId=" + StaffId + ", file=" + file + "]";
-	}
+	
 
 
 

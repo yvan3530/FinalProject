@@ -18,8 +18,6 @@ import org.hibernate.annotations.DynamicInsert;
 
 
 @Entity
-@DiscriminatorValue("Staff")
-
 public class Staff extends User implements Serializable{
 	
 	
@@ -28,37 +26,20 @@ public class Staff extends User implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Column(name="passport_number")
-	@ColumnDefault("'N/A'")
-	private String passPortNumber;
-	@Column(name="drivinglicense_number")
-	private String  drivingLicense;
+	private char nationalID;
 	
 	public Staff() {
 		
 	}
 
-	public String getPassPortNumber() {
-		return passPortNumber;
+	public char getNationalID() {
+		return nationalID;
 	}
 
-	public void setPassPortNumber(String passPortNumber) {
-		this.passPortNumber = passPortNumber;
+	public void setNationalID(char nationalID) {
+		this.nationalID = nationalID;
 	}
 
-	public String getDrivingLicense() {
-		return drivingLicense;
-	}
-
-
-	public void setDrivingLicense(String drivingLicense) {
-		this.drivingLicense = drivingLicense;
-	}
-
-	@Override
-	public String toString() {
-		return "Driver [passPortNumber=" + passPortNumber + ", drivingLicense=" + drivingLicense + "]";
-	}
 
 	
 

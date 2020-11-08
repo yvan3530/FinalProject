@@ -88,7 +88,7 @@ public class ClientDaoImpl implements ClientDao {
 			
 		}
 		catch(Exception ex) {
-			ex.printStackTrace();
+			//ex.printStackTrace();
 			return null;
 			}
 	}

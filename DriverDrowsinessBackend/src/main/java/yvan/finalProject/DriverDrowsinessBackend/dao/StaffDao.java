@@ -2,6 +2,7 @@ package yvan.finalProject.DriverDrowsinessBackend.dao;
 
 import java.util.List;
 
+import yvan.finalProject.DriverDrowsinessBackend.domain.Route;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Staff;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Truck;
 
@@ -23,4 +24,9 @@ public interface StaffDao {
 	List<Truck> listActiveTrucks();
 	List<Truck> listActiveByDriver(int UserId);
 	List<Truck> getLatestActiveTrucks(int count);
+	
+	
+	boolean addRoute(Route route);
+	boolean updateRoute(Route route);
+	boolean deleteRoute(Route route);
 }

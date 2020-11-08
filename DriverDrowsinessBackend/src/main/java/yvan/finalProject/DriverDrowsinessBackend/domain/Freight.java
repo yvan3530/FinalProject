@@ -1,9 +1,11 @@
 package yvan.finalProject.DriverDrowsinessBackend.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,8 +41,27 @@ public class Freight implements Serializable{
 	private String category;
 	@Column(name="is_active")
 	private boolean active = true;
-	@Column(name="truck")
-	private int truckId;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Client client;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private  Route route;
+	
+	private double price;
+	private FreightStatus status;
+	@Column(nullable = true)
+	private Date departTime;
+	@Column(nullable = true)
+	private Date arrivalTime;
+
+	private String departLocation;
+	private String arrivalLocation;
+	
+	
+	
+	
+	
 	
 	public Freight() {
 		
@@ -110,21 +131,73 @@ public class Freight implements Serializable{
 		this.active = active;
 	}
 
-	public int getTruckId() {
-		return truckId;
+	
+
+	
+	public Client getClient() {
+		return client;
 	}
 
-	public void setTruckId(int truckId) {
-		this.truckId = truckId;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
-	@Override
-	public String toString() {
-		return "Freight [freightId=" + freightId + ", packageDescription=" + packageDescription + ", packageWeight="
-				+ packageWeight + ", packageLenght=" + packageLenght + ", packagewidth=" + packagewidth
-				+ ", typeOfPackage=" + typeOfPackage + ", category=" + category + ", active=" + active + ", truckId="
-				+ truckId + "]";
+	public Route getRoute() {
+		return route;
 	}
+
+	public void setRoute(Route route) {
+		this.route = route;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public FreightStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(FreightStatus status) {
+		this.status = status;
+	}
+
+	public Date getDepartTime() {
+		return departTime;
+	}
+
+	public void setDepartTime(Date departTime) {
+		this.departTime = departTime;
+	}
+
+	public Date getArrivalTime() {
+		return arrivalTime;
+	}
+
+	public void setArrivalTime(Date arrivalTime) {
+		this.arrivalTime = arrivalTime;
+	}
+
+	public String getDepartLocation() {
+		return departLocation;
+	}
+
+	public void setDepartLocation(String departLocation) {
+		this.departLocation = departLocation;
+	}
+
+	public String getArrivalLocation() {
+		return arrivalLocation;
+	}
+
+	public void setArrivalLocation(String arrivalLocation) {
+		this.arrivalLocation = arrivalLocation;
+	}
+	
 
 	
 
