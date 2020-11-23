@@ -34,6 +34,12 @@
 <!-- Custom styles for this template -->
 <link href="${css }/myapp.css" rel="stylesheet">
 
+<link href="${css }/index.css" rel="stylesheet">
+
+<link href="${css }/partial-mp-filter.css" rel="stylesheet">
+
+<link href="${css }/global.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -43,7 +49,7 @@
 		<!-- Navigation bar-->
 		<%@include file="./shared/navbar.jsp"%>
 
-
+ 
 		<div class="content">
 			<!-- Page Content -->
 			<c:if test="${ userClickHome == true}">
@@ -75,8 +81,13 @@
 				<%@include file="AddTruck.jsp"%>
 			</c:if>
 
-
-
+			<c:if test="${ userClickAddRoute == true}">
+				<%@include file="route.jsp"%>
+			</c:if>
+			
+			<c:if test="${ userClickAddDriver == true}">
+				<%@include file="AddDriver.jsp"%>
+			</c:if>
 			<!-- /.container -->
 
 		</div>
@@ -91,6 +102,12 @@
 		<script src="${js }/bootbox.min.js"></script>
 		<script src="${js }/myapp.js"></script>
 		
+		<script src="${js }/main.min.js"></script>
+		<script src="${js }/jquery-ui-custom.js"></script>
+		<script src="${js }/bootstrap-datepicker.js"></script>
+		<script src="${js }/select2.js"></script>
+		<script src="${js }/swiper-bundle.js"></script>
+		<script src="${js }/index4522.js"></script>
 
 	</div>
 </body>

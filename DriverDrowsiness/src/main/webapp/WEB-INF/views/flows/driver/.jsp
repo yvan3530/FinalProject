@@ -10,7 +10,7 @@
   <div class="panel panel-primary">
   
    <div class="panel-heading">
-    <h4>Sign Up - Personal</h4>
+    <h4>Sign Up - driverllllllll</h4>
    </div>
    
    <div class="panel-body">
@@ -19,7 +19,7 @@
      method="POST"
      class="form-horizontal"
      id="registerForm"
-     modelAttribute="client"
+     modelAttribute="driver"
     >
       
        
@@ -105,16 +105,16 @@
        </div>
             
        
-        <sf:hidden path="role" value="USER"/> 
+        <sf:hidden path="role" value="DRIVER"/> 
             
 
        <div class="form-group">
         <div class="col-md-offset-4 col-md-8">
 			<button type="submit" class="btn btn-primary"
-				name="_eventId_billing"
+				name="_eventId_confirm"
 			>
 				
-				Next - Address <span class="glyphicon glyphicon-chevron-left"></span>
+				Next - Success <span class="glyphicon glyphicon-chevron-left"></span>
 			
 			</button>
  

@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import yvan.finalProject.DriverDrowsiness.model.UserModel;
 import yvan.finalProject.DriverDrowsinessBackend.dao.ClientDao;
+import yvan.finalProject.DriverDrowsinessBackend.dao.DriverDao;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Driver;
 
 @ControllerAdvice
 public class GlobalController {
@@ -21,7 +23,11 @@ public class GlobalController {
 	@Autowired
 	private ClientDao clientDao;
 	
+	@Autowired
+	private DriverDao driverDao;
+	
 	private UserModel userModel = null;
+	
 	
 	@ModelAttribute("userModel")
 	public UserModel getUserModel() {
@@ -39,6 +45,35 @@ public class GlobalController {
 				userModel.setEmail(client.getEmail());
 				userModel.setRole(client.getRole());
 				userModel.setFullName(client.getFirstName() + " " + client.getLastName());
+				
+				
+				session.setAttribute("userModel", userModel);
+				
+				return userModel;
+			}
+			
+		}
+		
+		return (UserModel) session.getAttribute("userModel");
+	}
+	
+	
+	@ModelAttribute("userModel")
+	public UserModel getDriverModel() {
+		
+		if(session.getAttribute("userModel")==null) {
+			
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			
+			
+			Driver driver = driverDao.getByEmail(authentication.getName());
+			if(driver!=null) {
+				
+				userModel = new UserModel();
+				userModel.setId(driver.getUserId());
+				userModel.setEmail(driver.getEmail());
+				userModel.setRole(driver.getRole());
+				userModel.setFullName(driver.getFirstName() + " " + driver.getLastName());
 				
 				
 				session.setAttribute("userModel", userModel);

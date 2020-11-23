@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import yvan.finalProject.DriverDrowsinessBackend.dao.FreightDao;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Booking;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Freight;
 
 
@@ -105,6 +106,18 @@ public class FreightDaoImpl implements FreightDao{
 							.setFirstResult(0)
 								.setMaxResults(count)
 									.getResultList();
+	}
+
+	@Override
+	public boolean addBooking(Booking booking) {
+		try {
+			sessionFactory.getCurrentSession().persist(booking);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 }

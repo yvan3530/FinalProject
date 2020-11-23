@@ -40,6 +40,7 @@ public class Address implements Serializable{
 	private boolean shipping;
 	@Column(name="client")
 	private int clientId;
+	
 	@Column(name = "is_billing")
 	private boolean billing;
 	
@@ -47,6 +48,8 @@ public class Address implements Serializable{
 	public Address() {
 		
 	}
+
+
 
 
 	public int getId() {

@@ -76,7 +76,7 @@
 		
 		<form:hidden path="Id"/>
 		<form:hidden path="code"/>
-		<form:hidden path="clientId"/>
+		<form:hidden path="freight"/>
 		</div>
 		
 		</div>

@@ -1,110 +1,170 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 
-
-<nav
-	class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-	<div class="container">
-		<a class="navbar-brand" href="${contextRoot }/home">Kesi
-			Investiment Ltd</a>
-		<button class="navbar-toggler navbar-toggler-right" type="button"
-			data-toggle="collapse" data-target="#navbarResponsive"
-			aria-controls="navbarResponsive" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item" id="about"><a class="nav-link"
-					href="${contextRoot }/about">About</a></li>
-				<li class="nav-item" id="service"><a class="nav-link"
-					href="${contextRoot }/service">Services</a></li>
-				<li class="nav-item" id="contact"><a class="nav-link"
-					href="${contextRoot }/contact">Contact</a></li>
-				<li class="nav-item" id="health"><a class="nav-link"
-					href="${contextRoot }/health">Health</a></li>
-					<security:authorize access="hasAuthority('ADMIN')">
-				<li class="nav-item" id="ManageBooking"><a class="nav-link"
+<header class="main_header">
+		<nav class="navbar">
+			<div class="container-lg">
+			<a class="rootLink" href="${contextRoot }/home">Kesi
+							Investiment Ltd</a>
+				<ul class="navRoot">
+					
+						
+						
+					<li class="navSection primary"> 
+						<a class="rootLink"  href="${contextRoot }/about">About
+					</a>
+					
+					<%-- <li class="navSection primary" ><a class="rootLink"
 					href="${contextRoot }/manage/bookings">Booking</a></li>
-					</security:authorize>
+					
+					<li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/manage/addroute">route</a></li>
+					
 					<security:authorize access="hasAuthority('ADMIN')">
-				<li class="nav-item" id="AddTruck"><a class="nav-link"
+				<li class="navSection primary" ><a class="rootLink"
 					href="${contextRoot }/manage/addtrucks">truck</a></li>
-					</security:authorize>
-			</ul>
-			
-                <ul class="nav navbar-nav navbar-right">                
-                    <security:authorize access="isAnonymous()">
-	                    <li id="register">
-	                        <a href="${contextRoot}/register">Sign Up</a>
-	                    </li>                
-	                    
-	                    <li id="login">
-	                        <a href="${contextRoot}/login">Login</a>
-	                    </li> 
-                    </security:authorize>
-                    
-                    <security:authorize access="isAuthenticated()">
-                    <li class="dropdown" id="userCart">
-                    
-                    	<a href="javascript:void(0)"
-                    		class="btn btn-default dropdown-toggle"
-                    		id="dropdownMenu1" 
-                    		data-toggle="dropdown">
-                    			
-                    			${userModel.fullName}
-                    			<span class="caret"></span>
-                    		
-                    	</a>
-                    	
-                    	<ul class="dropdown-menu">
-
-                    		<li>
-                    			<a href="${contextRoot}/perform-logout">Logout</a>
-                    		</li>
-                    	
-                    	</ul>
-
-                    </li>
-					</security:authorize>
-                </ul>
-				<!--  <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Portfolio
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-              <a class="dropdown-item" href="portfolio-1-col.html">1 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-2-col.html">2 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-3-col.html">3 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-4-col.html">4 Column Portfolio</a>
-              <a class="dropdown-item" href="portfolio-item.html">Single Portfolio Item</a>
-            </div>
-          </li> -->
-				<!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Blog
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-              <a class="dropdown-item" href="blog-home-1.html">Blog Home 1</a>
-              <a class="dropdown-item" href="blog-home-2.html">Blog Home 2</a>
-              <a class="dropdown-item" href="blog-post.html">Blog Post</a>
-            </div>
-          </li> -->
-				<!--  <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Other Pages
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPages">
-              <a class="dropdown-item" href="full-width.html">Full Width Page</a>
-              <a class="dropdown-item" href="sidebar.html">Sidebar Page</a>
-              <a class="dropdown-item" href="faq.html">FAQ</a>
-              <a class="dropdown-item" href="404.html">404</a>
-              <a class="dropdown-item" href="pricing.html">Pricing Table</a>
-            </div>
-          </li> -->
-			
-		</div>
-	</div>
-</nav>
+					</security:authorize> --%>
+					
+					
+					
+				
+					 
+					<a
+						class="rootLink hasDropdown" data-dropdown="services">
+							Services </a>  
+							 <a class="rootLink" href="${contextRoot }/contact">Contact
+					</a>
+					<a class="rootLink" href="${contextRoot }/health">Health
+					</a>
+				</li>
+				
+				<li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/driver">driver</a></li>
+					
+					<li class="navSection secondary"><a class="rootLink outline"
+						href="${contextRoot}/register">Sign Up</a></li>
+						<li class="navSection secondary"><a class="rootLink outline"
+							href="${contextRoot}/login">Login</a></li>
+							
+							 <a class="collapsible" href="${userModel.fullName}"></a>
+									<div class="collapse">
+										<ul class="linkGroup linkList developersGroup">
+											<li><a class="linkContainer"
+												href="${contextRoot}/perform-logout">
+													<h3 class="linkTitle">
+														 Logout
+													</h3>
+											</a></li>
+										</ul>
+										
+									</div>
+					<li class="navSection mobile"><a
+						class="rootLink item-mobileMenu"><h2>
+								<i class="far fa-bars"></i>
+							</h2></a>
+						<div class="popup">
+							<div class="popupContainer">
+								<a class="popupCloseButton">Close</a>
+								<div class="mobileProducts">
+									<a class="mobileSignIn" href="${contextRoot }/about">About
+										<i class="fa fa-chevron-right"></i>
+									</a>
+									<a class="collapsible" href="#">SERVICES</a>
+									<div class="collapse">
+										<div class="mobileProductsList">
+											<ul>
+												<li> <a class="linkContainer" href="#">
+														<i class="fad fa-box-usd"></i> Request a Quote
+												</a></li>
+											</ul>
+											
+										</div>
+										<div class="mobileSecondaryNav">
+											<ul>
+												<li><a
+													href="#">FCL Shipping</a></li>
+												<li><a
+													href="#">LCL Shipping</a></li>
+												<li><a href="#">Bulk & Break Bulk</a></li>
+												
+												<li><a href="#">Insurance</a></li>
+											</ul>
+											<ul>
+										
+												<li><a href="#">Survey Services</a></li>
+												
+												<li><a href="#">Warehousing</a></li>
+											</ul>
+										</div>
+									</div>
+									
+									<a class="mobileSignIn" href="${contextRoot }/contact">Contact
+										<i class="fa fa-chevron-right"></i>
+									</a>
+									<a class="mobileSignIn" href="${contextRoot }/health">Health
+										<i class="fa fa-chevron-right"></i>
+									</a>
+								</div>
+								
+							</div>
+						</div></li>
+				</ul>
+			</div>
+			<div class="dropdownRoot">
+				<div class="dropdownBackground"
+					style="transform: translateX(452px) scaleX(0.707692) scaleY(1.1075);">
+					<div class="alternateBackground"
+						style="transform: translateY(255.53px);"></div>
+				</div>
+				<div class="dropdownArrow"
+					style="transform: translateX(636px) rotate(45deg);"></div>
+				<div class="dropdownContainer"
+					style="transform: translateX(452px); width: 368px; height: 443px;">
+					<div class="dropdownSection left" data-dropdown="products">
+						<div class="dropdownContent">
+							<div class="linkGroup">
+								<ul class="productsGroup">
+								
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+					<div class="dropdownSection" data-dropdown="services">
+						<div class="dropdownContent">
+							<div class="linkGroup linkList developersGroup">
+								<a class="linkContainer" href="#">
+									<h3 class="linkTitle">
+										<i class="fad fa-box-usd"></i> Request a Quote
+									</h3>
+								
+							</div>
+							<div class="linkGroup documentationGroup">
+								<div class="documentationArticles withoutIcon">
+									<ul>
+										<li><h4>Services</h4></li>
+										<li><a
+											href="#">FCL Shipping</a></li>
+										<li><a
+											href="#">LCL Shipping</a></li>
+										<li><a href="#">Bulk & Break
+												Bulk</a></li>
+										<li><a href="#">Insurance</a></li>
+									</ul>
+									<ul>
+										<li><a href="#">Survey Services</a></li>
+										
+										<li><a href="#">Warehousing</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</nav>
+		<div id="message_container"></div>
+	</header>
 
 <script >
 

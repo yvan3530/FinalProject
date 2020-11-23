@@ -86,7 +86,7 @@
 		<input type="submit" name="submit" id="submit" value="book" class="btn btn-primary"/>
 		
 		<form:hidden path="TruckId"/>
-		<form:hidden path="StaffId"/>
+		
 		<form:hidden path="active"/>
 		</div>
 		

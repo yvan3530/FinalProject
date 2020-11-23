@@ -18,15 +18,17 @@
 							
 					 <div class="text-center">
 
-						<h4> ${registerModel.client.lastName}-${registerModel.client.firstName}</h4>
+						<h4> ${driverModel.driver.lastName}-${driverModel.driver.firstName}</h4>
 
-						<h5>Email: ${registerModel.client.email}</h5>
+						<h5>Email: ${driverModel.driver.email}</h5>
 
-						<h5>Contact Number: ${registerModel.client.telePhone}</h5>
+						<h5>Contact Number: ${driverModel.driver.telePhone}</h5>
 
-						<h5>Role: ${registerModel.client.address}</h5>
-						<h5>Role: ${registerModel.client.role}</h5>
-						<h5>Role: ${registerModel.client.password}</h5>
+						<h5>Role: ${driverModel.driver.address}</h5>
+						<h5>Role: ${driverModel.driver.passPortNumber}</h5>
+						<h5>Role: ${driverModel.driver.drivingLicense}</h5>
+						<h5>Role: ${driverModel.driver.role}</h5>
+						<h5>Role: ${driverModel.driver.password}</h5>
 
 					</div> 
 
@@ -43,28 +45,7 @@
 		</div>
 
 		<!-- column to display the address  -->
-		<div class="col-sm-6">
-
-			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h4>Billing Address</h4>
-				</div>
-				<div class="panel-body">
-					<div class="text-center">
-			
-						<h4>city: ${registerModel.billing.city}</h4>
-						<h4>postCode: ${registerModel.billing.postCode}</h4>
-						<h4>country: ${registerModel.billing.country}</h4>
-					</div>
-				</div>
-				<div class="panel-footer">
-					<!-- anchor to move to the edit of address -->
-					<a href="${flowExecutionUrl}&_eventId_billing"
-						class="btn btn-primary">Edit</a>
-				</div>
-			</div>
-
-		</div>
+		
 
 	</div>
 

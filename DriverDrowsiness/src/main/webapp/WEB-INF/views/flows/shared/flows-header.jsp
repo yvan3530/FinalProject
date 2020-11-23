@@ -39,5 +39,5 @@
 	<div class="wrapper">
 
 	<%@include file="flows-navbar.jsp" %>
-
-		<div class="content">
+</div>
+		

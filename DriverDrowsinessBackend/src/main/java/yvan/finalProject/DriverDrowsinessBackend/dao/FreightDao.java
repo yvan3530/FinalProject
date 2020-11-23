@@ -2,6 +2,7 @@ package yvan.finalProject.DriverDrowsinessBackend.dao;
 
 import java.util.List;
 
+import yvan.finalProject.DriverDrowsinessBackend.domain.Booking;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Freight;
 
 public interface FreightDao {
@@ -15,5 +16,7 @@ public interface FreightDao {
 	List<Freight> listActiveFreights();
 	List<Freight> listActiveByClient(int UserId);
 	List<Freight> getLatestActiveFreights(int count);
+	
+	boolean addBooking(Booking booking);
 
 }

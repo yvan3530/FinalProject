@@ -97,6 +97,14 @@ public class Booking implements Serializable{
 		this.code = code;
 	}
 
+	public Freight getFreight() {
+		return freight;
+	}
+
+	public void setFreight(Freight freight) {
+		this.freight = freight;
+	}
+
 
 
 	

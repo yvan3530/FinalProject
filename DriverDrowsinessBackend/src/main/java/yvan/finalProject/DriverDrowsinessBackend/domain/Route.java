@@ -7,9 +7,15 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Route implements Serializable{
@@ -22,6 +28,7 @@ public class Route implements Serializable{
 	
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@ManyToOne(fetch = FetchType.EAGER)	
@@ -34,13 +41,15 @@ public class Route implements Serializable{
 	private  List<Freight> freights;
 	
 	@Column(nullable = true)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date departTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(nullable = true)
 	private Date arrivalTime;
 	
 	private String departLocation;
 	private String arrivalLocation;
-	private RouteStatus status;
+	private RouteStatus status = RouteStatus.pending;
 	public int getId() {
 		return id;
 	}

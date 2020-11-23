@@ -1,6 +1,8 @@
 
 package yvan.finalProject.DriverDrowsiness.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -20,9 +22,14 @@ import org.springframework.web.servlet.ModelAndView;
 import yvan.finalProject.DriverDrowsiness.util.FileUploadUtility;
 import yvan.finalProject.DriverDrowsiness.validator.TruckValidator;
 import yvan.finalProject.DriverDrowsinessBackend.dao.BookingDao;
+import yvan.finalProject.DriverDrowsinessBackend.dao.DriverDao;
+import yvan.finalProject.DriverDrowsinessBackend.dao.RouteDao;
 import yvan.finalProject.DriverDrowsinessBackend.dao.TruckDao;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Booking;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Driver;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Freight;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Route;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Truck;
 
 @Controller
@@ -35,52 +42,58 @@ public class ManagementController {
 
 	@Autowired
 	private TruckDao truckDao;
+	
+	@Autowired
+	private DriverDao driverDao;
 
-
+	@Autowired
+	private RouteDao routeDao;
+	
+	
+	
 	private static final Logger logger = LoggerFactory.getLogger(ManagementController.class);
 
-	@RequestMapping(value = "/bookings", method = RequestMethod.GET)
-	public ModelAndView showManageProducts(@RequestParam(name = "operation", required = false) String operation) {
-
-		ModelAndView mv = new ModelAndView("page");
-
-		mv.addObject("userClickManageBooking", true);
-		mv.addObject("title", "Manage Bookings");
-
-		Booking nBooking = new Booking();
-
-//		nBooking.setClientId(12);
-//		nBooking.setTruckId(3);
-		mv.addObject("booking", nBooking);
-
-		if (operation != null) {
-			if (operation.equals("booking")) {
-				mv.addObject("message", "successfully");
-			}
-		}
-
-		return mv;
-	}
-
-	@RequestMapping(value = "/bookings", method = RequestMethod.POST)
-	public String handleBooking(@Valid @ModelAttribute("booking") Booking nBooking, BindingResult results,
-			Model model) {
-
-		if (results.hasErrors()) {
-
-			model.addAttribute("userClickManageBooking", true);
-			model.addAttribute("title", "Manage Bookings");
-			model.addAttribute("message", "Validation failed for Booking Submission!");
-			return "page";
-		}
-
-		logger.info(nBooking.toString());
-
-		bookingDao.addBooking(nBooking);
-
-		return "redirect:/manage/bookings?operation=booking";
-	}
-
+//	@RequestMapping(value = "/bookings", method = RequestMethod.GET)
+//	public ModelAndView showManageProducts(@RequestParam(name = "operation", required = false) String operation) {
+//
+//		ModelAndView mv = new ModelAndView("page");
+//
+//		mv.addObject("userClickManageBooking", true);
+//		mv.addObject("title", "Manage Bookings");
+//		Freight freight = new Freight();
+//		Booking nBooking = new Booking();
+//
+//		nBooking.setFreight(freight);
+//		mv.addObject("booking", nBooking);
+//
+//		if (operation != null) {
+//			if (operation.equals("booking")) {
+//				mv.addObject("message", "successfully");
+//			}
+//		}
+//
+//		return mv;
+//	}
+//
+//	@RequestMapping(value = "/bookings", method = RequestMethod.POST)
+//	public String handleBooking(@Valid @ModelAttribute("booking") Booking nBooking, BindingResult results,
+//			Model model) {
+//
+//		if (results.hasErrors()) {
+//
+//			model.addAttribute("userClickManageBooking", true);
+//			model.addAttribute("title", "Manage Bookings");
+//			model.addAttribute("message", "Validation failed for Booking Submission!");
+//			return "page";
+//		}
+//
+//		logger.info(nBooking.toString());
+//
+//		bookingDao.addBooking(nBooking);
+//
+//		return "redirect:/manage/bookings?operation=booking";
+//	}
+//
 	@RequestMapping(value = "/addtrucks", method = RequestMethod.GET)
 	public ModelAndView showAddTruck(@RequestParam(name = "operation", required = false) String operation) {
 
@@ -130,6 +143,104 @@ public class ManagementController {
 	}
 	
 	
+	@RequestMapping(value = "/addroute", method = RequestMethod.GET)
+	public ModelAndView showAddroute(@RequestParam(name = "operation", required = false) String operation) {
+
+		ModelAndView mv = new ModelAndView("page");
+
+		mv.addObject("userClickAddRoute", true);
+		mv.addObject("title", "Add route");
+
+		Route nroute = new Route();
+
+		
+		mv.addObject("route", nroute);
+
+		if (operation != null) {
+			if (operation.equals("route")) {
+				mv.addObject("message", "successfully");
+			}
+		}
+
+		return mv;
+	}
+	
+	@ModelAttribute("truckes")
+	public List<Truck> getTruck(){
+		
+		return truckDao.getTrucks();
+		
+	}
+	
+	@ModelAttribute("drivers")
+	public List<Driver> getdriver(){
+		
+		return driverDao.getDrivers();
+		
+	}
+
+	@RequestMapping(value = "/addroute", method = RequestMethod.POST)
+	public String handleRoute(@Valid @ModelAttribute("route") Route nroute, BindingResult results, Model model,
+			HttpServletRequest request) {
+
+		
+
+		if (results.hasErrors()) {
+
+			model.addAttribute("userClickAddRoute", true);
+			model.addAttribute("title", "Add route");
+			model.addAttribute("message", results.getAllErrors());
+			return "page";
+		}
+
+		logger.info(nroute.toString());
+
+		routeDao.addRoute(nroute);
+		
+
+		return "redirect:/manage/addroute?operation=route";
+	}
+	
+	
+//	@RequestMapping(value = "/drivers", method = RequestMethod.GET)
+//	public ModelAndView Driver(@RequestParam(name = "operation", required = false) String operation) {
+//
+//		ModelAndView mv = new ModelAndView("page");
+//
+//	mv.addObject("userClickAddDriver", true);
+//		mv.addObject("title", "Manage drivers");
+//
+//		Driver nDriver = new Driver();
+//		
+//		mv.addObject("driver", nDriver);
+//
+//		if (operation != null) {
+//			if (operation.equals("driver")) {
+//				mv.addObject("message", "successfully");
+//			}
+//		}
+//
+//		return mv;
+//	}
+	
+//	@RequestMapping(value = "/drivers", method = RequestMethod.POST)
+//	public String handleDriver(@Valid @ModelAttribute("driver") Driver nDriver, BindingResult results,
+//			Model model) {
+//
+//		if (results.hasErrors()) {
+//
+//			model.addAttribute("userClickAddDriver", true);
+//			model.addAttribute("title", "Manage Drivers");
+//			model.addAttribute("message", "Validation failed for driver Submission!");
+//			return "page";
+//		}
+//
+//		logger.info(nDriver.toString());
+//
+//		driverDao.addDriver(nDriver);
+//
+//		return "redirect:/manage/drivers?operation=driver";
+//	}
 	
 
 }

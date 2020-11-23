@@ -6,10 +6,13 @@ import org.springframework.binding.message.MessageContext;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import yvan.finalProject.DriverDrowsiness.model.DriverModel;
 import yvan.finalProject.DriverDrowsiness.model.RegisterModel;
 import yvan.finalProject.DriverDrowsinessBackend.dao.ClientDao;
+import yvan.finalProject.DriverDrowsinessBackend.dao.DriverDao;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Address;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Driver;
 import yvan.finalProject.DriverDrowsinessBackend.domain.User;
 
 @Component
@@ -19,16 +22,21 @@ public class RegisterHandler {
 	private ClientDao clientDao;
 	
 	@Autowired
+	private DriverDao driverDao;
+	
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
 	public RegisterModel init() {
 
 		return new RegisterModel();
 	}
+	
 
-	public void addClient(RegisterModel registerModel, Client client) {
+	public void addClient(RegisterModel registerModel, Client client ) {
 
 		registerModel.setClient(client);
+		
 	}
 
 	public void addBilling(RegisterModel registerModel, Address billing) {
@@ -36,11 +44,12 @@ public class RegisterHandler {
 		registerModel.setBilling(billing);
 	}
 	
-	public String validateClient(Client client, MessageContext error) {
+	public String validateClient(Client client , MessageContext error) {
 		
 		String transitionValue = "success";
 		
-		if(!(client.getPassword().equals(client.getConfirmPassword()))) {
+		 if(!(client.getPassword().equals(client.getConfirmPassword()))) { 
+			
 			
 			error.addMessage(new MessageBuilder().error()
 					.source("confirmPassword")
@@ -54,7 +63,7 @@ public class RegisterHandler {
 			
 			error.addMessage(new MessageBuilder().error()
 					.source("email")
-						.defaultText("Email address is already inUse!")
+						.defaultText("Email address is already in Use!")
 							.build());
 			
 			transitionValue = "failure";
@@ -70,8 +79,8 @@ public class RegisterHandler {
 		String transitionValue = "success";
 		
 		
-	Client client = model.getClient();
-
+	 Client client = model.getClient(); 
+	
 //		if (user.getRole().equals("USER")) {
 //			Cart cart = new Cart();
 //			cart.setClient(client);
@@ -81,10 +90,13 @@ public class RegisterHandler {
 //	encode the password
 	client.setPassword(passwordEncoder.encode(client.getPassword()));
 	
-		clientDao.addClient(client);
+		//client.setRole("USER");
+		 clientDao.addClient(client); 
+		
 
 		Address billing = model.getBilling();
-		billing.setClientId(client.getUserId());
+		 billing.setClientId(client.getUserId()); 
+		
 		billing.setBilling(true);
 
 		clientDao.addAddress(billing);

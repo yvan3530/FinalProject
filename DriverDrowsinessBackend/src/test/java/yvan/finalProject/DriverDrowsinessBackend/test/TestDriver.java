@@ -40,7 +40,7 @@ public class TestDriver {
 		client.setFirstName("kiki");
 		client.setLastName("egide");
 		client.setPassword("ert5452");
-		client.setRole("USER");
+		client.setRole("Driver");
 		client.setTelePhone("785526263");
 		
 		

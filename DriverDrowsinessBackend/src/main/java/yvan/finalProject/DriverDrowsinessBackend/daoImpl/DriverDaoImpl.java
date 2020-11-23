@@ -4,11 +4,16 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import yvan.finalProject.DriverDrowsinessBackend.dao.DriverDao;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Address;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Driver;
 
+@Repository("DriverDAO")
+@Transactional
 public class DriverDaoImpl implements DriverDao {
 
 	@Autowired
@@ -85,9 +90,77 @@ public class DriverDaoImpl implements DriverDao {
 			
 		}
 		catch(Exception ex) {
-			ex.printStackTrace();
+			//ex.printStackTrace();
 			return null;
 			}
+	}
+
+	@Override
+	public boolean addAddress(Address address) {
+		try {
+			sessionFactory.getCurrentSession().persist(address);
+			return true;
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public Address getBillingAddress(int UserId) {
+String selectQuery = "FROM Address WHERE UserId = :UserId AND billing = :billing";
+		
+		try {
+			return sessionFactory.getCurrentSession()
+						.createQuery(selectQuery, Address.class)
+							.setParameter("UserId", UserId)
+							.setParameter("billing", true)
+							.getSingleResult();
+			
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Address> listShippingAddresses(int UserId) {
+String selectQuery = "FROM Address WHERE UserId = :UserId AND shipping = :shipping";
+		
+		try {
+			
+			return sessionFactory.getCurrentSession()
+						.createQuery(selectQuery, Address.class)
+							.setParameter("UserId", UserId)
+							.setParameter("shipping", true)
+							.getResultList();
+			
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public List<Address> listShippingAddresses(Driver driver ) {
+String selectQuery = "FROM Address WHERE driver = :driver AND billing = :billing";
+		
+		try {
+			
+			return sessionFactory.getCurrentSession()
+						.createQuery(selectQuery, Address.class)
+							.setParameter("driver", driver)
+							.setParameter("billing", true)
+							.getResultList();
+			
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
 	}
 
 }

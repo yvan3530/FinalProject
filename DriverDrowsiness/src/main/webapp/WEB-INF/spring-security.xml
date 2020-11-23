@@ -26,11 +26,11 @@
 		<intercept-url pattern="/**" access="permitAll" />
 		<form-login login-page="/login" always-use-default-target="true" default-target-url="/redirect"  />
 		<access-denied-handler  error-page="/access-denied"/>
-		<logout />
+		
 	</http>
 
 	<authentication-manager>
-		<authentication-provider>
+		<authentication-provider >
 		<password-encoder ref="passwordEncoder" />
 		<jdbc-user-service data-source-ref="dataSource"
 		users-by-username-query="select email, password, enabled from client where 
@@ -39,18 +39,41 @@
 				email = ?"
 		
 		/>
-			<!-- <password-encoder ref="passwordEncoder"/> <jdbc-user-service data-source-ref="dataSource" 
-				users-by-username-query="select email, password, enabled from user where 
-				email = ?" authorities-by-username-query="select email, role from user where 
-				email = ?" /> -->
+		
 
-			<!-- <user-service>
-				<user name="merigo" password="nijyewe"
-					authorities="USER, ADMIN" />
-			</user-service> -->
 
 		</authentication-provider>
+		
+		
+		
+		 <authentication-provider >
+		<password-encoder ref="passwordEncoder" />
+		<jdbc-user-service data-source-ref="dataSource"
+		users-by-username-query="select email, password, enabled from driver where 
+				email = ?"
+		authorities-by-username-query="select email, role from driver where 
+				email = ?"
+		
+		/>
+		
+
+
+		</authentication-provider> 
 	</authentication-manager>
+	
+	<!-- <authentication-manager>
+		<authentication-provider>
+		<password-encoder ref="passwordEncoder" />
+		<jdbc-user-service data-source-ref="dataSource"
+		users-by-username-query="select email, password, enabled from driver where 
+				email = ?"
+		authorities-by-username-query="select email, role from driver where 
+				email = ?"
+		
+		/>
+
+		</authentication-provider>
+	</authentication-manager> -->
 
 
 
