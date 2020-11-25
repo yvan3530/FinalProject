@@ -168,7 +168,7 @@ public class StaffDaoImpl implements StaffDao {
 	public List<Staff> getStaffs() {
 		return sessionFactory
 				.getCurrentSession()
-					.createQuery("FROM Driver" ,Staff.class)
+					.createQuery("FROM Staff" ,Staff.class)
 							.getResultList();
 	}
 
