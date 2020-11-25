@@ -47,7 +47,7 @@ public class RouteDaoImpl implements RouteDao {
 	}
 
 	@Override
-	public boolean deleteRoute(Route route) {
+	public boolean deleteRoute(int route) {
 		try {
 			sessionFactory.getCurrentSession().delete(route);;
 			return true;

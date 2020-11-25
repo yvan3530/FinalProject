@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import yvan.finalProject.DriverDrowsiness.model.UserModel;
 import yvan.finalProject.DriverDrowsinessBackend.dao.ClientDao;
 import yvan.finalProject.DriverDrowsinessBackend.dao.DriverDao;
+import yvan.finalProject.DriverDrowsinessBackend.dao.StaffDao;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Driver;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Staff;
 
 @ControllerAdvice
 public class GlobalController {
@@ -25,6 +27,9 @@ public class GlobalController {
 	
 	@Autowired
 	private DriverDao driverDao;
+	
+	@Autowired
+	private StaffDao staffDao;
 	
 	private UserModel userModel = null;
 	
@@ -74,6 +79,35 @@ public class GlobalController {
 				userModel.setEmail(driver.getEmail());
 				userModel.setRole(driver.getRole());
 				userModel.setFullName(driver.getFirstName() + " " + driver.getLastName());
+				
+				
+				session.setAttribute("userModel", userModel);
+				
+				return userModel;
+			}
+			
+		}
+		
+		return (UserModel) session.getAttribute("userModel");
+	}
+	
+	
+	@ModelAttribute("userModel")
+	public UserModel getStaffModel() {
+		
+		if(session.getAttribute("userModel")==null) {
+			
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			
+			Staff staff = staffDao.getByEmail(authentication.getName());
+			
+			if(staff!=null) {
+				
+				userModel = new UserModel();
+				userModel.setId(staff.getUserId());
+				userModel.setEmail(staff.getEmail());
+				userModel.setRole(staff.getRole());
+				userModel.setFullName(staff.getFirstName() + " " + staff.getLastName());
 				
 				
 				session.setAttribute("userModel", userModel);

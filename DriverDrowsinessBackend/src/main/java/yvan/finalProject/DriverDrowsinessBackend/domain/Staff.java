@@ -26,17 +26,17 @@ public class Staff extends User implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private char nationalID;
+	private String nationalID;
 	
 	public Staff() {
 		
 	}
 
-	public char getNationalID() {
+	public String getNationalID() {
 		return nationalID;
 	}
 
-	public void setNationalID(char nationalID) {
+	public void setNationalID(String nationalID) {
 		this.nationalID = nationalID;
 	}
 

@@ -68,6 +68,42 @@ public class PageController {
 		return mv;
 
 	}
+	
+	@RequestMapping(value = { "/dashboard" })
+	public ModelAndView dashboard() {
+
+		ModelAndView mv = new ModelAndView("Admin/dashboard");
+		mv.addObject("title", "Dashboard");
+		mv.addObject("userClickAddDashboad", true);
+		return mv;
+
+	}
+	@RequestMapping(value = { "/addstaff" })
+	public ModelAndView addstaff() {
+
+		ModelAndView mv = new ModelAndView("Admin/addstaff");
+		
+		return mv;
+
+	}
+	@RequestMapping(value = { "/viewstaff" })
+	public ModelAndView viewstaff() {
+
+		ModelAndView mv = new ModelAndView("staff/addstaff");
+		
+		return mv;
+
+	}
+	@RequestMapping(value = { "/addfreight" })
+	public ModelAndView addfreight() {
+
+		ModelAndView mv = new ModelAndView("staff/addfreight");
+		
+		return mv;
+
+	}
+	
+	
 
 	@RequestMapping(value = { "/login" })
 	public ModelAndView login(@RequestParam(name="error",required = false)String error,
@@ -115,7 +151,7 @@ public class PageController {
 		// System.out.println("ADMIN"); 
 	  return "redirect:/home" ;
 	 }
-	 else if (auth.getAuthorities().stream().anyMatch(ga -> ga.getAuthority().equals("Driver"))) {
+	 else if (auth.getAuthorities().stream().anyMatch(ga -> ga.getAuthority().equals("DRIVER"))) {
 		// System.out.println("ADMIN"); 
 	  return "redirect:/home" ;
 	 }

@@ -37,8 +37,15 @@
 					</a>
 				</li>
 				
-				<li class="navSection primary" ><a class="rootLink"
-					href="${contextRoot }/driver">driver</a></li>
+				<%-- <li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/driver">driver</a></li> --%>
+					<%-- <li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/staff">staff</a></li> --%>
+					
+					<li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/dashboard">dashboard</a></li>
+					
+					
 					
 					<li class="navSection secondary"><a class="rootLink outline"
 						href="${contextRoot}/register">Sign Up</a></li>

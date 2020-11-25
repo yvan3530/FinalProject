@@ -40,8 +40,6 @@
 		
 		/>
 		
-
-
 		</authentication-provider>
 		
 		
@@ -55,25 +53,23 @@
 				email = ?"
 		
 		/>
-		
-
-
-		</authentication-provider> 
-	</authentication-manager>
 	
-	<!-- <authentication-manager>
-		<authentication-provider>
+		</authentication-provider> 
+		
+		 <authentication-provider >
 		<password-encoder ref="passwordEncoder" />
 		<jdbc-user-service data-source-ref="dataSource"
-		users-by-username-query="select email, password, enabled from driver where 
+		users-by-username-query="select email, password, enabled from staff where 
 				email = ?"
-		authorities-by-username-query="select email, role from driver where 
+		authorities-by-username-query="select email, role from staff where 
 				email = ?"
 		
 		/>
-
-		</authentication-provider>
-	</authentication-manager> -->
+	
+		</authentication-provider> 
+	</authentication-manager>
+	
+	
 
 
 

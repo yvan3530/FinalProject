@@ -8,7 +8,7 @@ public interface RouteDao {
 
 	boolean addRoute(Route route);
 	boolean updateRoute(Route route);
-	boolean deleteRoute(Route route);
+	boolean deleteRoute(int theId);
 	
 	List<Route>getRoute();
 	Route get(int id);

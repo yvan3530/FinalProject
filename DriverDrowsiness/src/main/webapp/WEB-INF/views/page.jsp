@@ -39,7 +39,6 @@
 <link href="${css }/partial-mp-filter.css" rel="stylesheet">
 
 <link href="${css }/global.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -85,17 +84,16 @@
 				<%@include file="route.jsp"%>
 			</c:if>
 			
-			<c:if test="${ userClickAddDriver == true}">
-				<%@include file="AddDriver.jsp"%>
-			</c:if>
-			<!-- /.container -->
+			
 
 		</div>
 
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
+		
 
-
+		
+		
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js }/jquery.min.js"></script>
 		<script src="${js }/bootstrap.bundle.min.js"></script>
