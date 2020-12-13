@@ -2,7 +2,9 @@ package yvan.finalProject.DriverDrowsinessBackend.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +25,7 @@ public class ClientDaoImpl implements ClientDao {
 	@Override
 	public boolean addClient(Client client) {
 		try {
-			sessionFactory.getCurrentSession().persist(client);
+			sessionFactory.getCurrentSession().saveOrUpdate(client);
 			return true;
 		}
 		catch(Exception ex) {
@@ -45,15 +47,14 @@ public class ClientDaoImpl implements ClientDao {
 	}
 
 	@Override
-	public boolean deleteClient(Client client) {
-		try {
-			sessionFactory.getCurrentSession().delete(client);
-			return true;
-		}
-		catch(Exception ex) {
-			ex.printStackTrace();
-			return false;
-		}
+	public void deleteClient(int theId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query theQuery = 
+				currentSession.createQuery("delete from Client where userId=:clientId");
+	
+		theQuery.setParameter("clientId", theId);
+		theQuery.executeUpdate();
 	}
 
 	@Override
@@ -65,9 +66,9 @@ public class ClientDaoImpl implements ClientDao {
 	}
 
 	@Override
-	public Client get(int UserId) {
+	public Client get(int userId) {
 		try {
-			return sessionFactory.getCurrentSession().get(Client.class, Integer.valueOf(UserId));
+			return sessionFactory.getCurrentSession().get(Client.class, Integer.valueOf(userId));
 		}
 			catch(Exception ex) {
 				ex.printStackTrace();
@@ -106,13 +107,13 @@ public class ClientDaoImpl implements ClientDao {
 	}
 
 	@Override
-	public Address getBillingAddress(int UserId) {
-		String selectQuery = "FROM Address WHERE UserId = :UserId AND billing = :billing";
+	public Address getBillingAddress(int userId) {
+		String selectQuery = "FROM Address WHERE userId = :userId AND billing = :billing";
 		
 		try {
 			return sessionFactory.getCurrentSession()
 						.createQuery(selectQuery, Address.class)
-							.setParameter("UserId", UserId)
+							.setParameter("userId", userId)
 							.setParameter("billing", true)
 							.getSingleResult();
 			
@@ -125,15 +126,15 @@ public class ClientDaoImpl implements ClientDao {
 	}
 
 	@Override
-	public List<Address> listShippingAddresses(int UserId) {
+	public List<Address> listShippingAddresses(int userId) {
 		
-		String selectQuery = "FROM Address WHERE UserId = :UserId AND shipping = :shipping";
+		String selectQuery = "FROM Address WHERE userId = :userId AND shipping = :shipping";
 		
 		try {
 			
 			return sessionFactory.getCurrentSession()
 						.createQuery(selectQuery, Address.class)
-							.setParameter("UserId", UserId)
+							.setParameter("userId", userId)
 							.setParameter("shipping", true)
 							.getResultList();
 			

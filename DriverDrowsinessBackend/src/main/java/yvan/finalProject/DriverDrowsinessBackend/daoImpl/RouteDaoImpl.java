@@ -2,10 +2,13 @@ package yvan.finalProject.DriverDrowsinessBackend.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import org.hibernate.query.Query;
 
 import yvan.finalProject.DriverDrowsinessBackend.dao.RouteDao;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Freight;
@@ -23,7 +26,7 @@ public class RouteDaoImpl implements RouteDao {
 	public boolean addRoute(Route route) {
 
 		try {
-			sessionFactory.getCurrentSession().persist(route);
+			sessionFactory.getCurrentSession().saveOrUpdate(route);
 			return true;
 		}
 		catch(Exception ex) {
@@ -47,16 +50,17 @@ public class RouteDaoImpl implements RouteDao {
 	}
 
 	@Override
-	public boolean deleteRoute(int route) {
-		try {
-			sessionFactory.getCurrentSession().delete(route);;
-			return true;
-		}
-		catch(Exception ex) {
+	public void deleteRoute(int theId) {
+		
 			
-			ex.printStackTrace();
-			return false;
-		}
+			Session currentSession = sessionFactory.getCurrentSession();
+		
+			Query theQuery = 
+					currentSession.createQuery("delete from Route where id=:routeId");
+		
+			theQuery.setParameter("routeId", theId);
+			theQuery.executeUpdate();
+		
 	}
 
 	@Override

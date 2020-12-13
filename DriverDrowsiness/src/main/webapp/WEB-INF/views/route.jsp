@@ -32,7 +32,9 @@
 				</div>
 				<div class="panel-body">
 					<form:form class="form-horizontal" modelAttribute="route"
-						action="${contextRoot }/manage/addroute" method="POST">
+						action="/DriverDrowsiness/manage/addroute" method="POST">
+						
+						<form:hidden path="id" />
 
 						<div class="form- group">
 							<label class="control-label col-md-4" for="origin">departTime</label>
@@ -52,8 +54,7 @@
 
 								<form:input type="date" path="arrivalTime" id="arrivalTime"
 									placeholder="load Date" class="form-control" />
-								<form:errors path="arrivalTime" cssClass="help-block"
-									element="em" />
+								
 
 							</div>
 
@@ -67,6 +68,20 @@
 									id="departLocation" placeholder="load Date"
 									class="form-control" />
 								<form:errors path="departLocation" cssClass="help-block"
+									element="em" />
+
+							</div>
+
+						</div>
+						
+						<div class="form- group">
+							<label class="control-label col-md-4" for="from">status</label>
+							<div class="col-md-8">
+
+								<form:input type="text" path="status"
+									id="status" placeholder="status"
+									class="form-control" />
+								<form:errors path="status" cssClass="help-block"
 									element="em" />
 
 							</div>
@@ -92,8 +107,8 @@
 								truck: </label>
 							<div class="col-md-8">
 								<form:select class="form-control" id="truck"
-									path="truck.TruckId" items="${truckes}" itemLabel="plate"
-									itemValue="TruckId" />
+									path="truck.truckId" items="${truckes}" itemLabel="plate"
+									itemValue="truckId" />
 
 
 							</div>
@@ -104,8 +119,8 @@
 								driver: </label>
 							<div class="col-md-8">
 								<form:select class="form-control" id="driver"
-									path="driver.UserId" items="${drivers}" itemLabel="firstName"
-									itemValue="UserId" />
+									path="driver.userId" items="${drivers}" itemLabel="firstName"
+									itemValue="userId" />
 
 
 							</div>
@@ -117,7 +132,7 @@
 								<input type="submit" name="submit" id="submit" value="addroute"
 									class="btn btn-primary" />
 
-								<form:hidden path="id" />
+								
 
 
 

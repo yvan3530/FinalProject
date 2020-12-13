@@ -9,12 +9,12 @@ public interface FreightDao {
 	
 	boolean addFreight(Freight freight);
 	boolean updateFreight(Freight freight);
-	boolean deleteFreight(Freight freight);
+	public void deleteFreight(int theId);
 	List<Freight> getFreights();
 	Freight get(int freightId);
 	
 	List<Freight> listActiveFreights();
-	List<Freight> listActiveByClient(int UserId);
+	List<Freight> listActiveByClient(int userId);
 	List<Freight> getLatestActiveFreights(int count);
 	
 	boolean addBooking(Booking booking);

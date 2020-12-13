@@ -74,7 +74,7 @@
 
                         <li class="side-nav-title side-nav-item">Services</li>
 
-                          <li class="side-nav-item">
+                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
                                 <i class="uil-user-square"></i>
                                 <span> Staff </span>
@@ -176,11 +176,25 @@
                                 
                             </ul>
                         </li>
-
-                        
+                        <li class="side-nav-item">
+                            <a href="javascript: void(0);" class="side-nav-link">
+                                <i class="uil-hdd"></i>
+                                <span> Alert </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="side-nav-second-level" aria-expanded="false">
+                               
+                              
+                                <li>
+                                    <a href="${contextRoot }/manage/list-of-Alert">Checkout</a>
+                                </li>
                                 
                             </ul>
+                        </li>
+
                        
+            
+                    </ul>
 
                     
                     <!-- End Sidebar -->
@@ -283,7 +297,7 @@
                 
                                         <div class="table-responsive">
                                             <table class="table table-centered mb-0">
-                                                <thead class="thead-light">
+                                                 <thead class="thead-light"> 
                                                     <tr>
                                                         <!-- <th style="width: 20px;">
                                                             <div class="custom-control custom-checkbox">
@@ -291,36 +305,22 @@
                                                                 <label class="custom-control-label" for="customCheck1">&nbsp;</label>
                                                             </div>
                                                         </th> -->
-                                                   
-                                                        <th>kind </th>
-                                                         <th>plate </th>
-                                                         <th>brand</th>
-                                                        <th>active </th>
                                                         
+                                             			<th>truck</th>
+                                                        <th>date </th>
+                                                           
                                                         <th style="width: 125px;">Action</th>
                                                     </tr>
                                                 </thead>
-                                                     <c:forEach var="truck" items="${trucks }">
-                                                <c:url var="updateLink" value="/manage/TruckFormUpdate">
-                                                <c:param name="truckId" value="${truck.truckId }"></c:param>
-                                                </c:url>
-                                                <c:url var="deleteLink" value="/manage/Truckdelete">
-                                                <c:param name="truckId" value="${truck.truckId }"></c:param>
-                                                </c:url>
-                                                
+                                                <c:forEach var="alert" items="${alerts }">
+                                           
                                                 <tr>
-                                               <%--  <td>${route.driver }</td>
-                                                <td>${route.truck }</td> --%>
-                                                <td>${truck.kind }</td>
-                                                <td>${truck.plate }</td>
-                                                <td>${truck.brand }</td>
-                                                <td>${truck.active }</td>
-                                                <td>
-                                                <a href="${updateLink}">update</a>
-                                                |
-                                                 <a href="${deleteLink}"
-                                                 onclick="if (!(confirm('Are you sure you want to delete this route?')))return false">delete</a>
-                                                </td>
+                                                
+                                                 
+                                                <td>${alert.truck }</td>
+                                                <td>${alert.date  }</td>
+                                                
+                                                  
                                                 </tr>
                                                 
                                                 </c:forEach>

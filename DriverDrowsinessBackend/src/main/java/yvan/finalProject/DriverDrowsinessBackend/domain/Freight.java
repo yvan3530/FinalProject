@@ -39,8 +39,7 @@ public class Freight implements Serializable{
 	private String typeOfPackage;
 	@Column(name="category")
 	private String category;
-	@Column(name="is_active")
-	private boolean active = true;
+	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Client client;
@@ -122,16 +121,6 @@ public class Freight implements Serializable{
 	public void setCategory(String category) {
 		this.category = category;
 	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-	
 
 	
 	public Client getClient() {

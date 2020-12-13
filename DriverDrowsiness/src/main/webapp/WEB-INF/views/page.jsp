@@ -80,9 +80,10 @@
 				<%@include file="AddTruck.jsp"%>
 			</c:if>
 
-			<c:if test="${ userClickAddRoute == true}">
-				<%@include file="route.jsp"%>
-			</c:if>
+			<%--  <c:if test="${ userClickAddFreight == true}">
+				<%@include file="freight.jsp"%>
+			</c:if> --%>
+			 
 			
 			
 

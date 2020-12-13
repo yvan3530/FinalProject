@@ -50,7 +50,9 @@ public class Route implements Serializable{
 	private String departLocation;
 	private String arrivalLocation;
 	private RouteStatus status = RouteStatus.pending;
+	
 	public int getId() {
+		
 		return id;
 	}
 	public void setId(int id) {

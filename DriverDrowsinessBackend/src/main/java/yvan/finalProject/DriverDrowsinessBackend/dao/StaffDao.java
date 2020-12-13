@@ -10,19 +10,19 @@ public interface StaffDao {
 	
 	boolean addStaff(Staff staff);
 	boolean updateStaff(Staff staff);
-	boolean deleteStaff(Staff staff);
+	public void deleteStaff(int theId);
 
 	List<Staff> getStaffs();
-	Staff get(int UserId);
+	Staff get(int userId);
 	
 	Staff getByEmail(String email);
 	boolean addTruck(Truck truck);
 	boolean updateTruck(Truck truck);
 	boolean deleteTruck(Truck truck);
 	List<Truck> getTrucks();
-	Truck getTruck(int TruckId);
+	Truck getTruck(int truckId);
 	List<Truck> listActiveTrucks();
-	List<Truck> listActiveByDriver(int UserId);
+	List<Truck> listActiveByDriver(int userId);
 	List<Truck> getLatestActiveTrucks(int count);
 	
 	

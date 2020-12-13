@@ -176,6 +176,22 @@
                                 
                             </ul>
                         </li>
+                        
+                        <li class="side-nav-item">
+                            <a href="javascript: void(0);" class="side-nav-link">
+                                <i class="uil-hdd"></i>
+                                <span> Alert </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="side-nav-second-level" aria-expanded="false">
+                               
+                              
+                                <li>
+                                    <a href="${contextRoot }/manage/list-of-Alert">Checkout</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
 
 
             
@@ -214,7 +230,10 @@
                                     </form>
                                 </div>
                             </li>
-                           
+                          <li> <div align="center">
+		<h1>Spring MVC PDF View Demo (using iText library)</h1>
+		<h3><a href="${contextRoot }/manage/downloadPDF">Download PDF Document</a></h3>
+	</div></li>
 
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"

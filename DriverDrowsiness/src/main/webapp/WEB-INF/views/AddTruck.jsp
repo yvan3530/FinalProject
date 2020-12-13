@@ -32,7 +32,7 @@
 		</div>
 		<div class="panel-body">
 		<form:form class="form-horizontal" modelAttribute="truck" 
-		action="${contextRoot }/manage/addtrucks"
+		action="/DriverDrowsiness/manage/addtrucks"
 		method="POST" enctype="multipart/form-data">
 		
 		<div class="form- group">
@@ -83,9 +83,9 @@
 		
 		<div class="col-md-offset-4 col-md-8">
 		
-		<input type="submit" name="submit" id="submit" value="book" class="btn btn-primary"/>
+		<input type="submit" name="submit" id="submit" value="save" class="btn btn-primary"/>
 		
-		<form:hidden path="TruckId"/>
+		<form:hidden path="truckId"/>
 		
 		<form:hidden path="active"/>
 		</div>
@@ -102,101 +102,6 @@
 	</div>
 
 
-<div class="row">
-
-	<div class="col-xs-12">
-		<h3>Available Trucks</h3>
-
-		<hr />
-	</div>
-
-	<div class="col-xs-12">
-
-		<div style="overflow: auto">
-
-			<table id="adminTruckTable"
-				class="table table-striped table-bordered">
-
-
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>&#160;</th>
-						<th>Plate</th>
-						<th>Brand</th>
-						<th>Kind</th>
-						<th>Active</th>
-						<th>Edit</th>
-					</tr>
-				</thead>
-
-				<tbody>
-
-					<tr>
-						<td>9</td>
-						<td><img class="adminDataTableImg"
-							src="${contextRoot }/resources/images/RAA083W.jpg" alt="fiat" />
-
-						</td>
-						<td>RAA083W</td>
-						<td>fiat</td>
-						<td>single</td>
-						<td><label class="switch"> <input type="checkbox"
-								checked="checked" value="9" />
-								<div class="slider"></div>
-
-						</label></td>
-						<td><a href="${contextRoot }/manage/9/truck"
-							class="btn btn-warning"> <span
-								class="glyphcon glyphicon-pencil"></span>
-
-
-						</a></td>
-					</tr>
-
-
-					<tr>
-						<td>9</td>
-						<td><img class="adminDataTableImg"
-							src="${contextRoot }/resources/images/RAA083W.jpg" alt="fiat" />
-
-						</td>
-						<td>RAA083W</td>
-						<td>fiat</td>
-						<td>single</td>
-						<td><label class="switch"> <input type="checkbox"
-								value="9" />
-								<div class="slider"></div>
-
-						</label></td>
-						<td><a href="${contextRoot }/manage/9/truck"
-							class="btn btn-warning"> <span
-								class="glyphcon glyphicon-pencil"></span>
-
-
-						</a></td>
-					</tr>
-
-				</tbody>
-
-				<tfoot>
-					<tr>
-						<th>Id</th>
-						<th>&#160;</th>
-						<th>Plate</th>
-						<th>Brand</th>
-						<th>Kind</th>
-						<th>Active</th>
-						<th>Edit</th>
-					</tr>
-				</tfoot>
-
-			</table>
-
-		</div>
-
-	</div>
-</div>
 
 
 

@@ -8,8 +8,8 @@ public interface RouteDao {
 
 	boolean addRoute(Route route);
 	boolean updateRoute(Route route);
-	boolean deleteRoute(int theId);
+	public void deleteRoute(int theId);
 	
 	List<Route>getRoute();
-	Route get(int id);
+	public Route get(int id);
 }

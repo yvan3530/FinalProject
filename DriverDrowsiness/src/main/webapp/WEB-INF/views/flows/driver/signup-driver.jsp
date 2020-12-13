@@ -36,7 +36,7 @@
 								<sf:input type="text" path="lastName" class="form-control"
 									placeholder="last Name" />
 
-								<sf:errors path="lastName" cssClass="help-block" element="em" />
+								<sf:errors></sf:errors>
 
 							</div>
 						</div>

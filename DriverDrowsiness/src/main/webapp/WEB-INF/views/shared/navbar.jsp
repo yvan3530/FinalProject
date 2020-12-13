@@ -42,8 +42,16 @@
 					<%-- <li class="navSection primary" ><a class="rootLink"
 					href="${contextRoot }/staff">staff</a></li> --%>
 					
+					<%-- <security:authorize access="hasAuthority('ADMIN')"> --%>
 					<li class="navSection primary" ><a class="rootLink"
 					href="${contextRoot }/dashboard">dashboard</a></li>
+					<%-- </security:authorize>  --%>
+					
+						<li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/addfreight">freight</a></li>
+					
+					<li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/manage/pdfClient">client</a></li>
 					
 					
 					
@@ -110,6 +118,7 @@
 									<a class="mobileSignIn" href="${contextRoot }/health">Health
 										<i class="fa fa-chevron-right"></i>
 									</a>
+									
 								</div>
 								
 							</div>

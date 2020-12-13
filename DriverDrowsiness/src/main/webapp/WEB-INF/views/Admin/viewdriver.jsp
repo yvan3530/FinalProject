@@ -74,7 +74,7 @@
 
                         <li class="side-nav-title side-nav-item">Services</li>
 
-                        <li class="side-nav-item">
+                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
                                 <i class="uil-user-square"></i>
                                 <span> Staff </span>
@@ -83,10 +83,10 @@
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
                                 <li>
-                                    <a href="./staff/addfreight.jsp">Orders</a>
+                                    <a href="${contextRoot }/staff">Orders</a>
                                 </li>
                                 <li>
-                                    <a href="viewfreight.jsp">Checkout</a>
+                                    <a href="${contextRoot }/manage/list-of-staff">Checkout</a>
                                 </li>
                                 
                             </ul>
@@ -100,10 +100,10 @@
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
                                 <li>
-                                    <a href="apps-ecommerce-orders.html">Orders</a>
+                                    <a href="${contextRoot }/driver">addDriver</a>
                                 </li>
                                 <li>
-                                    <a href="apps-ecommerce-checkout.html">Checkout</a>
+                                    <a href="${contextRoot }/manage/list-of-driver">Checkout</a>
                                 </li>
                                 
                             </ul>
@@ -117,10 +117,10 @@
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
                                 <li>
-                                    <a href="apps-ecommerce-orders.html">Orders</a>
+                                    <a href="${contextRoot}/register">Orders</a>
                                 </li>
                                 <li>
-                                    <a href="apps-ecommerce-checkout.html">Checkout</a>
+                                    <a href="${contextRoot }/manage/list-of-client">Checkout</a>
                                 </li>
                                 
                             </ul>
@@ -134,10 +134,10 @@
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
                                 <li>
-                                    <a href="apps-ecommerce-orders.html">Orders</a>
+                                    <a href="${contextRoot }/manage/addtrucks">Add Truck</a>
                                 </li>
                                 <li>
-                                    <a href="apps-ecommerce-checkout.html">Checkout</a>
+                                    <a href="${contextRoot }/manage/list-of-truck">Checkout</a>
                                 </li>
                                 
                             </ul>
@@ -151,10 +151,10 @@
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
                                 <li>
-                                    <a href="apps-ecommerce-orders.html">Orders</a>
+                                    <a href="${contextRoot }/manage/addroute">Add Route</a>
                                 </li>
                                 <li>
-                                    <a href="apps-ecommerce-checkout.html">Checkout</a>
+                                    <a href="${contextRoot }/manage/list-of-route">Checkout</a>
                                 </li>
                                 
                             </ul>
@@ -177,7 +177,7 @@
                             </ul>
                         </li>
 
-
+                       
             
                     </ul>
 
@@ -303,7 +303,13 @@
                                                 </thead>
                                                 <c:forEach var="driver" items="${drivers }">
                                                 
-                                                <tr>
+                                                   <c:url var="updateLink" value="/manage/driverFormUpdate">
+                                                <c:param name="driverId" value="${driver.userId }"></c:param>
+                                                </c:url> 
+                                                <c:url var="deleteLink" value="/manage/Driverdelete">
+                                                <c:param name="driverId" value="${driver.userId}"></c:param>
+                                                </c:url>
+                                                <tr> 
                                                 
                                                  
                                                 <td>${driver.firstName }</td>
@@ -313,7 +319,14 @@
                                                 <td>${driver.address }</td> 
                                                 <td>${driver.role }</td>
                                                 <td>${driver.passPortNumber }</td> 
-                                                <td>${driver.drivingLicense }</td>   
+                                                <td>${driver.drivingLicense }</td>  
+                                                
+                                                 <td>
+                                                <a href="${updateLink}">update</a>
+                                                |
+                                                 <a href="${deleteLink}"
+                                                 onclick="if (!(confirm('Are you sure you want to delete this driver ?')))return false">delete</a>
+                                                </td> 
                                                 </tr>
                                                 
                                                 </c:forEach>

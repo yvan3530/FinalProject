@@ -5,19 +5,34 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import yvan.finalProject.DriverDrowsinessBackend.dao.FreightDao;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Freight;
+
 @Controller
 public class PageController {
+	
+	@Autowired
+	private FreightDao freightDao;
+	
+	private static final Logger logger = LoggerFactory.getLogger(ManagementController.class);
 
 	@RequestMapping(value = { "/", "/home", "/index" })
 	public ModelAndView index() {
@@ -94,13 +109,51 @@ public class PageController {
 		return mv;
 
 	}
-	@RequestMapping(value = { "/addfreight" })
-	public ModelAndView addfreight() {
+	
+	
+	
+	@RequestMapping(value = "/addfreight", method = RequestMethod.GET)
+	public ModelAndView showAddFreight(@RequestParam(name = "operation", required = false) String operation) {
 
-		ModelAndView mv = new ModelAndView("staff/addfreight");
+		ModelAndView mv = new ModelAndView("freight");
+
 		
-		return mv;
 
+		
+		Freight nFreight = new Freight();
+		
+		
+		mv.addObject("freight", nFreight);
+
+		if (operation != null) {
+			if (operation.equals("freight")) {
+				mv.addObject("message", "successfully");
+			}
+		}
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/addfreight", method = RequestMethod.POST)
+	public String handlefreight(@Valid @ModelAttribute("freight") Freight nFreight, BindingResult results, Model model,
+			HttpServletRequest request) {
+
+		
+
+		if (results.hasErrors()) {
+
+			model.addAttribute("userClickAddFreight", true);
+			model.addAttribute("title", "Add Freight");
+			model.addAttribute("message", "Validation failed for Truck Submission!");
+			return "page";
+		}
+
+		logger.info(nFreight.toString());
+
+		;
+		freightDao.addFreight(nFreight);
+
+		return "redirect:/addfreight?operation=freight";
 	}
 	
 	

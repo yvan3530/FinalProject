@@ -2,7 +2,9 @@ package yvan.finalProject.DriverDrowsinessBackend.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +24,7 @@ public class DriverDaoImpl implements DriverDao {
 	@Override
 	public boolean addDriver(Driver driver) {
 		try{
-			sessionFactory.getCurrentSession().persist(driver);
+			sessionFactory.getCurrentSession().saveOrUpdate(driver);
 			return true;
 		}
 		
@@ -46,16 +48,14 @@ public class DriverDaoImpl implements DriverDao {
 	}
 
 	@Override
-	public boolean deleteDriver(Driver driver) {
-		try{
-			sessionFactory.getCurrentSession().delete(driver);
-			return true;
-		}
+	public void deleteDriver(int theId) {
+Session currentSession = sessionFactory.getCurrentSession();
 		
-		catch(Exception ex) {
-			ex.printStackTrace();
-			return false;
-		}
+		Query theQuery = 
+				currentSession.createQuery("delete from Driver where userId=:userId");
+	
+		theQuery.setParameter("driverId", theId);
+		theQuery.executeUpdate();
 	}
 
 	@Override
@@ -67,9 +67,9 @@ public class DriverDaoImpl implements DriverDao {
 	}
 
 	@Override
-	public Driver get(int UserId) {
+	public Driver get(int userId) {
 		try {
-			return sessionFactory.getCurrentSession().get(Driver.class, Integer.valueOf(UserId));
+			return sessionFactory.getCurrentSession().get(Driver.class, Integer.valueOf(userId));
 		}
 			catch(Exception ex) {
 				ex.printStackTrace();
@@ -108,13 +108,13 @@ public class DriverDaoImpl implements DriverDao {
 	}
 
 	@Override
-	public Address getBillingAddress(int UserId) {
-String selectQuery = "FROM Address WHERE UserId = :UserId AND billing = :billing";
+	public Address getBillingAddress(int userId) {
+String selectQuery = "FROM Address WHERE userId = :userId AND billing = :billing";
 		
 		try {
 			return sessionFactory.getCurrentSession()
 						.createQuery(selectQuery, Address.class)
-							.setParameter("UserId", UserId)
+							.setParameter("userId", userId)
 							.setParameter("billing", true)
 							.getSingleResult();
 			
@@ -126,14 +126,14 @@ String selectQuery = "FROM Address WHERE UserId = :UserId AND billing = :billing
 	}
 
 	@Override
-	public List<Address> listShippingAddresses(int UserId) {
-String selectQuery = "FROM Address WHERE UserId = :UserId AND shipping = :shipping";
+	public List<Address> listShippingAddresses(int userId) {
+String selectQuery = "FROM Address WHERE userId = :userId AND shipping = :shipping";
 		
 		try {
 			
 			return sessionFactory.getCurrentSession()
 						.createQuery(selectQuery, Address.class)
-							.setParameter("UserId", UserId)
+							.setParameter("userId", userId)
 							.setParameter("shipping", true)
 							.getResultList();
 			

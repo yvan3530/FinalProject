@@ -11,16 +11,16 @@ public interface DriverDao {
 	
 	boolean addDriver(Driver driver);
 	boolean updateDriver(Driver driver);
-	boolean deleteDriver(Driver driver);
+	public void deleteDriver(int theId);
 
 	List<Driver> getDrivers();
-	Driver get(int UserId);
+	Driver get(int userId);
 	
 	Driver getByEmail(String email);
 	
 	boolean addAddress(Address address);
-	 Address getBillingAddress(int UserId);
-	 List<Address> listShippingAddresses(int UserId);
+	 Address getBillingAddress(int userId);
+	 List<Address> listShippingAddresses(int userId);
 	 List<Address> listShippingAddresses(Driver driver);
 
 }

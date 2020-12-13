@@ -2,7 +2,9 @@ package yvan.finalProject.DriverDrowsinessBackend.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -83,9 +85,9 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public Truck getTruck(int TruckId) {
+	public Truck getTruck(int truckId) {
 		try {
-			return sessionFactory.getCurrentSession().get(Truck.class, Integer.valueOf(TruckId));
+			return sessionFactory.getCurrentSession().get(Truck.class, Integer.valueOf(truckId));
 		}
 			catch(Exception ex) {
 				ex.printStackTrace();
@@ -105,13 +107,13 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public List<Truck> listActiveByDriver(int UserId) {
-		String selectActiveProductsByDriver = "FROM Truck WHERE active = :active AND UserId = :UserId";
+	public List<Truck> listActiveByDriver(int userId) {
+		String selectActiveProductsByDriver = "FROM Truck WHERE active = :active AND userId = :userId";
 		return sessionFactory
 				.getCurrentSession()
 				.createQuery(selectActiveProductsByDriver, Truck.class)
 						.setParameter("active", true)
-							.setParameter("UserId" ,UserId)
+							.setParameter("userId" ,userId)
 								.getResultList();
 	
 	}
@@ -131,7 +133,7 @@ public class StaffDaoImpl implements StaffDao {
 	@Override
 	public boolean addStaff(Staff staff) {
 		try {
-			sessionFactory.getCurrentSession().persist(staff);
+			sessionFactory.getCurrentSession().saveOrUpdate(staff);
 			return true;
 		}
 		catch(Exception ex) {
@@ -153,15 +155,15 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public boolean deleteStaff(Staff staff) {
-		try {
-			sessionFactory.getCurrentSession().delete(staff);
-			return true;
-		}
-		catch(Exception ex) {
-			ex.printStackTrace();
-			return false;
-		}
+	public void deleteStaff(int theId) {
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+	
+		Query theQuery = 
+				currentSession.createQuery("delete from Staff where userId=:userId");
+	
+		theQuery.setParameter("staffId", theId);
+		theQuery.executeUpdate();
 	}
 
 	@Override
@@ -173,9 +175,9 @@ public class StaffDaoImpl implements StaffDao {
 	}
 
 	@Override
-	public Staff get(int UserId) {
+	public Staff get(int userId) {
 		try {
-			return sessionFactory.getCurrentSession().get(Staff.class, Integer.valueOf(UserId));
+			return sessionFactory.getCurrentSession().get(Staff.class, Integer.valueOf(userId));
 		}
 			catch(Exception ex) {
 				ex.printStackTrace();

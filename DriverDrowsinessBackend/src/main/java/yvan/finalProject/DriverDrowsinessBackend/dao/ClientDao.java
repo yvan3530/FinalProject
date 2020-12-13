@@ -10,16 +10,16 @@ public interface ClientDao {
 	
 	boolean addClient(Client client);
 	boolean updateClient(Client client);
-	boolean deleteClient(Client client);
+	public void deleteClient(int theId);
 	List<Client> getClients();
-	Client get(int UserId);
+	Client get(int userId);
 	
 	boolean addFreight(Freight freight);
 	
 	Client getByEmail(String email);
 	boolean addAddress(Address address);
-	 Address getBillingAddress(int UserId);
-	 List<Address> listShippingAddresses(int UserId);
+	 Address getBillingAddress(int userId);
+	 List<Address> listShippingAddresses(int userId);
 	 List<Address> listShippingAddresses(Client client);
 	 
 	

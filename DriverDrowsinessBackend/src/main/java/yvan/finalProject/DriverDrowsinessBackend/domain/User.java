@@ -29,8 +29,8 @@ public abstract class User implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private int UserId;
+	
+	private int userId;
 	@Column(name="first_name")
 	@NotBlank(message= "Please enter the First name!")
 	private String firstName;
@@ -57,11 +57,11 @@ public abstract class User implements Serializable{
 	}
 
 	public int getUserId() {
-		return UserId;
+		return userId;
 	}
 
 	public void setUserId(int userId) {
-		UserId = userId;
+		this.userId = userId;
 	}
 
 	public String getFirstName() {
@@ -139,7 +139,7 @@ public abstract class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User [UserId=" + UserId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", telePhone=" + telePhone + ", address=" + address + ", role=" + role + ", password=" + password
 				+ ", enabled=" + enabled + "]";
 	}

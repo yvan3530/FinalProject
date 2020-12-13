@@ -30,8 +30,8 @@ public class Truck implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private int TruckId;
+	
+	private int truckId;
 	@NotBlank(message= "please enter the origin of shipment !")
 	private String kind;
 	@NotBlank(message= "please enter the origin of shipment !")
@@ -44,8 +44,21 @@ public class Truck implements Serializable{
 	@OneToMany(mappedBy = "truck",fetch = FetchType.EAGER)
 	private  List<Route> routes;
 	
+//	@OneToMany(mappedBy = "trucks",fetch = FetchType.EAGER)
+//	private  List<Alert> alert;
+//	
+//
+//
+//	public List<Alert> getAlert() {
+//		return alert;
+//	}
+//
+//
+//	public void setAlert(List<Alert> alert) {
+//		this.alert = alert;
+//	}
 
-	
+
 	@Transient
 	private MultipartFile file;
 	
@@ -67,12 +80,12 @@ public class Truck implements Serializable{
 
 
 	public int getTruckId() {
-		return TruckId;
+		return truckId;
 	}
 
 
 	public void setTruckId(int truckId) {
-		TruckId = truckId;
+		this.truckId = truckId;
 	}
 
 

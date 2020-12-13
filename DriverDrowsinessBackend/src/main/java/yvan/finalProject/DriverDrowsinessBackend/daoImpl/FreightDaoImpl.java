@@ -2,7 +2,9 @@ package yvan.finalProject.DriverDrowsinessBackend.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +24,7 @@ public class FreightDaoImpl implements FreightDao{
 	@Override
 	public boolean addFreight(Freight freight) {
 		try {
-			sessionFactory.getCurrentSession().persist(freight);
+			sessionFactory.getCurrentSession().saveOrUpdate(freight);
 			return true;
 		}
 		catch(Exception ex) {
@@ -44,15 +46,14 @@ public class FreightDaoImpl implements FreightDao{
 	}
 
 	@Override
-	public boolean deleteFreight(Freight freight) {
-		try {
-			sessionFactory.getCurrentSession().delete(freight);
-			return true;
-		}
-		catch(Exception ex) {
-			ex.printStackTrace();
-		}
-		return false;
+	public void deleteFreight(int theId) {
+Session currentSession = sessionFactory.getCurrentSession();
+		
+		Query theQuery = 
+				currentSession.createQuery("delete from Freight where freightId=:freightId");
+	
+		theQuery.setParameter("freightId", theId);
+		theQuery.executeUpdate();
 	}
 
 	@Override
@@ -87,13 +88,13 @@ public class FreightDaoImpl implements FreightDao{
 	}
 
 	@Override
-	public List<Freight> listActiveByClient(int UserId) {
-		String selectActiveProductsByClient = "FROM Freight WHERE active = :active AND UserId = :UserId";
+	public List<Freight> listActiveByClient(int userId) {
+		String selectActiveProductsByClient = "FROM Freight WHERE active = :active AND userId = :userId";
 		return sessionFactory
 				.getCurrentSession()
 					.createQuery(selectActiveProductsByClient, Freight.class)
 						.setParameter("active", true)
-							.setParameter("UserId" ,UserId)
+							.setParameter("userId" ,userId)
 								.getResultList();
 	}
 
