@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
@@ -32,9 +33,11 @@ public class Route implements Serializable{
 	private int id;
 	
 	@ManyToOne(fetch = FetchType.EAGER)	
+	@JoinColumn(name="driver")
 	private Driver driver;
 	
 	@ManyToOne(fetch = FetchType.EAGER)	
+	@JoinColumn(name="truck")
 	private Truck truck;
 	
 	@OneToMany(mappedBy = "route",fetch = FetchType.EAGER)

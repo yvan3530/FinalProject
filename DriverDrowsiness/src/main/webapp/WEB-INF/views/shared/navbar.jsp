@@ -42,16 +42,16 @@
 					<%-- <li class="navSection primary" ><a class="rootLink"
 					href="${contextRoot }/staff">staff</a></li> --%>
 					
-					<%-- <security:authorize access="hasAuthority('ADMIN')"> --%>
+					<security:authorize access="hasAuthority('ADMIN')"> 
 					<li class="navSection primary" ><a class="rootLink"
 					href="${contextRoot }/dashboard">dashboard</a></li>
-					<%-- </security:authorize>  --%>
+					 </security:authorize>  
 					
-						<li class="navSection primary" ><a class="rootLink"
+						<%-- <li class="navSection primary" ><a class="rootLink"
 					href="${contextRoot }/addfreight">freight</a></li>
 					
 					<li class="navSection primary" ><a class="rootLink"
-					href="${contextRoot }/manage/pdfClient">client</a></li>
+					href="${contextRoot }/manage/pdfClient">client</a></li> --%>
 					
 					
 					
@@ -73,9 +73,9 @@
 										
 									</div>
 					<li class="navSection mobile"><a
-						class="rootLink item-mobileMenu"><h2>
-								<i class="far fa-bars"></i>
-							</h2></a>
+						class="rootLink item-mobileMenu">
+								<i class="fas fa-bars"></i>
+							</a>
 						<div class="popup">
 							<div class="popupContainer">
 								<a class="popupCloseButton">Close</a>

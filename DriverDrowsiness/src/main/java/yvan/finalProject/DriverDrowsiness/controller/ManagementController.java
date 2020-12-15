@@ -405,13 +405,7 @@ public class ManagementController {
 		return "redirect:/manage/list-of-client";
 	}
 	
-	@RequestMapping(value = "/downloadPDF", method = RequestMethod.GET)
-	public ModelAndView ClientPdf(@ModelAttribute("theClient") ClientDao clientDao ) throws Exception{
 
-		List<Client> theClient = clientDao.getClients();
-		
-		return new ModelAndView("ClientPdf","theClient","theClient");
-	}
 	
 	/*---------------------- end of crud client ------------------------*/
 
@@ -633,5 +627,32 @@ public class ManagementController {
 //		
 //		return "yes";
 		
+	}
+	@RequestMapping("/pdfStaff")
+	public ModelAndView  generatepdfStaff() {
+		List<Staff> staffs=staffDao.getStaffs();
+		  return new ModelAndView("pdfViewStaff", "liststaff", staffs);
+		  
+	}
+	
+	@RequestMapping("/pdfDriver")
+	public ModelAndView  generatepdfDriver() {
+		List<Driver> drivers= driverDao.getDrivers();
+		  return new ModelAndView("pdfViewDriver", "listdrivers", drivers);
+		  
+	}
+	
+	@RequestMapping("/pdfTruck")
+	public ModelAndView  generatepdfTruck() {
+		List<Truck> trucks= truckDao.getTrucks();
+		  return new ModelAndView("pdfViewTruck", "listTrucks", trucks);
+		  
+	}
+	
+	@RequestMapping("/pdfAlert")
+	public ModelAndView  generatepdfAlert() {
+		List<Alert> alerts = alertDao.getAlerts();
+		  return new ModelAndView("pdfViewAlert", "listAlert", alerts);
+		  
 	}
 }

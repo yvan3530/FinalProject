@@ -23,10 +23,10 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App css -->
-        <link href="${css }/icons.min.css" rel="stylesheet" type="text/css" />
+        <script src="https://kit.fontawesome.com/1ea22623b8.js" crossorigin="anonymous"></script>
         <link href="${css }/app.min.css" rel="stylesheet" type="text/css"  />
         <link href="${css }/app-dark.min.css" rel="stylesheet" type="text/css"  />
-
+		<link href="${css }/icons.min.css" rel="stylesheet" /> 
     </head>
 
     <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
@@ -64,7 +64,7 @@
 
                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
-                                <i class="uil-home-alt"></i>
+                                <i class="fas fa-home"></i>
                                 <span class="badge badge-success float-right"></span>
                                 <span> Dashboards </span>
                             </a>

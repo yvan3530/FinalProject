@@ -17,19 +17,21 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import yvan.finalProject.DriverDrowsinessBackend.domain.Alert;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Staff;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class ClientPDFBuilder extends PDFAbstract {
+public class StaffPDFBuilder extends PDFAbstract {
 
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		 List<Client> clients = ( List<Client>) model.get("listClients");
+		 List<Staff> staffs = ( List<Staff>) model.get("liststaff");
 		  Date now =new Date();
 	         SimpleDateFormat sp=new SimpleDateFormat("dd-MMM-yyyy");
 	         String date=String.format("Date: %s  ",new SimpleDateFormat("dd MMM yyyy hh:mm").format(now));
@@ -47,7 +49,7 @@ public class ClientPDFBuilder extends PDFAbstract {
 	        document.add(para);
 	       document.add(new Paragraph(new Chunk().NEWLINE));
 	       document.add(new Paragraph(new Chunk().NEWLINE));
-	       Paragraph title=new Paragraph(new Phrase("List of clients",CUSTOM_FONT));
+	       Paragraph title=new Paragraph(new Phrase("List of Staff",CUSTOM_FONT));
 	         title.setAlignment(Element.ALIGN_CENTER);
 	         document.add(title);
 	         document.add(new Paragraph(new Chunk().NEWLINE));
@@ -58,7 +60,7 @@ public class ClientPDFBuilder extends PDFAbstract {
 	         table.setWidthPercentage(100);
 	         
 	         
-	         if(null == clients){
+	         if(null == staffs){
 	        	  Paragraph paragraph = new Paragraph();
 	             paragraph.add(new Chunk("No data to display."));
 	             document.add(paragraph);
@@ -85,7 +87,7 @@ public class ClientPDFBuilder extends PDFAbstract {
 	        	 table.setHeaderRows(1);
 	        	 
 	        	 int n=1;
-	        	 for (Client c : clients) {
+	        	 for (Staff c : staffs) {
 	        		 table.addCell(String.valueOf(n));
 	        		 table.addCell(new Phrase(c.getFirstName()+" "+c.getLastName()));
 	        		 table.addCell(c.getEmail());

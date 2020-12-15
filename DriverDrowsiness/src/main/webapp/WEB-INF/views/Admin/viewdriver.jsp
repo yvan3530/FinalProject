@@ -24,10 +24,10 @@
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
         <!-- App css -->
-        <link href="${css }/icons.min.css" rel="stylesheet" type="text/css" />
+       <script src="https://kit.fontawesome.com/1ea22623b8.js" crossorigin="anonymous"></script>
         <link href="${css }/app.min.css" rel="stylesheet" type="text/css"  />
         <link href="${css }/app-dark.min.css" rel="stylesheet" type="text/css"  />
-
+		<link href="${css }/icons.min.css" rel="stylesheet" /> 
     </head>
 
     <body class="loading" data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
@@ -65,7 +65,7 @@
 
                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
-                                <i class="uil-home-alt"></i>
+                                <i class="fas fa-home"></i>
                                 <span class="badge badge-success float-right"></span>
                                 <span> Dashboards </span>
                             </a>
@@ -76,9 +76,9 @@
 
                          <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
-                                <i class="uil-user-square"></i>
+                                <i class="fas fa-user-crown"></i>
                                 <span> Staff </span>
-                                <span class="menu-arrow"></span>
+                                <span class="fas fa-arrow-right"></span>
                             </a>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
@@ -93,9 +93,9 @@
                         </li>
                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
-                                <i class=" uil-book-reader"></i>
+                                <i class="fas fa-user"></i>
                                 <span> Driver </span>
-                                <span class="menu-arrow"></span>
+                                <span class="fas fa-arrow-right"></span>
                             </a>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
@@ -110,9 +110,9 @@
                         </li>
                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
-                                <i class=" uil-users-alt"></i>
+                                <i class="fas fa-users"></i>
                                 <span> Client </span>
-                                <span class="menu-arrow"></span>
+                                <span class="fas fa-arrow-right"></span>
                             </a>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
@@ -127,9 +127,9 @@
                         </li>                       
                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
-                                <i class="uil-truck"></i>
+                                <i class="fas fa-truck"></i>
                                 <span> Truck </span>
-                                <span class="menu-arrow"></span>
+                                <span class="fas fa-arrow-right"></span>
                             </a>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
@@ -144,9 +144,9 @@
                         </li>                   
                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
-                                <i class=" dripicons-location"></i>
+                                <i class="fas fa-map-marked-alt"></i>
                                 <span> Route </span>
-                                <span class="menu-arrow"></span>
+                                <span class="fas fa-arrow-right"></span>
                             </a>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
@@ -161,9 +161,9 @@
                         </li>
                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
-                                <i class="uil-hdd"></i>
+                                <i class="fas fa-boxes"></i>
                                 <span> Freight </span>
-                                <span class="menu-arrow"></span>
+                                <span class="fas fa-arrow-right"></span>
                             </a>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
@@ -172,6 +172,22 @@
                                 </li>
                                 <li>
                                     <a href="apps-ecommerce-checkout.html">Checkout</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        
+                           <li class="side-nav-item">
+                            <a href="javascript: void(0);" class="side-nav-link">
+                                <i class="fas fa-alarm-clock"></i>
+                                <span> Alert </span>
+                                <span class="fas fa-arrow-right"></span>
+                            </a>
+                            <ul class="side-nav-second-level" aria-expanded="false">
+                               
+                              
+                                <li>
+                                    <a href="${contextRoot }/manage/list-of-Alert">Checkout</a>
                                 </li>
                                 
                             </ul>
@@ -212,13 +228,10 @@
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
                                     aria-expanded="false">
-                                    <span class="account-user-avatar"> 
-                                        <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
-                                    </span>
-                                    <span>
-                                        <span class="account-user-name">Dominic Keller</span>
-                                        <span class="account-position">Founder</span>
-                                    </span>
+                                 
+                    			${userModel.fullName}
+                    			<span class="caret"></span>
+                    		   
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
                                     <!-- item-->
@@ -226,7 +239,7 @@
                                         <h6 class="text-overflow m-0">Welcome !</h6>
                                     </div>
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <a href="${contextRoot}/perform-logout" class="dropdown-item notify-item">
                                         <i class="mdi mdi-logout mr-1"></i>
                                         <span>Logout</span>
                                     </a>
@@ -248,12 +261,11 @@
                                 <div class="page-title-box">
                                     <div class="page-title-right">
                                         <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
-                                            <li class="breadcrumb-item active">Orders</li>
+                                            <li class="breadcrumb-item"><a href="${contextRoot }/dashboard">Driver</a></li>
+                                            <li class="fas fa-arrow-right">Checkout</li>
                                         </ol>
                                     </div>
-                                    <h4 class="page-title">Orders</h4>
+                                    <h4 class="page-title">Checkout</h4>
                                 </div>
                             </div>
                         </div>     
@@ -275,7 +287,9 @@
                                             </div>
                                             <div class="col-lg-4">
                                                 <div class="text-lg-right">
+                                                      <a href="${contextRoot }/manage/pdfDriver">
                                                      <button type="button" class="btn btn-light mb-2">Export</button>
+                                                     </a>
                                                 </div>
                                             </div><!-- end col-->
                                         </div>

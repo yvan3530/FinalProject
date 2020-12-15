@@ -3007,8 +3007,9 @@ footer.footer {
 }
 
 .main-page-box section.combine .inner {
-	background: var(- -main-blue);
-	border-radius: 0 24px 24px 24px
+	
+	border-radius: 0 24px 24px 24px;
+	background: #009fff;
 }
 
 .main-page-box section.combine .inner .wrap {

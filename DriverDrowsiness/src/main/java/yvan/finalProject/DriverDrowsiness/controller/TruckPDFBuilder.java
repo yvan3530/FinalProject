@@ -18,22 +18,28 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
+import yvan.finalProject.DriverDrowsinessBackend.domain.Truck;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class ClientPDFBuilder extends PDFAbstract {
+public class TruckPDFBuilder extends PDFAbstract {
 
 	@Override
 	protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// TODO Auto-generated method stub
-		 List<Client> clients = ( List<Client>) model.get("listClients");
+		 List<Truck> trucks = ( List<Truck>) model.get("listTrucks");
+		 
+		 
+		
+		 
 		  Date now =new Date();
 	         SimpleDateFormat sp=new SimpleDateFormat("dd-MMM-yyyy");
 	         String date=String.format("Date: %s  ",new SimpleDateFormat("dd MMM yyyy hh:mm").format(now));
 	         Paragraph para=new Paragraph(date);
+	        
 	         para.setAlignment(Element.ALIGN_RIGHT);
 	         Font CUSTOM_FONT = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD | Font.UNDERLINE);
 	         Font white = new Font(Font.FontFamily.TIMES_ROMAN);
@@ -47,7 +53,7 @@ public class ClientPDFBuilder extends PDFAbstract {
 	        document.add(para);
 	       document.add(new Paragraph(new Chunk().NEWLINE));
 	       document.add(new Paragraph(new Chunk().NEWLINE));
-	       Paragraph title=new Paragraph(new Phrase("List of clients",CUSTOM_FONT));
+	       Paragraph title=new Paragraph(new Phrase("List of Trucks",CUSTOM_FONT));
 	         title.setAlignment(Element.ALIGN_CENTER);
 	         document.add(title);
 	         document.add(new Paragraph(new Chunk().NEWLINE));
@@ -58,7 +64,7 @@ public class ClientPDFBuilder extends PDFAbstract {
 	         table.setWidthPercentage(100);
 	         
 	         
-	         if(null == clients){
+	         if(null == trucks){
 	        	  Paragraph paragraph = new Paragraph();
 	             paragraph.add(new Chunk("No data to display."));
 	             document.add(paragraph);
@@ -69,13 +75,13 @@ public class ClientPDFBuilder extends PDFAbstract {
 	        	 PdfPCell c1=new PdfPCell(new Phrase("#",white));
 	        	 c1.setBackgroundColor(BaseColor.BLACK);
 	        	
-	        	 PdfPCell c2=new PdfPCell(new Phrase("names",white));
+	        	 PdfPCell c2=new PdfPCell(new Phrase("Plate",white));
 	        	 c2.setBackgroundColor(BaseColor.BLACK);
-	        	 PdfPCell c3=new PdfPCell(new Phrase("email",white));
+	        	 PdfPCell c3=new PdfPCell(new Phrase("Kind",white));
 	        	 c3.setBackgroundColor(BaseColor.BLACK);
-	        	 PdfPCell c4=new PdfPCell(new Phrase("address",white));
+	        	 PdfPCell c4=new PdfPCell(new Phrase("Brand",white));
 	        	 c4.setBackgroundColor(BaseColor.BLACK);
-	        	 PdfPCell c5=new PdfPCell(new Phrase("phone number",white));
+	        	 PdfPCell c5=new PdfPCell(new Phrase("Active",white));
 	        	 c5.setBackgroundColor(BaseColor.BLACK);
 	        	 table.addCell(c1);
 	        	 table.addCell(c2);
@@ -85,12 +91,12 @@ public class ClientPDFBuilder extends PDFAbstract {
 	        	 table.setHeaderRows(1);
 	        	 
 	        	 int n=1;
-	        	 for (Client c : clients) {
+	        	 for (Truck c : trucks) {
 	        		 table.addCell(String.valueOf(n));
-	        		 table.addCell(new Phrase(c.getFirstName()+" "+c.getLastName()));
-	        		 table.addCell(c.getEmail());
-	        		 table.addCell(c.getAddress());
-	        		 table.addCell(c.getTelePhone());
+	        		 table.addCell(new Phrase(c.getPlate()));
+	        		 table.addCell(c.getKind());
+	        		 table.addCell(c.getBrand());
+	        		 table.addCell(String.valueOf(c.isActive()));
 	        		 n++;
 				}
 	        	 preface.add(table);

@@ -42,9 +42,11 @@ public class Freight implements Serializable{
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="client")
 	private Client client;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="route")
 	private  Route route;
 	
 	private double price;

@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -28,6 +29,7 @@ public class Alert implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="truck")
 	private Truck truck;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
