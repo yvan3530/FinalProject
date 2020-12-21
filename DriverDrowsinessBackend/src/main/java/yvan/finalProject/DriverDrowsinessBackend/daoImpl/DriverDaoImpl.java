@@ -54,7 +54,7 @@ Session currentSession = sessionFactory.getCurrentSession();
 		Query theQuery = 
 				currentSession.createQuery("delete from Driver where userId=:userId");
 	
-		theQuery.setParameter("driverId", theId);
+		theQuery.setParameter("userId", theId);
 		theQuery.executeUpdate();
 	}
 

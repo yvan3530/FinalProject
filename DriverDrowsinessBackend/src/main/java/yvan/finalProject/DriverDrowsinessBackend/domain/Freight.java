@@ -39,8 +39,16 @@ public class Freight implements Serializable{
 	private String typeOfPackage;
 	@Column(name="category")
 	private String category;
+	private int quantity;
 	
-	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="client")
 	private Client client;
@@ -53,17 +61,33 @@ public class Freight implements Serializable{
 	private FreightStatus status;
 	@Column(nullable = true)
 	private Date departTime;
-	@Column(nullable = true)
-	private Date arrivalTime;
+	
 
 	private String departLocation;
 	private String arrivalLocation;
 	
+	private String transportation;
+	private String addictional;
 	
 	
 	
 	
-	
+	public String getAddictional() {
+		return addictional;
+	}
+
+	public void setAddictional(String addictional) {
+		this.addictional = addictional;
+	}
+
+	public String getTransportation() {
+		return transportation;
+	}
+
+	public void setTransportation(String transportation) {
+		this.transportation = transportation;
+	}
+
 	public Freight() {
 		
 	}
@@ -165,13 +189,6 @@ public class Freight implements Serializable{
 		this.departTime = departTime;
 	}
 
-	public Date getArrivalTime() {
-		return arrivalTime;
-	}
-
-	public void setArrivalTime(Date arrivalTime) {
-		this.arrivalTime = arrivalTime;
-	}
 
 	public String getDepartLocation() {
 		return departLocation;

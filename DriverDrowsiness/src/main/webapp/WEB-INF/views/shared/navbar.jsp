@@ -47,12 +47,8 @@
 					href="${contextRoot }/dashboard">dashboard</a></li>
 					 </security:authorize>  
 					
-						<%-- <li class="navSection primary" ><a class="rootLink"
+						 <li class="navSection primary" ><a class="rootLink"
 					href="${contextRoot }/addfreight">freight</a></li>
-					
-					<li class="navSection primary" ><a class="rootLink"
-					href="${contextRoot }/manage/pdfClient">client</a></li> --%>
-					
 					
 					
 					<li class="navSection secondary"><a class="rootLink outline"

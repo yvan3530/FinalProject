@@ -112,7 +112,7 @@ public class PageController {
 	
 	
 	
-	@RequestMapping(value = "/addfreight", method = RequestMethod.GET)
+	@RequestMapping(value = "/addfreights", method = RequestMethod.GET)
 	public ModelAndView showAddFreight(@RequestParam(name = "operation", required = false) String operation) {
 
 		ModelAndView mv = new ModelAndView("freight");
@@ -134,7 +134,7 @@ public class PageController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/addfreight", method = RequestMethod.POST)
+	@RequestMapping(value = "/addfreight", method = RequestMethod.GET)
 	public String handlefreight(@Valid @ModelAttribute("freight") Freight nFreight, BindingResult results, Model model,
 			HttpServletRequest request) {
 
@@ -150,7 +150,7 @@ public class PageController {
 
 		logger.info(nFreight.toString());
 
-		;
+		
 		freightDao.addFreight(nFreight);
 
 		return "redirect:/addfreight?operation=freight";

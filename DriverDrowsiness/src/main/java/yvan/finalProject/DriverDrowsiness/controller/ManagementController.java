@@ -123,7 +123,7 @@ public class ManagementController {
 	@RequestMapping(value = "/addtrucks", method = RequestMethod.GET)
 	public ModelAndView showAddTruck(@RequestParam(name = "operation", required = false) String operation) {
 
-		ModelAndView mv = new ModelAndView("page");
+		ModelAndView mv = new ModelAndView("AddTruck");
 
 		mv.addObject("userClickAddTruck", true);
 		mv.addObject("title", "Add Truck");
@@ -176,7 +176,7 @@ public class ManagementController {
 	@RequestMapping(value = "/addroute", method = RequestMethod.GET)
 	public ModelAndView showAddroute(@RequestParam(name = "operation", required = false) String operation) {
 
-		ModelAndView mv = new ModelAndView("page");
+		ModelAndView mv = new ModelAndView("route");
 
 		mv.addObject("userClickAddRoute", true);
 		mv.addObject("title", "Add route");
@@ -332,10 +332,10 @@ public class ManagementController {
 				
 		
 		// add the company to the model
-		theModel.addAttribute("freight", thefreight);
+		theModel.addAttribute("freights", thefreight);
 		
 		
-		return "viewTruck";
+		return "Admin/viewfreight";
 	}
 
 	@RequestMapping(value = "/UpdateFreight", method = RequestMethod.GET)
@@ -351,6 +351,15 @@ public class ManagementController {
 		
 		//send over to our form
 		return "redirect:/manage/addtrucks?operation=truck";
+	}
+	
+	@RequestMapping(value = "/freightdelete", method = RequestMethod.GET)
+	public String deletefreight(@RequestParam("freightId") int theId) {
+		
+		//delete the company
+		freightDao.deleteFreight(theId);
+		
+		return "redirect:/manage/list-of-freight";
 	}
 	
 //	@RequestMapping(value = "/delete", method = RequestMethod.GET)
@@ -471,7 +480,7 @@ public class ManagementController {
 	}
 	
 	@RequestMapping(value = "/driverFormUpdate", method = RequestMethod.GET)
-	public String UpdateDriver(@RequestParam("driverId") int userId, Model theModel) {
+	public String UpdateDriver(@RequestParam("userId") int userId, Model theModel) {
 		
 		
 		
@@ -487,7 +496,7 @@ public class ManagementController {
 	}
 	
 	@RequestMapping(value = "/Driverdelete", method = RequestMethod.GET)
-	public String deleteDriver(@RequestParam("driverId") int theId) {
+	public String deleteDriver(@RequestParam("userId") int theId) {
 		
 		//delete the company
 		driverDao.deleteDriver(theId);
@@ -513,7 +522,7 @@ public class ManagementController {
 	}
 	
 	@RequestMapping(value = "/staffFormUpdate", method = RequestMethod.GET)
-	public String UpdateStaff(@RequestParam("staffId") int userId, Model theModel) {
+	public String UpdateStaff(@RequestParam("userId") int userId, Model theModel) {
 		
 		
 		

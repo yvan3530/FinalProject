@@ -2116,17 +2116,17 @@ pre code {
 	font-size: .875rem;
 	font-weight: 400;
 	line-height: 1.5;
-	color: #e3eaef;
-	background-color: #404954;
+	color: #26292b;
+	background-color: #fff;
 	background-clip: padding-box;
-	border: 1px solid #47515d;
+	border: 1px solid #80ff80;
 	border-radius: .25rem;
-	-webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow
+	/* -webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow
 		.15s ease-in-out;
 	transition: border-color .15s ease-in-out, -webkit-box-shadow .15s
 		ease-in-out;
 	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out,
+ */	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out,
 		-webkit-box-shadow .15s ease-in-out
 }
 

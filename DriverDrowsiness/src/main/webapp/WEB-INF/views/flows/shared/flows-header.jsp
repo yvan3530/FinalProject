@@ -38,6 +38,6 @@
 
 	<div class="wrapper">
 
-	<%@include file="flows-navbar.jsp" %>
+	<%@include file="../../shared/navbar.jsp"%>
 </div>
 		

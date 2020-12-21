@@ -162,7 +162,7 @@ public class StaffDaoImpl implements StaffDao {
 		Query theQuery = 
 				currentSession.createQuery("delete from Staff where userId=:userId");
 	
-		theQuery.setParameter("staffId", theId);
+		theQuery.setParameter("userId", theId);
 		theQuery.executeUpdate();
 	}
 

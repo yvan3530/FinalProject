@@ -1898,6 +1898,16 @@ footer.footer {
 	color: #1b82ff
 }
 
+ .intro {
+	/* background-image:url('../images/backgrd.PNG') ;
+	 */
+	
+		background-image: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6)), url(../images/backgrd.PNG) ;
+	background-size: cover;
+	background-position: center;
+	height: 100vh;	
+	
+} 
 .main-page-box section.intro {
 	position: relative;
 	display: -webkit-box;
@@ -2015,11 +2025,11 @@ footer.footer {
 	line-height: 48px;
 	color: var(- -main-dark);
 	margin-bottom: 60px;
-	text-align: left
+	
 }
 
 .main-page-box section.intro .title .accent {
-	color: var(- -main-blue);
+	color: blue;
 	padding: 8px
 }
 
@@ -3007,9 +3017,8 @@ footer.footer {
 }
 
 .main-page-box section.combine .inner {
-	
+	background: #0080ff;
 	border-radius: 0 24px 24px 24px;
-	background: #009fff;
 }
 
 .main-page-box section.combine .inner .wrap {
@@ -3026,14 +3035,14 @@ footer.footer {
 	font-size: 40px;
 	line-height: 38px;
 	text-align: center;
-	color: #fff;
+	color:blue;
 	margin-bottom: 17px
 }
 
 .main-page-box section.combine .inner .wrap header h3 {
 	display: inline-block;
 	font-weight: 600;
-	color: #fff;
+	color:  #fff;
 	opacity: .6;
 	font-size: 40px
 }
@@ -3047,7 +3056,7 @@ footer.footer {
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 26px;
-	color: #fff;
+	color:  #fff;
 	margin-bottom: 32px
 }
 
@@ -3068,7 +3077,7 @@ footer.footer {
 	}
 	.main-page-box section.combine .inner .wrap .mobile-part p,
 		.main-page-box section.combine .inner .wrap .mobile-part span {
-		color: #99b0ff;
+		color: #0080ff;
 		font-weight: 600;
 		font-size: 24px;
 		line-height: 36px
@@ -3085,7 +3094,7 @@ footer.footer {
 
 @media ( max-width :768px) {
 	.main-page-box section.combine .inner .wrap .mobile-part span {
-		color: #fff
+		color: #0080ff
 	}
 }
 

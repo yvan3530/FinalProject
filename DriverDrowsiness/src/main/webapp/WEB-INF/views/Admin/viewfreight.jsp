@@ -167,16 +167,26 @@
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
                                 <li>
-                                    <a href="apps-ecommerce-orders.html">Orders</a>
+                                    <a href="${contextRoot }/addfreight">Orders</a>
                                 </li>
                                 <li>
-                                    <a href="apps-ecommerce-checkout.html">Checkout</a>
+                                    <a href="${contextRoot }/manage/list-of-freight">Checkout</a>
                                 </li>
                                 
                             </ul>
                         </li>
 
-                       
+                       <li class="side-nav-item"><a href="javascript: void(0);"
+						class="side-nav-link"> <i class="fas fa-alarm-clock"></i> <span>
+								Alert </span> <span class="fas fa-arrow-right"></span>
+					</a>
+						<ul class="side-nav-second-level" aria-expanded="false">
+
+
+							<li><a href="${contextRoot }/manage/list-of-Alert">Checkout</a>
+							</li>
+
+						</ul></li>
                                 
                             </ul>
                      
@@ -291,15 +301,50 @@
                                                             </div>
                                                         </th>
                                                         <th>Order ID</th>
-                                                        <th>Date</th>
-                                                        <th>Payment Status</th>
-                                                        <th>Total</th>
-                                                        <th>Payment Method</th>
-                                                        <th>Order Status</th>
+                                                        <th>Description</th>
+                                                        <th>Weight</th>
+                                                        <th>Lenght</th>
+                                                        <th>Width</th>
+                                                        <th>category</th>
+                                                        <th>client</th>
+                                                        <th>route</th>
+                                                        <th>price</th>
+                                                        <th>status</th>
+                                                        <th>departTime</th>
+                                                        <th>departLocation</th>
+                                                        <th>arrivalLocation</th>
                                                         <th style="width: 125px;">Action</th>
                                                     </tr>
                                                 </thead>
+                                                <c:forEach var="freight" items="${freights }">
+                                                <c:url var="updateLink" value="/manage/UpdateFreight">
+                                                <c:param name="freightId" value="${freight.freightId }"></c:param>
+                                                </c:url>
+                                                <c:url var="deleteLink" value="/manage/freightdelete">
+                                                <c:param name="freightId" value="${freight.freightId }"></c:param>
+                                                </c:url>
+                                                <tr>
+                                                <td>${freight.packageDescription }</td>
+                                                <td>${freight.packageWeight }</td>
+                                                <td>${freight.packageLenght }</td>
+                                                <td>${freight.packagewidth }</td>
+                                                <td>${freight.category }</td>
+                                                <td>${freight.client }</td>
+                                                <td>${freight.route }</td>
+                                                <td>${freight.price }</td>
+                                                <td>${freight.status }</td>
+                                                <td>${freight.departTime }</td>
+                                                <td>${freight.departLocation }</td>
+                                                <td>${freight.arrivalLocation }</td>
+                                                <td>
+                                                <a href="${updateLink}">update</a>
+                                                |
+                                                 <a href="${deleteLink}"
+                                                 onclick="if (!(confirm('Are you sure you want to delete this route?')))return false">delete</a>
+                                                </td>
+                                                </tr>
                                                 
+                                                </c:forEach>
                                             </table>
                                         </div>
                                     </div> <!-- end card-body-->

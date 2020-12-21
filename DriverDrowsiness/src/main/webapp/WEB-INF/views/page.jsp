@@ -28,6 +28,11 @@
 <script>
 	window.menu = '${title}';
 </script>
+
+ <%-- <img src="${images }/backgrd.PNG"> --%> 
+
+<%-- <link 
+	href="${images }/wall.PNG"> --%>
 <!-- Bootstrap core CSS -->
 <link href="${css }/bootstrap.min.css" rel="stylesheet">
 
@@ -76,9 +81,9 @@
 				<%@include file="ManageBooking.jsp"%>
 			</c:if>
 
-			<c:if test="${ userClickAddTruck == true}">
+			 <%-- <c:if test="${ userClickAddTruck == true}">
 				<%@include file="AddTruck.jsp"%>
-			</c:if>
+			</c:if> --%> 
 
 			<%--  <c:if test="${ userClickAddFreight == true}">
 				<%@include file="freight.jsp"%>

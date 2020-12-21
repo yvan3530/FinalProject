@@ -6,14 +6,14 @@
 		</div>
 		<div id="scroll-container" class='main-page-box'>
 			<section class="intro">
-				<div class="content">
+				<%-- <div class="content" >
 					<p class="pre_title">Shipping to and from anywhere in the world</p>
 					<h1 class="title">
 						Find the<span class="accent">best freight</span>quote
 					</h1>
 					
 					<a href="${contextRoot }/addfreight" class="application-link link"> Request a Quote </a>
-				</div>
+				</div> --%>
 			</section>
 			<section class='requests'>
 				<div class='content'>
@@ -747,7 +747,8 @@
 					</div>
 				</div>
 			</section>
-			<section class='apps'>
+			<section class="apps" >
+			<!--  style="background-image: url('C:/Users/yvan/Desktop/New folder (3)/kesi/stage/wall.PNG');background-size: cover; height:480px; padding-top:80px;" -->
 				<div class="cursor"></div>
 				<div class='content'>
 					<div class='title'>

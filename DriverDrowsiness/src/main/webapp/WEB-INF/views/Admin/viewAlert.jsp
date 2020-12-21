@@ -161,17 +161,17 @@
                         </li>
                         <li class="side-nav-item">
                             <a href="javascript: void(0);" class="side-nav-link">
-                                <i class="fas fa-boxes"></i>
+                                <i class="uil-hdd"></i>
                                 <span> Freight </span>
-                                <span class="fas fa-arrow-right"></span>
+                                <span class="menu-arrow"></span>
                             </a>
                             <ul class="side-nav-second-level" aria-expanded="false">
                                
                                 <li>
-                                    <a href="apps-ecommerce-orders.html">Orders</a>
+                                    <a href="${contextRoot }/addfreight">Orders</a>
                                 </li>
                                 <li>
-                                    <a href="apps-ecommerce-checkout.html">Checkout</a>
+                                    <a href="${contextRoot }/manage/list-of-freight">Checkout</a>
                                 </li>
                                 
                             </ul>
