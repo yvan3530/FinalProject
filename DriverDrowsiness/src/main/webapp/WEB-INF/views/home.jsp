@@ -6,14 +6,14 @@
 		</div>
 		<div id="scroll-container" class='main-page-box'>
 			<section class="intro">
-				<%-- <div class="content" >
+				 <div class="content" >
 					<p class="pre_title">Shipping to and from anywhere in the world</p>
 					<h1 class="title">
 						Find the<span class="accent">best freight</span>quote
 					</h1>
 					
 					<a href="${contextRoot }/addfreight" class="application-link link"> Request a Quote </a>
-				</div> --%>
+				</div> 
 			</section>
 			<section class='requests'>
 				<div class='content'>
@@ -721,8 +721,10 @@
 					<div class='main-part'>
 						<div class='img-part'>
 							<img
-								src='design/images/services/test-main-page/marketplace-pic.png'
-								alt='market-place'>
+								src="${pageContext.request.contextPath}/resources/images/location.PNG"
+					
+
+								alt="market-place">
 						</div>
 						<div class='text-part'>
 							<ul class='advantage'>

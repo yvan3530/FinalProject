@@ -29,7 +29,7 @@
 	window.menu = '${title}';
 </script>
 
- <%-- <img src="${images }/backgrd.PNG"> --%> 
+ <%--  <img src="${images }/location.PNG">   --%>
 
 <%-- <link 
 	href="${images }/wall.PNG"> --%>

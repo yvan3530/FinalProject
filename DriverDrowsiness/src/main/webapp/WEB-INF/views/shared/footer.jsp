@@ -1,7 +1,7 @@
 	<footer class="footer">
 		<div class="content">
 			<ul class="main__nav">
-				<li class="intro main__nav-list">
+				<li class="main__nav-list">
 					<p data-toggle="modal" data-target="#langModal" class="lang-change">
 						<span class="planet_icon"></span>English
 					</p>
