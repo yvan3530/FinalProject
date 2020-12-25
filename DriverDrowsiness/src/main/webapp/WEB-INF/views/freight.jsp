@@ -1,7 +1,8 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
@@ -16,573 +17,590 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8" />
-<title>Orders | Hyper - Responsive Bootstrap 4 Admin Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta
-	content="A fully featured admin theme which can be used to build CRM, CMS, etc."
-	name="description" />
-<meta content="Coderthemes" name="author" />
-<!-- App favicon -->
-<link rel="shortcut icon" href="assets/images/favicon.ico">
-
-<!-- App css -->
-<script src="https://kit.fontawesome.com/1ea22623b8.js"
-	crossorigin="anonymous"></script>
-
-<link href="${css }/app.min.css" rel="stylesheet" type="text/css" />
-<link href="${css }/app-dark.min.css" rel="stylesheet" type="text/css" />
-<link href="${css }/icons.min.css" rel="stylesheet" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Kesi Investiment Company - ${title }</title>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<script>
+	window.menu = '${title}';
+</script>
+<!-- Bootstrap core CSS -->
 <link href="${css }/bundle.css" rel="stylesheet">
+<link href="${css }/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="${css }/myapp.css" rel="stylesheet">
+
+<link href="${css }/index.css" rel="stylesheet">
+
+<link href="${css }/partial-mp-filter.css" rel="stylesheet">
+
+<link href="${css }/global.css" rel="stylesheet">
 </head>
 
-<body class="loading"
-	data-layout-config='{"leftSideBarTheme":"dark","layoutBoxed":false, "leftSidebarCondensed":false, "leftSidebarScrollable":false,"darkMode":false, "showRightSidebarOnStart": true}'>
-	<!-- Begin page -->
-	<div class="wrapper">
-		<!-- ========== Left Sidebar Start ========== -->
-		<div class="left-side-menu">
+<body>
 
-			<!-- LOGO -->
-			<a href="index-2.html" class="logo text-center logo-light"> <span
-				class="logo-lg"> <img src="assets/images/logo.png" alt=""
-					height="16">
-			</span> <span class="logo-sm"> <img src="assets/images/logo_sm.png"
-					alt="" height="16">
-			</span>
-			</a>
 
-			<!-- LOGO -->
-			<a href="index-2.html" class="logo text-center logo-dark"> <span
-				class="logo-lg"> <img src="assets/images/logo-dark.png"
-					alt="" height="16">
-			</span> <span class="logo-sm"> <img
-					src="assets/images/logo_sm_dark.png" alt="" height="16">
-			</span>
-			</a>
+	<header class="main_header">
+		<nav class="navbar">
+			<div class="container-lg">
+				<a class="rootLink" href="${contextRoot }/home">Kesi Investiment
+					Ltd</a>
+				<ul class="navRoot">
 
-			<div class="h-100" id="left-side-menu-container" data-simplebar>
 
-				<!--- Sidemenu -->
-				<ul class="metismenu side-nav">
 
-					<li class="side-nav-title side-nav-item"></li>
+					<li class="navSection primary"><a class="rootLink"
+						href="${contextRoot }/about">About </a> <%-- <li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/manage/bookings">Booking</a></li>
+					
+					<li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/manage/addroute">route</a></li>
+					
+					<security:authorize access="hasAuthority('ADMIN')">
+				<li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/manage/addtrucks">truck</a></li>
+					</security:authorize> --%> <a class="rootLink hasDropdown"
+						data-dropdown="services"> Services </a> <a class="rootLink"
+						href="${contextRoot }/contact">Contact </a> <a class="rootLink"
+						href="${contextRoot }/health">Health </a></li>
 
-					<li class="side-nav-item"><a href="javascript: void(0);"
-						class="side-nav-link"> <i class="fas fa-home"></i> <span
-							class="badge badge-success float-right"></span> <span>
-								Dashboards </span>
-					</a></li>
+					<%-- <li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/driver">driver</a></li> --%>
+					<%-- <li class="navSection primary" ><a class="rootLink"
+					href="${contextRoot }/staff">staff</a></li> --%>
 
-					<li class="side-nav-title side-nav-item">Services</li>
+					<security:authorize access="hasAuthority('ADMIN')">
+						<li class="navSection primary"><a class="rootLink"
+							href="${contextRoot }/dashboard">dashboard</a></li>
+					</security:authorize>
 
-					<li class="side-nav-item"><a href="javascript: void(0);"
-						class="side-nav-link"> <i class="fas fa-user-crown"></i> <span>
-								Staff </span> <span class="fas fa-arrow-right"></span>
+					<li class="navSection primary"><a class="rootLink"
+						href="${contextRoot }/addfreight">freight</a></li>
+
+
+					<li class="navSection secondary"><a class="rootLink outline"
+						href="${contextRoot}/register">Sign Up</a></li>
+					<li class="navSection secondary"><a class="rootLink outline"
+						href="${contextRoot}/login">Login</a></li>
+
+					<a class="collapsible" href="${userModel.fullName}"></a>
+					<div class="collapse">
+						<ul class="linkGroup linkList developersGroup">
+							<li><a class="linkContainer"
+								href="${contextRoot}/perform-logout">
+									<h3 class="linkTitle">Logout</h3>
+							</a></li>
+						</ul>
+
+					</div>
+					<li class="navSection mobile"><a
+						class="rootLink item-mobileMenu"> <i class="fas fa-bars"></i>
 					</a>
-						<ul class="side-nav-second-level" aria-expanded="false">
+						<div class="popup">
+							<div class="popupContainer">
+								<a class="popupCloseButton">Close</a>
+								<div class="mobileProducts">
+									<a class="mobileSignIn" href="${contextRoot }/about">About
+										<i class="fa fa-chevron-right"></i>
+									</a> <a class="collapsible" href="#">SERVICES</a>
+									<div class="collapse">
+										<div class="mobileProductsList">
+											<ul>
+												<li><a class="linkContainer" href="#"> <i
+														class="fad fa-box-usd"></i> Request a Quote
+												</a></li>
+											</ul>
 
-							<li><a href="${contextRoot }/staff">Orders</a></li>
-							<li><a href="${contextRoot }/manage/list-of-staff">Checkout</a>
-							</li>
+										</div>
+										<div class="mobileSecondaryNav">
+											<ul>
+												<li><a href="#">FCL Shipping</a></li>
+												<li><a href="#">LCL Shipping</a></li>
+												<li><a href="#">Bulk & Break Bulk</a></li>
 
-						</ul></li>
-					<li class="side-nav-item"><a href="javascript: void(0);"
-						class="side-nav-link"> <i class="fas fa-user"></i> <span>
-								Driver </span> <span class="fas fa-arrow-right"></span>
-					</a>
-						<ul class="side-nav-second-level" aria-expanded="false">
+												<li><a href="#">Insurance</a></li>
+											</ul>
+											<ul>
 
-							<li><a href="${contextRoot }/driver">addDriver</a></li>
-							<li><a href="${contextRoot }/manage/list-of-driver">Checkout</a>
-							</li>
+												<li><a href="#">Survey Services</a></li>
 
-						</ul></li>
-					<li class="side-nav-item"><a href="javascript: void(0);"
-						class="side-nav-link"> <i class="fas fa-users"></i> <span>
-								Client </span> <span class="fas fa-arrow-right"></span>
-					</a>
-						<ul class="side-nav-second-level" aria-expanded="false">
+												<li><a href="#">Warehousing</a></li>
+											</ul>
+										</div>
+									</div>
 
-							<li><a href="${contextRoot}/register">Orders</a></li>
-							<li><a href="${contextRoot }/manage/list-of-client">Checkout</a>
-							</li>
+									<a class="mobileSignIn" href="${contextRoot }/contact">Contact
+										<i class="fa fa-chevron-right"></i>
+									</a> <a class="mobileSignIn" href="${contextRoot }/health">Health
+										<i class="fa fa-chevron-right"></i>
+									</a>
 
-						</ul></li>
-					<li class="side-nav-item"><a href="javascript: void(0);"
-						class="side-nav-link"> <i class="fas fa-truck"></i> <span>
-								Truck </span> <span class="fas fa-arrow-right"></span>
-					</a>
-						<ul class="side-nav-second-level" aria-expanded="false">
+								</div>
 
-							<li><a href="${contextRoot }/manage/addtrucks">Add Truck</a>
-							</li>
-							<li><a href="${contextRoot }/manage/list-of-truck">Checkout</a>
-							</li>
-
-						</ul></li>
-					<li class="side-nav-item"><a href="javascript: void(0);"
-						class="side-nav-link"> <i class=" fas fa-map-marked-alt"></i>
-							<span> Route </span> <span class="fas fa-arrow-right"></span>
-					</a>
-						<ul class="side-nav-second-level" aria-expanded="false">
-
-							<li><a href="${contextRoot }/manage/addroute">Add Route</a>
-							</li>
-							<li><a href="${contextRoot }/manage/list-of-route">Checkout</a>
-							</li>
-
-						</ul></li>
-					<li class="side-nav-item"><a href="javascript: void(0);"
-						class="side-nav-link"> <i class="uil-hdd"></i> <span>
-								Freight </span> <span class="menu-arrow"></span>
-					</a>
-						<ul class="side-nav-second-level" aria-expanded="false">
-
-							<li><a href="${contextRoot }/addfreight">Orders</a></li>
-							<li><a href="${contextRoot }/manage/list-of-freight">Checkout</a>
-							</li>
-
-						</ul></li>
-
-					<li class="side-nav-item"><a href="javascript: void(0);"
-						class="side-nav-link"> <i class="fas fa-alarm-clock"></i> <span>
-								Alert </span> <span class="fas fa-arrow-right"></span>
-					</a>
-						<ul class="side-nav-second-level" aria-expanded="false">
-
-
-							<li><a href="${contextRoot }/manage/list-of-Alert">Checkout</a>
-							</li>
-
-						</ul></li>
-
+							</div>
+						</div></li>
 				</ul>
-
-
-				<!-- End Sidebar -->
-
-				<div class="clearfix"></div>
-
 			</div>
-			<!-- Sidebar -left -->
-
-		</div>
-		<!-- Left Sidebar End -->
-
-		<div class="content-page">
-			<div class="content">
-				<!-- Topbar Start -->
-				<div class="navbar-custom">
-					<ul class="list-unstyled topbar-right-menu float-right mb-0">
-						<li class="dropdown notification-list d-lg-none"><a
-							class="nav-link dropdown-toggle arrow-none"
-							data-toggle="dropdown" href="#" role="button"
-							aria-haspopup="false" aria-expanded="false"> <i
-								class="dripicons-search noti-icon"></i>
-						</a>
-							<div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
-								<form class="p-3">
-									<input type="text" class="form-control"
-										placeholder="Search ..." aria-label="Recipient's username">
-								</form>
-							</div></li>
-
-
-						<li class="dropdown notification-list"><a
-							class="nav-link dropdown-toggle nav-user arrow-none mr-0"
-							data-toggle="dropdown" href="#" role="button"
-							aria-haspopup="false" aria-expanded="false">
-
-								${userModel.fullName} <span class="caret"></span>
-
-						</a>
-							<div
-								class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
-								<!-- item-->
-								<div class=" dropdown-header noti-title">
-									<h6 class="text-overflow m-0">Welcome !</h6>
-								</div>
-								<!-- item-->
-								<a href="${contextRoot}/perform-logout"
-									class="dropdown-item notify-item"> <i
-									class="mdi mdi-logout mr-1"></i> <span>Logout</span>
-								</a>
-
-							</div></li>
-
-					</ul>
-
+			<div class="dropdownRoot">
+				<div class="dropdownBackground"
+					style="transform: translateX(452px) scaleX(0.707692) scaleY(1.1075);">
+					<div class="alternateBackground"
+						style="transform: translateY(255.53px);"></div>
 				</div>
-				<!-- end Topbar -->
+				<div class="dropdownArrow"
+					style="transform: translateX(636px) rotate(45deg);"></div>
+				<div class="dropdownContainer"
+					style="transform: translateX(452px); width: 368px; height: 443px;">
+					<div class="dropdownSection left" data-dropdown="products">
+						<div class="dropdownContent">
+							<div class="linkGroup">
+								<ul class="productsGroup">
 
-				<!-- Start Content-->
-				<div class="container-fluid">
+								</ul>
+							</div>
 
-					<!-- start page title -->
-					<div class="row">
-						<div class="col-12">
-							<div class="page-title-box">
-								<div class="page-title-right">
-									<ol class="breadcrumb m-0">
-										<li class="breadcrumb-item"><a
-											href="${contextRoot }/dashboard">Client</a></li>
-										<li class="fas fa-arrow-right">Checkout</li>
-									</ol>
+						</div>
+					</div>
+					<div class="dropdownSection" data-dropdown="services">
+						<div class="dropdownContent">
+							<div class="linkGroup linkList developersGroup">
+								<a class="linkContainer" href="#">
+									<h3 class="linkTitle">
+										<i class="fad fa-box-usd"></i> Request a Quote
+									</h3>
+							</div>
+							<div class="linkGroup documentationGroup">
+								<div class="documentationArticles withoutIcon">
+									<ul>
+										<li><h4>Services</h4></li>
+										<li><a href="#">FCL Shipping</a></li>
+										<li><a href="#">LCL Shipping</a></li>
+										<li><a href="#">Bulk & Break Bulk</a></li>
+										<li><a href="#">Insurance</a></li>
+									</ul>
+									<ul>
+										<li><a href="#">Survey Services</a></li>
+
+										<li><a href="#">Warehousing</a></li>
+									</ul>
 								</div>
-								<h4 class="page-title">Checkout</h4>
 							</div>
 						</div>
 					</div>
-					<!-- end page title -->
-					<div class="row">
-						<div class="col-12">
-							<div class="card">
-								<div class="card-body">
 
-									<!-- Checkout Steps -->
-									<ul class="nav nav-pills bg-nav-pills nav-justified mb-3">
-										<li class="nav-item"><a href="#billing-information"
-											data-toggle="tab" aria-expanded="false"
-											class="nav-link rounded-0 active"> <i
-												class="mdi mdi-account-circle font-18"></i> <span
-												class="d-none d-lg-block">Billing Info</span>
-										</a></li>
+				</div>
+			</div>
+		</nav>
+		<div id="message_container"></div>
+	</header>
 
-									</ul>
+	<script>
+		window.userRole = '$userModel.role';
+	</script>
 
-									<!-- Steps Information -->
-									<div class="tab-content">
 
-										<!-- Billing Content-->
-										<div class="tab-pane show active" id="billing-information">
-											<div class="row">
-												<div class="col-lg-8">
-													<h4 class="mt-2">Billing information</h4>
 
-													<p class="text-muted mb-4">Fill the form below in order
-														to send you the order's invoice.</p>
+	<div class="white-block">
+		<c:if test="${not empty message }">
 
-													<form:form class="form-horizontal" modelAttribute="freight"
-														action="/DriverDrowsiness/addfreights" method="GET">
-														<div class="row">
-															<div class="col-md-6">
-																<div class="form-group">
-																	<label for="billing-first-name">departLocation</label>
-																	<form:input class="ant-input ant-cascader-input "
-																		type="text" path="departLocation"
-																		placeholder="Enter your first name"
-																		id="billing-first-name" />
-																	<form:errors path="departLocation"
-																		cssClass="help-block" element="em" />
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-group">
-																	<label for="billing-last-name">arrivalLocation</label>
-																	<form:input class="ant-input ant-cascader-input "
-																		type="text" path="arrivalLocation"
-																		placeholder="Enter your last name"
-																		id="billing-last-name" />
-																	<form:errors path="arrivalLocation"
-																		cssClass="help-block" element="em" />
-																</div>
-															</div>
-															<div class="col-md-6">
-																<div class="form-group">
-																	<label for="billing-first-name">departTime</label>
-																	<form:input class="ant-input ant-cascader-input "
-																		type="date" path="departTime"
-																		placeholder="Enter your first name"
-																		id="billing-first-name" />
-																	<form:errors path="departTime" cssClass="help-block"
+
+
+			<div class="col-xs-12">
+
+				<div class="alert alert-success alert-dismissible">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+
+
+					${message}
+				</div>
+
+			</div>
+		</c:if>
+		<div class="main-content">
+			<div id="request_a_quote">
+				<div class="app-wrapper container">
+					<div class="shipping-form">
+						<form:form class="form-horizontal" modelAttribute="freight"
+							action="/DriverDrowsiness/addFreight" method="POST">
+
+
+
+							<div class="white-block">
+								<h2>Shipment details</h2>
+								<div class="shipment-form">
+									<form:hidden path="freightId" />
+									<div class="form-row">
+										<div class="request-put inlarge blue">
+											<p class="name">departLocation</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="text" path="departLocation"
+													title="departLocation" name="departLocation"
+													placeholder="departLocation" step="any" autocomplete="off"
+													value="" />
+												<form:errors path="departLocation" cssClass="help-block"
+													element="em" />
+											</div>
+										</div>
+										<div class="request-put inlarge blue">
+											<p class="name">arrivalLocation</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="text" path="arrivalLocation"
+													title="arrivalLocation" name="arrivalLocation"
+													placeholder="arrivalLocation" step="any" autocomplete="off"
+													value="" />
+												<form:errors path="arrivalLocation" cssClass="help-block"
+													element="em" />
+											</div>
+										</div>
+										<div class="request-put inlarge blue">
+											<p class="name">departTime</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="date" path="departTime" title="departTime"
+													name="departTime" placeholder="departTime" step="any"
+													autocomplete="off" value="" />
+												<form:errors path="departTime" cssClass="help-block"
+													element="em" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="white-block">
+								<h2>Shipment details</h2>
+								<div class="shipment-form">
+									<div class="form-row">
+										<div class="request-put inlarge blue">
+											<p class="name">category</p>
+
+											<div class="ant-row ant-form-item">
+												<div class="ant-col ant-form-item-control">
+													<div class="ant-form-item-control-input">
+														<div class="ant-form-item-control-input-content">
+															<span class="ant-cascader-picker" tabindex="0"> <form:select
+																	path="category" class="ant-input ant-cascader-input ">
+																	<form:option value="Agriculture & Food"
+																		label="Agriculture & Food" />
+																	<form:option value="Apparel, Textiles & Accessories"
+																		label="Apparel, Textiles & Accessories" />
+																	<form:option value="Auto & Transportation"
+																		label="Auto & Transportation" />
+																	<form:option value="Bags, Shoes & Accessories"
+																		label="Bags, Shoes & Accessories" />
+																	<form:option value="Eletronics" label="Eletronics" />
+																	<form:option
+																		value="Eletrical Equipment, Components& Telecoms"
+																		label="Eletrical Equipment, Components& Telecoms" />
+																	<form:option value="Gifts, Sport & Toys"
+																		label="Gifts, Sport & Toys" />
+																	<form:option value="Health & Beauty"
+																		label="Health & Beauty" />
+																	<form:option value="Machinery, Industrial Parts  Tools"
+																		label="Machinery, Industrial Parts  Tools" />
+																	<form:option value="Home, Light & Contruction"
+																		label="Home, Light & Contruction" />
+																	<form:errors path="category" cssClass="help-block"
 																		element="em" />
-																</div>
-															</div>
+																</form:select>
+															</span>
 														</div>
-
-
-
-
-														<h2>Shipment details</h2>
-														<div class="shipment-form">
-															<form:hidden path="freightId" />
-
-															<div class="row">
-
-																<div class="col-md-6">
-																	<div class="form-group">
-																		<label for="billing-first-name">category</label>
-																		<form:select path="category"
-																			class="ant-input ant-cascader-input ">
-																			<form:option value="---Select your cargo categoty--"
-																				label="---Select your cargo categoty--" />
-																			<form:option value="Agriculture & Food"
-																				label="Agriculture & Food" />
-																			<form:option value="Apparel, Textiles & Accessories"
-																				label="Apparel, Textiles & Accessories" />
-																			<form:option value="Auto & Transportation"
-																				label="Auto & Transportation" />
-																			<form:option value="Bags, Shoes & Accessories"
-																				label="Bags, Shoes & Accessories" />
-																			<form:option value="Eletronics" label="Eletronics" />
-																			<form:option
-																				value="Eletrical Equipment, Components& Telecoms"
-																				label="Eletrical Equipment, Components& Telecoms" />
-																			<form:option value="Gifts, Sport & Toys"
-																				label="Gifts, Sport & Toys" />
-																			<form:option value="Health & Beauty"
-																				label="Health & Beauty" />
-																			<form:option
-																				value="Machinery, Industrial Parts  Tools"
-																				label="Machinery, Industrial Parts  Tools" />
-																			<form:option value="Home, Light & Contruction"
-																				label="Home, Light & Contruction" />
-
-																		</form:select>
-
-																		<form:errors path="category" cssClass="help-block"
-																			element="em" />
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="form-group">
-																		<label for="billing-first-name">packageDescription</label>
-																		<form:input class="ant-input ant-cascader-input "
-																			type="text" path="packageDescription"
-																			placeholder="Enter your first name"
-																			id="billing-first-name" />
-																		<form:errors path="packageDescription"
-																			cssClass="help-block" element="em" />
-																	</div>
-																</div>
-
-
-
-
-															</div>
-														</div>
-												</div>
-
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="billing-first-name">packageWeight</label>
-															<form:input class="ant-input ant-cascader-put "
-																type="number" path="packageWeight"
-																placeholder="Enter your first name"
-																id="billing-first-name" />
-															<form:errors path="packageWeight" cssClass="help-block"
-																element="em" />
-														</div>
-													</div>
-
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="billing-first-name">packageLenght</label>
-															<form:input class="ant-input ant-cascader-put"
-																type="number" path="packageLenght"
-																placeholder="Enter your first name"
-																id="billing-first-name" />
-															<form:errors path="packageLenght" cssClass="help-block"
-																element="em" />
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="billing-first-name">packagewidth</label>
-															<form:input class="ant-input ant-cascader-put "
-																type="number" path="packagewidth"
-																placeholder="Enter your first name"
-																id="billing-first-name" />
-															<form:errors path="packagewidth" cssClass="help-block"
-																element="em" />
-														</div>
-													</div>
-
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="billing-first-name">quantity</label>
-															<form:input class="ant-input ant-cascader-put "
-																type="number" path="quantity"
-																placeholder="Enter your first name"
-																id="billing-first-name" />
-															<form:errors path="quantity" cssClass="help-block"
-																element="em" />
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label for="billing-first-name">typeOfPackage</label>
-															<form:select path="typeOfPackage"
-																class="ant-input ant-cascader-input ">
-																<form:option value="Dangerous cargo"
-																	label="Dangerous cargo" />
-																<form:option value="fragile" label="fragile" />
-																<form:option value="framable" label="framable" />
-																<form:option value="other" label="other" />
-															</form:select>
-															<form:errors path="typeOfPackage" cssClass="help-block"
-																element="em" />
-														</div>
-													</div>
-												</div>
-
-
-
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="billing-first-name">Primary Transport
-															Mode</label>
-														<div class="_2daCnfZkNcDBxpoTaUTeRj">
-															<label class="aRHP1WHChJOtaaJiGH7os"><form:radiobutton
-																	value="SEA" path="transportation" name="shipment-type"
-																	checked="" /><span></span><span>SEA</span></label><label
-																class="aRHP1WHChJOtaaJiGH7os"><form:radiobutton
-																	value="LAND" path="transportation" name="shipment-type" /><span></span><span>LAND</span></label><label
-																class="aRHP1WHChJOtaaJiGH7os"><form:radiobutton
-																	value="AIR" path="transportation" name="shipment-type" /><span></span><span>AIR</span></label>
-														</div>
-														<form:errors path="departLocation" cssClass="help-block"
-															element="em" />
-													</div>
-												</div>
-
-
-											</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-											<div class="white-block">
-												<div class="_2fwAz9xpn2VsFPNX-v_BSB">
-													<h2>Additional services</h2>
-													<div class="_1sfbBflXbDVSnFUfOdXHCs">
-														<ul>
-															<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
-																	<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
-																			path="addictional" value="pick" /><span></span><span>Cargo
-																			pick up</span></label>
-																</div></li>
-															<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
-																	<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
-																			path="addictional" value="delivery" /><span></span><span>Cargo
-																			Delivery</span></label>
-																</div></li>
-															<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
-																	<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
-																			path="addictional" value="port_fees" /><span></span><span>Port
-																			fees &amp; forwarding fees</span></label>
-																</div></li>
-															<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
-																	<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
-																			path="addictional" value="customs_clearance" /><span></span><span>Customs
-																			clearance</span></label>
-																</div></li>
-															<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
-																	<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
-																			path="addictional" value="cargo_insurance_check" /><span></span><span>Сargo
-																			Insurance</span></label>
-																</div></li>
-														</ul>
-														<img
-															src="https://www.searates.com/design/images/apps/shipping/request/services-img.svg"
-															alt="">
 													</div>
 												</div>
 											</div>
-											<div class="form- group">
-
-															<div class="col-md-offset-4 col-md-8">
-
-																<input type="submit" name="submit" id="submit"
-																	value="submit" class="btn btn-primary" />
-
-
-
-
-
-															</div>
-
-														</div>
-											</form:form>
 										</div>
 
+
+
+
+										<div class="request-put inlarge blue">
+											<p class="name">packageDescription</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="text" path="packageDescription"
+													title="packageDescription" name="packageDescription"
+													placeholder="packageDescription" />
+												<form:errors path="packageDescription" cssClass="help-block"
+													element="em" />
+											</div>
+										</div>
+
+
+
 									</div>
-									<!-- end row-->
+
+
 								</div>
-
-
 							</div>
-							<!-- end tab content-->
+							<div class="white-block">
+								<h2>Shipment details</h2>
 
-						</div>
-						<!-- end card-body-->
+								<div class="item active blue"
+									style="background: rgb(0, 136, 255) none repeat scroll 0% 0%;">
+									<div class="icon">
+										<i class="fad fa-boxes"></i>
+									</div>
+									<p>lcl</p>
+								</div>
+								<div class="shipment-form">
+									<div class="form-row">
+										<div class="request-input large blue">
+											<p class="name">packageWeight</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="number" path="packageWeight"
+													title="packageWeight" name="packageWeight"
+													placeholder="packageWeight" step="any" autocomplete="off"
+													value="" />
+												<form:errors path="packageWeight" cssClass="help-block"
+													element="em" />
+											</div>
+										</div>
+										<div class="request-input large blue">
+											<p class="name">packageLenght</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="number" path="packageLenght"
+													title="packageLenght" name="packageLenght"
+													placeholder="packageLenght" step="any" autocomplete="off"
+													value="" />
+												<form:errors path="packageLenght" cssClass="help-block"
+													element="em" />
+											</div>
+										</div>
+										<div class="request-input large blue">
+											<p class="name">packagewidth</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="number" path="packagewidth"
+													title="packagewidth" name="packagewidth"
+													placeholder="packagewidth" step="any" autocomplete="off"
+													value="" />
+												<form:errors path="packagewidth" cssClass="help-block"
+													element="em" />
+											</div>
+										</div>
+										<div class="request-input large blue">
+											<p class="name">quantity</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="number" path="quantity" title="quantity"
+													name="quantity" placeholder="quantity" step="any"
+													autocomplete="off" value="" />
+												<form:errors path="quantity" cssClass="help-block"
+													element="em" />
+											</div>
+										</div>
+										<div class="request-input large blue">
+											<p class="name">quantity</p>
+
+											<div class="ant-row ant-form-item">
+												<div class="ant-col ant-form-item-control">
+													<div class="ant-form-item-control-input">
+														<div class="ant-form-item-control-input-content">
+															<span class="ant-cascader-picker" tabindex="0"> <form:select
+																	path="typeOfPackage"
+																	class="ant-input ant-cascader-input ">
+																	<form:option value="Dangerous cargo"
+																		label="Dangerous cargo" />
+																	<form:option value="fragile" label="fragile" />
+																	<form:option value="framable" label="framable" />
+																	<form:option value="other" label="other" />
+																</form:select>
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+
+										<%-- <div class="request-input large blue">
+											<p class="name">Product name</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="number" path="kind" title="Product name" autocomplete="off"
+													name="main_name" placeholder="Red Chair" step="any"
+													autocomplete="off" value=""/>
+													<form:errors path="kind" cssClass="help-block" element="em"/>
+											</div>
+										</div> --%>
+										<%-- 	<div class="request-input large blue">
+											<p class="name">Product name</p>
+											<div class="input-wrap  
+                ">
+												<form:input type="number"  path="kind" title="Product name" autocomplete="off"
+													name="main_name" placeholder="Red Chair" step="any"
+													autocomplete="off" value=""/>
+													<form:errors path="kind" cssClass="help-block" element="em"/>
+											</div>
+										</div> --%>
+									</div>
+									<div class="_2daCnfZkNcDBxpoTaUTeRj">
+										<span>Primary Transport Mode</span><label
+											class="aRHP1WHChJOtaaJiGH7os"><form:radiobutton
+												value="SEA" path="transportation" name="shipment-type"
+												checked="" /><span></span><span>SEA</span></label><label
+											class="aRHP1WHChJOtaaJiGH7os"><form:radiobutton
+												value="LAND" path="transportation" name="shipment-type" /><span></span><span>LAND</span></label><label
+											class="aRHP1WHChJOtaaJiGH7os"><form:radiobutton
+												value="AIR" path="transportation" name="shipment-type" /><span></span><span>AIR</span></label>
+									</div>
+								</div>
+							</div>
+							<div class="white-block">
+								<div class="_2fwAz9xpn2VsFPNX-v_BSB">
+									<h2>Additional services</h2>
+									<div class="_1sfbBflXbDVSnFUfOdXHCs">
+										<ul>
+											<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
+													<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
+															path="addictional" value="pick" /><span></span><span>Cargo
+															pick up</span></label>
+												</div></li>
+											<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
+													<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
+															path="addictional" value="delivery" /><span></span><span>Cargo
+															Delivery</span></label>
+												</div></li>
+											<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
+													<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
+															path="addictional" value="port_fees" /><span></span><span>Port
+															fees &amp; forwarding fees</span></label>
+												</div></li>
+											<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
+													<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
+															path="addictional" value="customs_clearance" /><span></span><span>Customs
+															clearance</span></label>
+												</div></li>
+											<li><div class="_36ZQzdoDlVjSXxuXB5TMbT">
+													<label class="_3GfUR9yR_rFiJl_vP_jNry"><form:checkbox
+															path="addictional" value="cargo_insurance_check" /><span></span><span>Сargo
+															Insurance</span></label>
+												</div></li>
+										</ul>
+										<img
+											src="https://www.searates.com/design/images/apps/shipping/request/services-img.svg"
+											alt="">
+									</div>
+								</div>
+							</div>
+							<div class="request-footer">
+								<div class="progressbar">
+									<p>
+										Readiness: <span style="color: rgb(0, 136, 255);">0%</span>
+									</p>
+									<div class="line-wrapper">
+										<div class="line"
+											style="width: 0%; background: rgb(0, 136, 255);"></div>
+									</div>
+								</div>
+								<div class="btns">
+									<p class="auth-tip">
+										<a href="/auth/sign-in">Sign in</a> to send request
+									</p>
+									<button type="submit" class="request-btn prev disabled blue"
+										disabled="" style="background: rgb(0, 136, 255);">
+										<i class="fal fa-angle-left"></i>
+									</button>
+									<button type="submit" class="request-btn next "
+										style="background: rgb(0, 136, 255);">
+										<span>Next</span> <i class="fal fa-angle-right"></i>
+									</button>
+								</div>
+							</div>
 					</div>
-					<!-- end card-->
+					</form:form>
 				</div>
-				<!-- end col -->
 			</div>
-
-
-			<!-- end row -->
-
 		</div>
-		<!-- container -->
-
 	</div>
-	<!-- content -->
-
-	<!-- Footer Start -->
+	</div>
 	<footer class="footer">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-6">
-					<script>
-						document.write(new Date().getFullYear())
-					</script>
-					© Hyper - Coderthemes.com
-				</div>
-				<div class="col-md-6">
-					<div class="text-md-right footer-links d-none d-md-block">
-						<a href="javascript: void(0);">About</a> <a
-							href="javascript: void(0);">Support</a> <a
-							href="javascript: void(0);">Contact Us</a>
-					</div>
-				</div>
-			</div>
+		<div class="content">
+			<ul class="main__nav">
+				<li class="main__nav-list">
+					<p data-toggle="modal" data-target="#langModal" class="lang-change">
+						<span class="planet_icon"></span>English
+					</p>
+					<ul class="social-net">
+						<li class="social-net__item twitter"><a
+							href="https://twitter.com/kesiinvestmentrwanda"></a></li>
+						<li class="social-net__item facebook"><a
+							href="https://www.facebook.com/kESI Investment Rwanda Ltd/"></a></li>
+						<li class="social-net__item youtube"><a
+							href="https://www.youtube.com/kESI Investment Rwanda Ltd"></a></li>
+						<li class="social-net__item instagram"><a
+							href="https://www.instagram.com/Kesi_rwanda/"></a></li>
+					</ul>
+				</li>
+				<li class="support main__nav-list"><b>Tools</b>
+					<ul>
+						<li><a href="services/logistics-explorer/index.html">Logistics
+								explorer</a></li>
+						<li><a href="services/learn-more/index.html">Container
+								tracking</a></li>
+						<li><a href="reference/load-calc-about/index.html">Load
+								calculator</a></li>
+						<li><a href="services/schedules/index.html">Ship
+								schedules</a></li>
+						<li><a href="services/distances-time/index.html">Distances
+								and time</a></li>
+					</ul></li>
+				<li class="opportunities main__nav-list"><b>Opportunities</b>
+					<ul>
+						<li><a href="services/plans/index.html">Plans & Pricing</a></li>
+						<li><a href="shipping/for-shippers/index.html">For
+								Shippers</a></li>
+						<li><a href="shipping/for-carriers/index.html">For
+								Carriers</a></li>
+						<li><a href="reference/api/index.html">API Integrations</a></li>
+					</ul></li>
+				<li class="company main__nav-list"><b>Company</b>
+					<ul>
+						<li><a href="contact/index.html">Contact us</a></li>
+						<li><a href="tel:+250788304588">+250 788 304 588</a></li>
+						<li><a href="email">kesiinvestmentrwanda@gmail.com</a></li>
+					</ul></li>
+
+
+			</ul>
+			<p class="company-description">KESI Investment Rwanda ltd is an
+				integrated transport and logistics services provider with the Head
+				Office in Kigali, Rwanda KESI Investment Rwanda ltd was established
+				in 2016 with a fleet of 100 trucks that moved our client’s goods
+				within the region. Now we have more than 320 employees and more than
+				184 trucks. We have made a strong repute for impeccable transport
+				and logistics services in East African Countries, which is
+				characterized by Efficiency, Quality and Professionalism. We provide
+				our services in Rwanda, Kenya, Uganda, Tanzania and we have blanches
+				in those countries .</p>
+			<ul class="policy__nav">
+				<li><a>2020 © Kesi Investment. All rights reserved.</a></li>
+			</ul>
 		</div>
 	</footer>
-	<!-- end Footer -->
 
 
 
+	<!-- Bootstrap core JavaScript -->
+	<script src="${js }/jquery.min.js"></script>
+	<script src="${js }/bootstrap.bundle.min.js"></script>
+	<script src="${js }/bootbox.min.js"></script>
+	<script src="${js }/myapp.js"></script>
 
-
-
-	<!-- END wrapper -->
-
-
-
-
-
-	<!-- bundle -->
-
-	<script src="${js }/vendor.min.js"></script>
-	<script src="${js }/app.min.js"></script>
-
+	<script src="${js }/main.min.js"></script>
+	<script src="${js }/jquery-ui-custom.js"></script>
+	<script src="${js }/bootstrap-datepicker.js"></script>
+	<script src="${js }/select2.js"></script>
+	<script src="${js }/swiper-bundle.js"></script>
+	<script src="${js }/index4522.js"></script>
 </body>
 
 </html>

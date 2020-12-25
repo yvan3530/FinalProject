@@ -53,6 +53,64 @@ public class PageController {
 		return mv;
 
 	}
+	
+	@RequestMapping(value = { "/warehouse" })
+	public ModelAndView warehouse() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Warehouse");
+		mv.addObject("userClickWareHouse", true);
+		return mv;
+
+	}
+	@RequestMapping(value = { "/surveyservice" })
+	public ModelAndView surveyservice() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "surveyservice");
+		mv.addObject("userClickSurveyservice", true);
+		return mv;
+
+	}
+	@RequestMapping(value = { "/insurance" })
+	public ModelAndView insurance() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "insurance");
+		mv.addObject("userClickInsurance", true);
+		return mv;
+
+	}
+	
+	@RequestMapping(value = { "/Bulk&BreakBulk" })
+	public ModelAndView BreakBulk() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Bulk&BreakBulk");
+		mv.addObject("userClickBulk", true);
+		return mv;
+
+	}
+	
+	@RequestMapping(value = { "/lclshipping" })
+	public ModelAndView LCLShipping() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "lclshipping");
+		mv.addObject("userClicklclshipping", true);
+		return mv;
+
+	}
+	
+	@RequestMapping(value = { "/fclshipping" })
+	public ModelAndView fclShipping() {
+
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "fclshipping");
+		mv.addObject("userClickfclshipping", true);
+		return mv;
+
+	}
 
 	@RequestMapping(value = { "/service" })
 	public ModelAndView service() {
@@ -112,7 +170,7 @@ public class PageController {
 	
 	
 	
-	@RequestMapping(value = "/addfreights", method = RequestMethod.GET)
+	@RequestMapping(value = "/addfreight", method = RequestMethod.GET)
 	public ModelAndView showAddFreight(@RequestParam(name = "operation", required = false) String operation) {
 
 		ModelAndView mv = new ModelAndView("freight");
@@ -134,7 +192,7 @@ public class PageController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/addfreight", method = RequestMethod.GET)
+	@RequestMapping(value = "/addfreight", method = RequestMethod.POST)
 	public String handlefreight(@Valid @ModelAttribute("freight") Freight nFreight, BindingResult results, Model model,
 			HttpServletRequest request) {
 

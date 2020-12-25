@@ -1522,7 +1522,8 @@ button.ui-button::-moz-focus-inner, input.ui-button::-moz-focus-inner {
 
 .main-content {
 	padding-bottom: 0 !important;
-	background: #f8f9fd !important
+	background: #f8f9fd !important;
+	pa
 }
 
 header .navbar {
@@ -1556,7 +1557,8 @@ header.main_header {
 
 .main-content {
 	position: relative;
-	background-color: #f8f9fd
+	background-color: #f8f9fd;
+	
 }
 
 .body {
@@ -1602,13 +1604,16 @@ footer.footer {
 
 .content {
 	width: 100%;
-	 max-width: 2000px; */
-	margin: 0 auto;
-	padding-right: 15px;
-	padding-left: 15px;
+	 max-width: 2000px;
 	position: relative;
-	z-index: 1
+	z-index: 1;
+	
 }
+.content{
+	padding: 30px 30px;
+	
+}
+
 
 .main-page-box {
 	overflow: hidden;
@@ -2064,6 +2069,10 @@ footer.footer {
 	padding-bottom: 0
 }
 
+section.today {
+    padding-left: 200px;
+}
+
 .main-page-box section.today .content {
 	padding-top: 100px
 }
@@ -2250,6 +2259,11 @@ footer.footer {
 	border-bottom-left-radius: 13vw
 }
 
+section.requests {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
 @media ( max-width :768px) {
 	.main-page-box section.requests {
 		border-radius: 0;
@@ -2261,6 +2275,10 @@ footer.footer {
 .main-page-box section.requests .content .title-wrapper {
 	position: relative;
 	top: 9px
+}
+
+.title-wrapper {
+    padding-left: 40px;
 }
 
 .main-page-box section.requests .content .leads-btn {
@@ -2281,8 +2299,8 @@ footer.footer {
 	}
 	.main-page-box section.requests .content .desc, .main-page-box section.requests .content .tabs__nav,
 		.main-page-box section.requests .content .title {
-		padding-left: 15px;
-		padding-right: 15px;
+		/* padding-left: 15px;
+		padding-right: 15px; */
 		margin-right: 0;
 		display: -webkit-box;
 		display: -ms-flexbox;
@@ -2699,6 +2717,11 @@ footer.footer {
 	background-color: #e9f0f7
 }
 
+
+section.market-place {
+    padding-left: 30px;
+}
+
 .main-page-box section.market-place .title-wrapper h2 {
 	font-size: 44px;
 	text-align: center;
@@ -2862,6 +2885,12 @@ footer.footer {
 	padding-top: 140px;
 	border-top-right-radius: 13vw
 }
+
+section.apps {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 
 @media ( max-width :768px) {
 	.main-page-box section.apps {
@@ -3077,7 +3106,7 @@ footer.footer {
 	}
 	.main-page-box section.combine .inner .wrap .mobile-part p,
 		.main-page-box section.combine .inner .wrap .mobile-part span {
-		color: #0080ff;
+		/* color: #0080ff; */
 		font-weight: 600;
 		font-size: 24px;
 		line-height: 36px
@@ -3123,6 +3152,10 @@ footer.footer {
 	max-width: 32.9%
 }
 
+.title-part {
+    padding-left: 30px;
+}
+
 .main-page-box section.why .grid-wrap .title-part h4 {
 	margin-top: 17px;
 	margin-right: 10px;
@@ -3131,6 +3164,13 @@ footer.footer {
 	line-height: 44px;
 	color: #15354e
 }
+
+section.combine {
+    
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
 
 .main-page-box section.why .whySearates-container {
 	overflow: hidden

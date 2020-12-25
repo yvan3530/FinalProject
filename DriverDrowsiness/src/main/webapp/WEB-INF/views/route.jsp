@@ -250,6 +250,22 @@
 										</a></li>
 
 									</ul>
+									
+									<c:if test="${not empty message }">
+	
+	
+	
+	<div class="col-xs-12">
+	
+	<div class="alert alert-success alert-dismissible">
+	<button type ="button" class="close" data-dismiss="alert">&times;</button>
+	
+	
+	${message}
+	</div>
+	
+	</div>
+	</c:if>
 
 									<!-- Steps Information -->
 									<div class="tab-content">
@@ -265,7 +281,7 @@
 
 
 													<form:form class="form-horizontal" modelAttribute="route"
-														action="/DriverDrowsiness/manage/addroute" method="POST">
+														action="${contextRoot }/manage/addroute" method="POST">
 
 														<form:hidden path="id" />
 														<div class="row">
@@ -318,9 +334,14 @@
 															<div class="col-md-6">
 																<div class="form-group">
 																	<label for="billing-first-name">Status</label>
-																	<form:input class="form-control" type="text"
-																		path="status" placeholder="Enter status"
-																		id="billing-first-name" />
+																	
+																	<form:select class="ant-input ant-cascader-input "
+																		id="status" path="status">
+																		<form:option value=""/>
+																		<form:options  items="${RouteStatus.values()}"/> 
+																		</form:select>
+																	
+																	
 																	<form:errors path="status" cssClass="help-block"
 																		element="em" />
 																</div>
@@ -370,7 +391,7 @@
 															<div class="col-md-offset-4 col-md-8">
 
 																<input type="submit" name="submit" id="submit"
-																	value="addroute" class="btn btn-primary" />
+																	value="save" class="btn btn-primary" />
 
 
 

@@ -75,6 +75,35 @@
 			<c:if test="${ userClickHealth == true}">
 				<%@include file="health.jsp"%>
 			</c:if>
+			
+			<c:if test="${ userClickWareHouse == true}">
+				<%@include file="warehouse.jsp"%>
+			</c:if>
+			<c:if test="${ userClickSurveyservice == true}">
+				<%@include file="SurveyServices.jsp"%>
+			</c:if>
+			
+			<c:if test="${ userClickInsurance == true}">
+				<%@include file="insurance.jsp"%>
+			</c:if>
+			
+			<%-- <c:if test="${ userClickBulk&BreakBulk == true}">
+				<%@include file="Bulk&BreakBulk.jsp"%>
+			</c:if> --%>
+			
+			<c:if test="${ userClicklclshipping == true}">
+				<%@include file="LCLshipping.jsp"%>
+			</c:if>
+			
+			<c:if test="${ userClickfclshipping == true}">
+				<%@include file="FCLshipping.jsp"%>
+			</c:if>
+			
+			<c:if test="${ userClickBulk == true}">
+				<%@include file="bulk.jsp"%>
+			</c:if>
+			
+			
 			<!-- /.container -->
 
 			<c:if test="${ userClickManageBooking == true}">

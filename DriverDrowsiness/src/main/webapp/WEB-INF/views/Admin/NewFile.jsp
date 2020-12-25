@@ -1,6 +1,3 @@
-
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -17,11 +14,9 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
+
+
+
 <title>Kesi Investiment Company - ${title }</title>
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 <script>
@@ -33,196 +28,125 @@
 <!-- Custom styles for this template -->
 <link href="${css }/myapp.css" rel="stylesheet">
 
-<link href="${css }/index.css" rel="stylesheet">
-
-<link href="${css }/partial-mp-filter.css" rel="stylesheet">
-
-<link href="${css }/global.css" rel="stylesheet">
 </head>
 
 <body>
 
-	
+	<div class="wrapper">
 
 		<!-- Navigation bar-->
-		<%@include file="./shared/navbar.jsp"%>
-
-
-<form:form class="form-horizontal" modelAttribute="freight"
-						action="/DriverDrowsiness/manage/addFreight" method="POST">
-	<div class="white-block">
-			<c:if test="${not empty message }">
-
-
-
-			<div class="col-xs-12">
-
-				<div class="alert alert-success alert-dismissible">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-
-
-					${message}
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<a class="navbar-brand" href="${contextRoot}/home">Kesi Investement Company</a>
 				</div>
-
 			</div>
-		</c:if>
-		<h2>Shipment details</h2>
-		<div class="shipment-form">
-			<div class="form-row">
-				<div class="request-cascader blue ">
-					<p class="label">Category</p>
-					<div class="ant-row ant-form-item">
-						<div class="ant-col ant-form-item-control">
-							<div class="ant-form-item-control-input">
-								<div class="ant-form-item-control-input-content">
-									<div class="request-input large" tabindex="0">
-										<div class="input-wrap cascader-input">
-											<input type="text" placeholder="Please select" required=""
-												value="">
+</nav>
+		<div class="content">
+			<!-- Page Content -->
+			<div class="container">
+			
+			<!-- display when a user credential are wrong -->
+			<c:if test="${ not empty message}">
+			
+				<div class="row">
+
+					<div class="col-md-offset-3 col-md-6">
+					
+					<div class="alert alert-danger">${message}</div>
+					
+					</div>
+					
+				</div>
+			
+			
+			</c:if>
+			<!-- display when a user has logged out -->
+			<c:if test="${ not empty logout}">
+			
+				<div class="row">
+
+					<div class="col-md-offset-3 col-md-6">
+					
+					<div class="alert alert-danger">${logout}</div>
+					
+					</div>
+					
+				</div>
+			
+			
+			</c:if>
+			
+			
+			<div class="row">
+
+					<div class="col-md-offset-3 col-md-6">
+
+						<div class="panel panel-primary">
+
+							<div class="panel-heading">
+								<h4>Login</h4>
+							</div>
+
+							<div class="panel-body">
+								<form action="${contextRoot}/login" method="POST"
+									class="form-horizontal" id="loginForm">
+									<div class="form-group">
+										<label for="username" class="col-md-4 control-label">Email:
+										</label>
+										<div class="col-md-8">
+											<input type="text" name="username" id="username"
+												class="form-control" />
 										</div>
 									</div>
+									<div class="form-group">
+										<label for="password" class="col-md-4 control-label">Password:
+										</label>
+										<div class="col-md-8">
+											<input type="password" name="password" id="password"
+												class="form-control" />
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-offset-4 col-md-8">
+											<input type="submit" value="Login" class="btn btn-primary" />
+											<input type="hidden" name="${_csrf.parameterName}"
+												value="${_csrf.token}" />
+										</div>
+									</div>
+								</form>
+
+							</div>
+							<div class="panel-footer">
+								<div class="text-right">
+									New User - <a href="${contextRoot}/register">Register Here</a>
 								</div>
 							</div>
 						</div>
+
 					</div>
+
 				</div>
-				<div class="request-input large blue">
-					<p class="name">Product name</p>
-					<div class="input-wrap  
-                ">
-						<input type="text" title="Product name" name="main_name"
-							placeholder="Red Chair" step="any" autocomplete="off" value="">
-					</div>
-				</div>
+
 			</div>
 		</div>
-	</div>
-	<div class="white-block">
-		<h2>Which type of delivery do you need?</h2>
-		<div class="shipment-type-tip">
-			<div class="image-block">
-				<img alt=""
-					src="https://www.searates.com/design/images/apps/shipping/request/fwl-tip.svg">
-			</div>
-			
-		</div>
-		<div class="shipment-tabs">
-			
-			<div class="shipment-tab active"
-				style="border-color: rgb(0, 136, 255);">
-				<p>land</p>
-			</div>
-			
-		</div>
-		<div class="shipment-type">
-			<div class="item  blue" style="">
-				<div class="icon">
-					<i class="fad fa-truck-container"></i>
-				</div>
-				<p>fcl</p>
-			</div>
-			<div class="item  blue" style="">
-				<div class="icon">
-					<i class="fad fa-truck-moving"></i>
-				</div>
-				<p>ftl</p>
-			</div>
-			<div class="item active blue" style="background: rgb(0, 136, 255);">
-				<div class="icon">
-					<i class="fad fa-train"></i>
-				</div>
-				<p>fwl</p>
-			</div>
-		</div>
-		<div class="shipment-form">
-			<div class="type-form">
-				<div class="form-row">
-					<div class="request-select large">
-						<p class="label">Wagon Type</p>
-						<div class="select-wrap  blue">
-							<form:select name="container_type"  path="">
-							<form:option value="54">Hopper Wagon</form:option>
-								<form:option value="55">Closed Wagon</form:option>
-								<form:option value="56">Side Dump Wagon</form:option>
-								<form:option value="57">High Side Wagon</form:option>
-								<form:option value="58">Freight Wagon</form:option>
-								<form:option value="53">Tank Wagon</form:option>
-								<form:option value="51">Flat Wagon</form:option>
-								<form:option value="52">Container Platform</form:option>
-								</form:select>
-						</div>
-					</div>
-					<div class="request-input small blue">
-						<p class="name">Gross Weight</p>
-						<div class="input-wrap  
-                ">
-							<input type="number" title="Gross Weight" name="cargo_weight"
-								placeholder="0" step="any" autocomplete="off" required=""
-								value="">
-							<p class="label">Mt</p>
-						</div>
-					</div>
-					<div class="request-input small blue">
-						<p class="name">Qty</p>
-						<div class="input-wrap  
-                ">
-							<input type="number" title="Qty" name="amount" placeholder="0"
-								step="any" autocomplete="off" required="" value="">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="request-footer">
-		<div class="progressbar">
-			<p>
-				Readiness: <span style="color: rgb(0, 136, 255);">0%</span>
-			</p>
-			<div class="line-wrapper">
-				<div class="line" style="width: 0%; background: rgb(0, 136, 255);"></div>
-			</div>
-		</div>
-		<div class="btns">
-			<p class="auth-tip">
-				<a href="/auth/sign-in">Sign in</a> to send request
-			</p>
-			<form:button type="submit" class="request-btn prev disabled blue"
-				disabled="" style="background: rgb(0, 136, 255);">
-				<i class="fal fa-angle-left"></i>
-			</form:button>
-			<form:button type="submit" class="request-btn next  blue"
-				style="background: rgb(0, 136, 255);">
-				<span>Next</span> <i class="fal fa-angle-right"></i>
-			</form:button>
-		</div>
-	</div>
-</form:form>
-		
+			<!-- /.container -->
+
 		
 
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
-		
 
-		
-		
+
 		<!-- Bootstrap core JavaScript -->
 		<script src="${js }/jquery.min.js"></script>
 		<script src="${js }/bootstrap.bundle.min.js"></script>
 		<script src="${js }/bootbox.min.js"></script>
 		<script src="${js }/myapp.js"></script>
 		
-		<script src="${js }/main.min.js"></script>
-		<script src="${js }/jquery-ui-custom.js"></script>
-		<script src="${js }/bootstrap-datepicker.js"></script>
-		<script src="${js }/select2.js"></script>
-		<script src="${js }/swiper-bundle.js"></script>
-		<script src="${js }/index4522.js"></script>
 
-	
+	</div>
 </body>
 
 </html>
-		

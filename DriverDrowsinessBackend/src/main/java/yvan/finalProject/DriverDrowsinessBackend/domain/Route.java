@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.hibernate.validator.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -34,10 +35,12 @@ public class Route implements Serializable{
 	
 	@ManyToOne(fetch = FetchType.EAGER)	
 	@JoinColumn(name="driver")
+	//@NotBlank(message= "please enter the driver !")
 	private Driver driver;
 	
 	@ManyToOne(fetch = FetchType.EAGER)	
 	@JoinColumn(name="truck")
+	//@NotBlank(message= "please enter the truck !")
 	private Truck truck;
 	
 	@OneToMany(mappedBy = "route",fetch = FetchType.EAGER)
@@ -45,13 +48,17 @@ public class Route implements Serializable{
 	
 	@Column(nullable = true)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotBlank(message= "please enter the departTime !")
 	private Date departTime;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(nullable = true)
+	@NotBlank(message= "please enter the arrivalTime !")
 	private Date arrivalTime;
-	
+	@NotBlank(message= "please enter the departLocation !")
 	private String departLocation;
+	@NotBlank(message= "please enter the arrivalLocation !")
 	private String arrivalLocation;
+	//@NotBlank(message= "please enter the status !")
 	private RouteStatus status = RouteStatus.pending;
 	
 	public int getId() {

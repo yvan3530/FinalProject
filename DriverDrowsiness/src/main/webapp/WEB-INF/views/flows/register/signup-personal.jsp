@@ -229,8 +229,8 @@
 										<div class="input-wrap  
                 ">
 											<sf:input type="text" path="firstName" title="firstName"
-												name="firstName" placeholder="departLocation" step="any"
-												autocomplete="off" value="" />
+												name="firstName" placeholder="departLocation" />
+												
 											<sf:errors path="firstName" cssClass="help-block"
 												element="em" />
 										</div>
@@ -240,8 +240,7 @@
 										<div class="input-wrap  
                 ">
 											<sf:input type="text" path="lastName" title="lastName"
-												name="lastName" placeholder="arrivalLocation" step="any"
-												autocomplete="off" value="" />
+												name="lastName" placeholder="arrivalLocation" />
 											<sf:errors path="lastName" cssClass="help-block" element="em" />
 										</div>
 									</div>
@@ -262,8 +261,7 @@
 										<div class="input-wrap  
                 ">
 											<sf:input type="text" path="address" title="address"
-												name="address" placeholder="departLocation" step="any"
-												autocomplete="off" value="" />
+												name="address" placeholder="departLocation"  />
 											<sf:errors path="address" cssClass="help-block" element="em" />
 										</div>
 									</div>
@@ -272,8 +270,7 @@
 										<div class="input-wrap  
                 ">
 											<sf:input type="text" path="telePhone" title="telePhone"
-												name="telePhone" placeholder="XXXXXXXXXX" step="any"
-												autocomplete="off" value="" />
+												name="telePhone" placeholder="XXXXXXXXXX" />
 											<sf:errors path="telePhone" cssClass="help-block"
 												element="em" />
 										</div>
@@ -293,8 +290,7 @@
 										<div class="input-wrap  
                 ">
 											<sf:input type="email" path="email" title="email" name="email"
-												placeholder="Email" step="any" autocomplete="off"
-												value="" />
+												placeholder="Email"  />
 											<sf:errors path="email" cssClass="help-block" element="em" />
 										</div>
 									</div>
@@ -303,8 +299,7 @@
 										<div class="input-wrap  
                 ">
 											<sf:input type="password" path="password" title="password"
-												name="password" placeholder="password" step="any"
-												autocomplete="off" value="" />
+												name="password" placeholder="password"  />
 											<sf:errors path="password" cssClass="help-block" element="em" />
 										</div>
 									</div>
@@ -315,7 +310,7 @@
                 ">
 											<sf:input type="password" path="confirmPassword" title="password"
 												name="confirmPassword" placeholder="confirm Password"
-												step="any" autocomplete="off" value="" />
+												/>
 											<sf:errors path="confirmPassword" cssClass="help-block"
 												element="em" />
 										</div>

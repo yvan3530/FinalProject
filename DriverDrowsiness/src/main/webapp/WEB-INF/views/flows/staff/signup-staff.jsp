@@ -37,6 +37,14 @@
 <link href="${css }/icons.min.css" rel="stylesheet" />
 <link href="${css }/bundle.css" rel="stylesheet">
 
+
+<style type="text/css">
+.help-block {
+    color: #ff0000;
+}
+
+</style>
+
 </head>
 
 <body class="loading"
@@ -278,6 +286,7 @@
 																	<sf:input class="form-control" type="text"
 																		path="firstName" placeholder="Enter your first name"
 																		id="billing-first-name" />
+																		
 																	<sf:errors path="firstName" cssClass="help-block"
 																		element="em" />
 																</div>

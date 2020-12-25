@@ -15,6 +15,7 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 @MappedSuperclass
@@ -38,6 +39,7 @@ public abstract class User implements Serializable{
 	@NotBlank(message= "Please enter the Last name!")
 	private String lastName;
 	@NotBlank(message= "Please enter the email!")
+	@Email(message=" please enter a valide email")
 	private String email;
 	@NotBlank(message= "Please enter the Telephone!")
 	private String telePhone;

@@ -36,6 +36,12 @@
 <link href="${css }/app-dark.min.css" rel="stylesheet" type="text/css" />
 <link href="${css }/icons.min.css" rel="stylesheet" />
 <link href="${css }/bundle.css" rel="stylesheet">
+
+<style type="text/css">
+       .help-block {
+    color: red;
+}
+        </style>
 </head>
 
 <body class="loading"

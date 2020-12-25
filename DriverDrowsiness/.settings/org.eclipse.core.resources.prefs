@@ -1,9 +1,15 @@
 eclipse.preferences.version=1
 encoding//src/main/webapp/WEB-INF/views/Admin/addfreight.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/Admin/shared/footer.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/FCLshipping.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/LCLshipping.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/SurveyServices.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/flows/register/signup-personal.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/freight.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/health.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/home.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/insurance.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/shared/footer.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/warehouse.jsp=UTF-8
 encoding//src/main/webapp/assets/css/app.min.css=UTF-8
 encoding//src/main/webapp/assets/css/index.css=UTF-8

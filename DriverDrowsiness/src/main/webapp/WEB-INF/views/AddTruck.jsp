@@ -30,6 +30,11 @@
         <link href="${css}/icons.min.css" rel="stylesheet" type="text/css" />
         <link href="${css}/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
         <link href="${css}/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
+        <style type="text/css">
+       .help-block {
+    color: red;
+}
+        </style>
 
     </head>
 
@@ -264,6 +269,21 @@
                                             </li>
                                           
                                         </ul>
+                                        <c:if test="${not empty message }">
+	
+	
+	
+	<div class="col-xs-12">
+	
+	<div class="alert alert-success alert-dismissible">
+	<button type ="button" class="close" data-dismiss="alert">&times;</button>
+	
+	
+	${message}
+	</div>
+	
+	</div>
+	</c:if>
 
                                         <!-- Steps Information -->
                                         <div class="tab-content">
@@ -278,14 +298,14 @@
                                                             send you the order's invoice.</p>
 
                                                             <form:form class="form-horizontal" modelAttribute="truck" 
-                                                            action="/DriverDrowsiness/manage/addtrucks"
+                                                            action="${contextRoot }/manage/addtrucks"
                                                             method="POST" enctype="multipart/form-data">
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <div class="form-group">
                                                                         <label for="billing-first-name">Kind<span class="text-danger">*</span></label>
                                                                         <form:input class="form-control" type="text" path="kind" placeholder="Enter your kind of truck" id="billing-first-name" />
-                                                                        <form:errors path="kind" cssClass="help-block" element="em"/>
+                                                                        <form:errors path="kind" cssClass="help-block" element="em" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
@@ -372,6 +392,7 @@
         <!-- bundle -->
         <script src="${js}/vendor.min.js"></script>
         <script src="${js}/app.min.js"></script>
+         <script src="${js }/myapp.js"></script>
         
     </body>
 </html>

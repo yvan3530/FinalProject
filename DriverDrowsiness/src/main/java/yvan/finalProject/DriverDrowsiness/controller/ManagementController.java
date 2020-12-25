@@ -49,6 +49,7 @@ import yvan.finalProject.DriverDrowsinessBackend.domain.Client;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Driver;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Freight;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Route;
+import yvan.finalProject.DriverDrowsinessBackend.domain.RouteStatus;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Staff;
 import yvan.finalProject.DriverDrowsinessBackend.domain.Truck;
 
@@ -155,7 +156,8 @@ public class ManagementController {
 			model.addAttribute("userClickAddTruck", true);
 			model.addAttribute("title", "Add Truck");
 			model.addAttribute("message", "Validation failed for Truck Submission!");
-			return "page";
+//			model.addAttribute("message",results.getAllErrors());
+			return "AddTruck";
 		}
 
 		logger.info(nTruck.toString());
@@ -182,6 +184,7 @@ public class ManagementController {
 		mv.addObject("title", "Add route");
 
 		Route nroute = new Route();
+	//	mv.addObject("RouteStatuss", RouteStatus.values());
 
 		
 		mv.addObject("route", nroute);
@@ -213,14 +216,15 @@ public class ManagementController {
 	public String handleRoute(@Valid @ModelAttribute("route") Route nroute, BindingResult results, Model model,
 			HttpServletRequest request) {
 
-		
+//		new TruckValidator().validate(nroute, results);
 
 		if (results.hasErrors()) {
 
 			model.addAttribute("userClickAddRoute", true);
 			model.addAttribute("title", "Add route");
-			model.addAttribute("message", results.getAllErrors());
-			return "page";
+			model.addAttribute("message", "Validation failed for route Submission!");
+			//model.addAttribute("message", results.getAllErrors());
+			return "route";
 		}
 
 		logger.info(nroute.toString());
@@ -229,6 +233,7 @@ public class ManagementController {
 		
 
 		return "redirect:/manage/addroute?operation=route";
+		
 	}
 	
 	

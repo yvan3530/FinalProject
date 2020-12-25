@@ -2130,6 +2130,11 @@ pre code {
 		-webkit-box-shadow .15s ease-in-out
 }
 
+.help-block {
+    color: #ff0000;
+}
+
+
 @media ( prefers-reduced-motion :reduce) {
 	.form-control {
 		-webkit-transition: none;

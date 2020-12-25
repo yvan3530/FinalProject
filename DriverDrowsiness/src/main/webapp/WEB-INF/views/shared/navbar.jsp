@@ -47,9 +47,9 @@
 					href="${contextRoot }/dashboard">dashboard</a></li>
 					 </security:authorize>  
 					
-						 <li class="navSection primary" ><a class="rootLink"
+						<%--  <li class="navSection primary" ><a class="rootLink"
 					href="${contextRoot }/addfreight">freight</a></li>
-					
+					 --%>
 					
 					<li class="navSection secondary"><a class="rootLink outline"
 						href="${contextRoot}/register">Sign Up</a></li>
@@ -83,7 +83,7 @@
 									<div class="collapse">
 										<div class="mobileProductsList">
 											<ul>
-												<li> <a class="linkContainer" href="#">
+												<li> <a class="linkContainer" href="${contextRoot }/addfreight">
 														<i class="fad fa-box-usd"></i> Request a Quote
 												</a></li>
 											</ul>
@@ -92,18 +92,18 @@
 										<div class="mobileSecondaryNav">
 											<ul>
 												<li><a
-													href="#">FCL Shipping</a></li>
+													href="${contextRoot }/fclshipping">FCL Shipping</a></li>
 												<li><a
-													href="#">LCL Shipping</a></li>
-												<li><a href="#">Bulk & Break Bulk</a></li>
+													href="${contextRoot }/lclshipping">LCL Shipping</a></li>
+												<li><a href="${contextRoot }/Bulk&BreakBulk">Bulk & Break Bulk</a></li>
 												
-												<li><a href="#">Insurance</a></li>
+												<li><a href="${contextRoot }/insurance">Insurance</a></li>
 											</ul>
 											<ul>
 										
-												<li><a href="#">Survey Services</a></li>
+												<li><a href="${contextRoot }/surveyservice">Survey Services</a></li>
 												
-												<li><a href="#">Warehousing</a></li>
+												<li><a href="${contextRoot }/warehouse">Warehousing</a></li>
 											</ul>
 										</div>
 									</div>
@@ -144,7 +144,7 @@
 					<div class="dropdownSection" data-dropdown="services">
 						<div class="dropdownContent">
 							<div class="linkGroup linkList developersGroup">
-								<a class="linkContainer" href="#">
+								<a class="linkContainer" href="${contextRoot }/addfreight">
 									<h3 class="linkTitle">
 										<i class="fad fa-box-usd"></i> Request a Quote
 									</h3>
@@ -155,17 +155,17 @@
 									<ul>
 										<li><h4>Services</h4></li>
 										<li><a
-											href="#">FCL Shipping</a></li>
+											href="${contextRoot }/fclshipping">FCL Shipping</a></li>
 										<li><a
-											href="#">LCL Shipping</a></li>
-										<li><a href="#">Bulk & Break
+											href="${contextRoot }/lclshipping">LCL Shipping</a></li>
+										<li><a href="${contextRoot }/Bulk&BreakBulk">Bulk & Break
 												Bulk</a></li>
-										<li><a href="#">Insurance</a></li>
+										<li><a href="${contextRoot }/insurance">Insurance</a></li>
 									</ul>
 									<ul>
-										<li><a href="#">Survey Services</a></li>
+										<li><a href="${contextRoot }/surveyservice">Survey Services</a></li>
 										
-										<li><a href="#">Warehousing</a></li>
+										<li><a href="${contextRoot }/warehouse">Warehousing</a></li>
 									</ul>
 								</div>
 							</div>

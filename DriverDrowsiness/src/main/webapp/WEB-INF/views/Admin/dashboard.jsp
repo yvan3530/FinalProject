@@ -28,6 +28,15 @@
 <link href="${css }/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
  <link href="${css }/icons.min.css" rel="stylesheet" /> 
 <script src="https://kit.fontawesome.com/1ea22623b8.js" crossorigin="anonymous"></script> 
+<style type="text/css">
+
+img {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ margin-top: -45px;
+}
+</style>
 </head>
 
 <body class="loading"
@@ -38,27 +47,20 @@
 		<div class="left-side-menu">
 
 			<!-- LOGO -->
-			<a href="index-2.html" class="logo text-center logo-light"> <span
-				class="logo-lg"> <img src="assets/images/logo.png" alt=""
-					height="16">
-			</span> <span class="logo-sm"> <img src="assets/images/logo_sm.png"
-					alt="" height="16">
-			</span>
-			</a>
+			
 
 			<!-- LOGO -->
-			<a href="index-2.html" class="logo text-center logo-dark"> <span
-				class="logo-lg"> <img src="assets/images/logo-dark.png"
-					alt="" height="16">
-			</span> <span class="logo-sm"> <img
-					src="assets/images/logo_sm_dark.png" alt="" height="16">
-			</span>
+			<a href="${contextRoot }/home" > <span
+				class="logo-lg"> <img src="${images }/log.jpeg"  width="150px" height="150px" alt="images" >
+			</span> 
 			</a>
 
 			<div class="h-100" id="left-side-menu-container" data-simplebar>
+			
 
 				<!--- Sidemenu -->
 				<ul class="metismenu side-nav">
+				
 
 					<li class="side-nav-title side-nav-item"></li>
 
@@ -77,7 +79,7 @@
 						<ul class="side-nav-second-level" aria-expanded="false">
 
 							<li><a href="${contextRoot }/staff">Orders</a></li>
-							<li><a href="${contextRoot }/manage/addtrucks">Orders11</a></li>
+							
 							<li><a href="${contextRoot }/manage/list-of-staff">Checkout</a>
 							</li>
 

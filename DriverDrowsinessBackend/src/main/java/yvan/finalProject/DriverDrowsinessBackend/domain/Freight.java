@@ -58,7 +58,7 @@ public class Freight implements Serializable{
 	private  Route route;
 	
 	private double price;
-	private FreightStatus status;
+	private FreightStatus status = FreightStatus.pending;
 	@Column(nullable = true)
 	private Date departTime;
 	
@@ -67,16 +67,18 @@ public class Freight implements Serializable{
 	private String arrivalLocation;
 	
 	private String transportation;
-	private String addictional;
+	private String addictional[];
 	
 	
 	
 	
-	public String getAddictional() {
+	
+
+	public String[] getAddictional() {
 		return addictional;
 	}
 
-	public void setAddictional(String addictional) {
+	public void setAddictional(String[] addictional) {
 		this.addictional = addictional;
 	}
 
